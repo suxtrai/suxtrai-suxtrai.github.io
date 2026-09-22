@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuxtrAI · Soluciones de IA a medida para empresas | Bilbao</title>
+<meta name="description" content="SuxtrAI diseña, construye y pone en producción sistemas de IA a medida para empresas: RAG sobre vuestra documentación, automatizaciones, formación, asesoramiento y desarrollo end to end. Bilbao, Euskadi.">
+<link rel="canonical" href="https://suxtrai.es/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#faf8f3">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/favicon-512.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SuxtrAI">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://suxtrai.es/">
+<meta property="og:title" content="SuxtrAI · Inteligencia artificial a medida">
+<meta property="og:description" content="RAG, automatizaciones, formación y desarrollo end to end sobre vuestros procesos reales. Primera sesión sin coste.">
+<meta property="og:image" content="https://suxtrai.es/assets/og-suxtrai.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@suxtrai">
+<meta name="twitter:title" content="SuxtrAI · Inteligencia artificial a medida">
+<meta name="twitter:description" content="RAG, automatizaciones, formación y desarrollo end to end sobre vuestros procesos reales.">
+<meta name="twitter:image" content="https://suxtrai.es/assets/og-suxtrai.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SuxtrAI",
+  "alternateName": ["Suxtrai", "SuxtrAI Bilbao"],
+  "url": "https://suxtrai.es/",
+  "logo": "https://suxtrai.es/assets/suxtrai-logo.jpg",
+  "image": "https://suxtrai.es/assets/og-suxtrai.jpg",
+  "description": "Soluciones de inteligencia artificial a medida para empresas: RAG, automatizaciones, formación, asesoramiento y desarrollo end to end.",
+  "email": "contact@suxtrai.es",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bilbao", "addressRegion": "Bizkaia", "addressCountry": "ES" },
+  "areaServed": "ES",
+  "founder": [
+    { "@type": "Person", "name": "Jon Medina" },
+    { "@type": "Person", "name": "Ibai García" },
+    { "@type": "Person", "name": "Asier Merino" }
+  ],
+  "sameAs": [
+    "https://x.com/suxtrai",
+    "https://www.instagram.com/suxtrai",
+    "https://www.tiktok.com/@suxtrai"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Librerías servidas desde el propio repo (sin depender de unpkg) -->
+<link rel="preload" href="./vendor/react.production.min.js" as="script">
+<link rel="preload" href="./vendor/react-dom.production.min.js" as="script">
+<script>
+window.__resources = {
+  "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/react.production.min.js",
+  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/react-dom.production.min.js",
+  "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/babel.min.js"
+};
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<noscript>
+  <h1>SuxtrAI · Soluciones de IA a medida para empresas</h1>
+  <p>SuxtrAI diseña, construye y pone en producción sistemas de inteligencia artificial a medida: RAG y búsqueda sobre vuestra documentación, automatizaciones de procesos, formación a equipos, asesoramiento y desarrollo end to end. Somos un equipo de Bilbao (Euskadi).</p>
+  <p>Contacto: <a href="mailto:contact@suxtrai.es">contact@suxtrai.es</a></p>
+</noscript>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #faf8f3; color: #14171a; font-family: 'Space Grotesk', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #2f9be0; text-decoration: none; }
+  a:hover { color: #10699f; }
+  * { box-sizing: border-box; }
+  ::selection { background: #cfe6f6; color: #14171a; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Space Grotesk', Helvetica, sans-serif; font-variation-settings: 'opsz' 64; }
+  input, textarea, button { font-family: inherit; }
+  .suxtr-num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+  .suxtr-ul { text-decoration: underline; text-decoration-color: rgba(47,155,224,.45); text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  @keyframes suxtr-slide-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes suxtr-slide-in-b { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes suxtr-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes suxtr-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @keyframes suxtr-pulse { 0%,100% { opacity: .3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
+  @keyframes suxtr-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes suxtr-orbit-rev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+  @keyframes suxtr-blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  @keyframes suxtr-scan { 0% { transform: translateY(-10%); opacity: 0; } 20% { opacity: .55; } 100% { transform: translateY(1200%); opacity: 0; } }
+  @keyframes suxtr-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes suxtr-wipe { from { opacity: 0; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
+  @keyframes suxtr-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes suxtr-node-in { from { opacity: 0; transform: scale(0); } 70% { transform: scale(1.4); } to { opacity: 1; transform: scale(1); } }
+  @keyframes suxtr-draw { from { stroke-dashoffset: 40; opacity: 0; } 30% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
+  @keyframes suxtr-word-in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+  .suxtr-node { transform-box: fill-box; transform-origin: center; animation: suxtr-node-in .55s cubic-bezier(.2,.9,.3,1.2) both; }
+  .suxtr-edge { stroke-dasharray: 40; animation: suxtr-draw .7s ease both; }
+  .suxtr-word { animation: suxtr-word-in .7s cubic-bezier(.16,.84,.28,1) both; }
+  .suxtr-logo:hover .suxtr-node { animation: suxtr-node-in .55s cubic-bezier(.2,.9,.3,1.2) both; }
+  .suxtr-rise { animation: suxtr-rise .8s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 0% entry 62%; }
+  .suxtr-wipe { animation: suxtr-wipe 1s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 4% entry 70%; }
+  .suxtr-line { transform-origin: left center; animation: suxtr-grow 1.1s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+</style>
+</helmet>
+<div style="width:100%;background:#faf8f3;overflow:hidden">
+  <div ref="{{ glowRef }}" style="position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle, rgba(47,155,224,.16), rgba(47,155,224,.05) 42%, transparent 66%);pointer-events:none;z-index:50;opacity:0;transition:opacity .4s ease;will-change:transform"></div>
+
+  <div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:70;background:transparent;pointer-events:none">
+    <div id="suxtr-progress" style="height:100%;background:linear-gradient(90deg,#2f9be0,#10699f);width:0%"></div>
+  </div>
+
+  <header style="position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,56px);background:rgba(250,248,243,.88);backdrop-filter:blur(16px);border-bottom:1px solid #e2ddd2">
+    <a href="#top" class="suxtr-logo" style="display:flex;align-items:center;flex:none">
+      <svg viewBox="0 0 248 64" style="height:clamp(44px,5.2vw,64px);width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
+        <g stroke="#2f9be0" stroke-width="1.6" fill="none" opacity="0.85">
+          <line class="suxtr-edge" style="animation-delay:.05s" x1="28" y1="30" x2="28" y2="13" />
+          <line class="suxtr-edge" style="animation-delay:.1s" x1="28" y1="30" x2="14" y2="22" />
+          <line class="suxtr-edge" style="animation-delay:.15s" x1="28" y1="30" x2="44" y2="22" />
+          <line class="suxtr-edge" style="animation-delay:.2s" x1="28" y1="30" x2="16" y2="34" />
+          <line class="suxtr-edge" style="animation-delay:.25s" x1="28" y1="30" x2="36" y2="38" />
+          <line class="suxtr-edge" style="animation-delay:.3s" x1="36" y1="38" x2="46" y2="40" />
+          <line class="suxtr-edge" style="animation-delay:.35s" x1="36" y1="38" x2="22" y2="48" />
+          <line class="suxtr-edge" style="animation-delay:.4s" x1="36" y1="38" x2="36" y2="52" />
+        </g>
+        <circle class="suxtr-node" style="animation-delay:.02s" cx="28" cy="30" r="5.6" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.24s" cx="36" cy="38" r="4.2" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.1s" cx="28" cy="13" r="4.6" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.16s" cx="44" cy="22" r="3.6" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.32s" cx="46" cy="40" r="3.2" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.38s" cx="22" cy="48" r="4" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.14s" cx="14" cy="22" r="3" fill="#14171a" />
+        <circle class="suxtr-node" style="animation-delay:.22s" cx="16" cy="34" r="2.6" fill="#14171a" />
+        <circle class="suxtr-node" style="animation-delay:.44s" cx="36" cy="52" r="2.6" fill="#14171a" />
+        <text class="suxtr-word" style="animation-delay:.3s" x="66" y="45" font-family="'Space Grotesk', Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5">
+          <tspan fill="#14171a">suxtr</tspan><tspan fill="#2f9be0">AI</tspan>
+        </text>
+      </svg>
+    </a>
+    <nav style="display:flex;align-items:center;gap:clamp(12px,1.8vw,28px);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
+      <a href="#servicios" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Servicios</a>
+      <a href="#sectores" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Sectores</a>
+      <a href="#caso" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Caso</a>
+      <a href="#metodo" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Método</a>
+      <a href="#precios" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Precios</a>
+      <a href="#equipo" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Equipo</a>
+      <a href="#contacto" style="display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid #2f9be0;color:#10699f;border-radius:999px;transition:background .2s ease,color .2s ease" style-hover="background:#14171a;color:#faf8f3">Hablemos</a>
+    </nav>
+  </header>
+
+  <section id="top" style="position:relative;padding:clamp(48px,7vw,104px) clamp(16px,4vw,56px) 0">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(#dcd6c8 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;top:-220px;left:50%;width:min(1100px,120vw);height:520px;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(47,155,224,.13), transparent 68%);pointer-events:none;filter:blur(10px)"></div>
+    <canvas data-suxtr-net="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9"></canvas>
+    <div style="position:relative;max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#737b85">
+        <span style="width:7px;height:7px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 2.4s ease-in-out infinite"></span>
+        <span>Consultora de IA aplicada</span>
+        <span style="flex:1;height:1px;background:#e2ddd2;min-width:20px"></span>
+        <span>Aceptando proyectos · 2026</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(22px,3vw,40px)">
+        <div>
+          <h1 style="margin:0;font-size:clamp(32px,5.6vw,74px);line-height:1.02;letter-spacing:-.04em;font-weight:800;min-height:2.1em">
+            <span id="suxtr-hero-type"></span><span style="display:inline-block;width:.06em;min-width:4px;height:.86em;background:#2f9be0;vertical-align:-.08em;margin-left:.06em;animation:suxtr-blink 1s step-end infinite"></span>
+          </h1>
+          <p style="margin:clamp(22px,2.6vw,34px) 0 0;font-size:clamp(17px,1.5vw,21px);line-height:1.6;color:#3d444c;max-width:46ch;text-wrap:pretty">
+            Diseñamos, construimos y ponemos en producción sistemas de IA sobre vuestros procesos reales: RAG sobre vuestra documentación, automatizaciones que eliminan trabajo repetitivo, formación al equipo y desarrollo end to end. Sin plantillas.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(26px,3vw,38px)">
+            <a href="#contacto" style="padding:16px 26px;background:#14171a;color:#faf8f3;border-radius:2px;font-weight:600;font-size:15px;transition:background .2s ease,transform .2s ease" style-hover="background:#10699f;transform:translateY(-2px)">Cuéntanos tu caso</a>
+            <a href="#servicios" style="padding:16px 26px;border:1px solid #cfc9bb;color:#14171a;border-radius:2px;font-weight:500;font-size:15px;transition:border-color .2s ease,transform .2s ease" style-hover="border-color:#14171a;transform:translateY(-2px)">Ver servicios</a>
+          </div>
+        </div>
+
+        <div style="position:relative;min-height:360px;display:flex;align-items:center;justify-content:center">
+          <div style="position:relative;width:100%;max-width:440px;border:1px solid #14171a;background:#14171a;overflow:hidden;box-shadow:0 26px 60px rgba(20,23,26,.22)">
+            <div style="position:absolute;left:0;right:0;top:0;height:42px;background:linear-gradient(180deg,rgba(47,155,224,.16),transparent);pointer-events:none;animation:suxtr-scan 6s linear infinite"></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid #2a3037;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9aa3ad">
+              <span style="width:8px;height:8px;border-radius:50%;background:#2f9be0"></span>
+              <span>suxtrai · pipeline</span>
+            </div>
+            <div style="padding:18px 16px 22px;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.85;min-height:236px">
+              <div id="suxtr-log" style="display:flex;flex-direction:column;gap:0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:#faf8f3;margin:clamp(44px,6vw,86px) 0 0">
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat1 }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Semanas al primer prototipo</span>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat2 }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Líneas de servicio</span>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat3 }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Horas de diagnóstico inicial</span>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat4 }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Personas, contacto directo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="position:relative;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2;background:#f1eee6;overflow:hidden;padding:18px 0;margin-top:clamp(44px,6vw,80px)">
+    <div style="display:flex;width:max-content;animation:suxtr-marquee 30s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a0a6ae">
+      <div style="display:flex;gap:44px;padding-right:44px">
+        <span>RAG</span><span style="color:#10699f">◆</span><span>Automatizaciones</span><span style="color:#10699f">◆</span><span>Formación</span><span style="color:#10699f">◆</span><span>Asesoramiento</span><span style="color:#10699f">◆</span><span>Desarrollo end to end</span><span style="color:#10699f">◆</span>
+      </div>
+      <div style="display:flex;gap:44px;padding-right:44px">
+        <span>RAG</span><span style="color:#10699f">◆</span><span>Automatizaciones</span><span style="color:#10699f">◆</span><span>Formación</span><span style="color:#10699f">◆</span><span>Asesoramiento</span><span style="color:#10699f">◆</span><span>Desarrollo end to end</span><span style="color:#10699f">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="servicios" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">01</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Qué hacemos</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <p style="margin:0 0 clamp(28px,4vw,50px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Cinco líneas de trabajo que se combinan según el caso. Pulsa en cada una para ver qué incluye.</p>
+
+      <div style="display:flex;flex-direction:column;border-top:1px solid #e2ddd2">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+          <div onClick="{{ s.toggle }}" style="cursor:pointer;padding:clamp(20px,2.8vw,32px) 0;border-bottom:1px solid #e2ddd2;transition:padding-left .3s ease,background .3s ease" style-hover="padding-left:18px;background:#070a0e" class="suxtr-rise">
+            <div style="display:flex;align-items:flex-start;gap:16px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#10699f;width:32px;flex:none;padding-top:10px">{{ s.num }}</span>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
+                <h3 style="margin:0;font-size:clamp(22px,3vw,38px);letter-spacing:-.02em;font-weight:600;color:{{ s.titleColor }}">{{ s.title }}</h3>
+                <p style="margin:0;max-width:64ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">{{ s.desc }}</p>
+                <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:8px;animation:suxtr-rise .45s ease both">
+                    <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="3">
+                      <div style="border:1px solid #e2ddd2;background:#f1eee6;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.55;color:#3d444c">{{ it }}</div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:#10699f;flex:none;padding-top:6px;transition:transform .3s ease;transform:{{ s.iconTransform }}">+</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="sectores" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">02</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Dónde encaja</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Ejemplos de trabajo que podemos abordar hoy, por sector.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(20px,2.4vw,32px)">
+        <sc-for list="{{ sectors }}" as="sec" hint-placeholder-count="5">
+          <button onClick="{{ sec.select }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;border-radius:999px;border:1px solid {{ sec.border }};background:{{ sec.bg }};color:{{ sec.color }};transition:all .2s ease">{{ sec.name }}</button>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.4vw,34px);border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(24px,3.4vw,46px);animation:{{ sectorAnim }} .5s cubic-bezier(.16,.84,.28,1) both">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">{{ activeSectorName }}</span>
+          <h3 style="margin:0;font-size:clamp(22px,2.8vw,34px);letter-spacing:-.02em;font-weight:600;line-height:1.15;text-wrap:balance">{{ activeSectorHeadline }}</h3>
+          <p style="margin:0;color:#5b636c;font-size:15.5px;line-height:1.65;max-width:52ch;text-wrap:pretty">{{ activeSectorBody }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
+          <sc-for list="{{ activeSectorPoints }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid #e2ddd2;background:#f1eee6">
+              <span style="width:7px;height:7px;border-radius:50%;background:#2f9be0;flex:none;margin-top:7px"></span>
+              <span style="color:#3d444c;font-size:14.5px;line-height:1.55">{{ p }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="caso" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">03</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Un caso, de principio a fin</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Piloto propio sobre documentación técnica, construido para validar el proceso completo antes de llevarlo a cliente. Mismo recorrido que seguiríamos con vosotros.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#faf8f3">
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">El problema</span>
+          <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">1.500 documentos, ninguna forma de buscar</h3>
+          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Manuales, procedimientos y fichas repartidos en carpetas compartidas, con nombres inconsistentes y versiones duplicadas. Encontrar un dato concreto exigía preguntar a la persona que lo escribió.</p>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Qué hicimos</span>
+          <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">RAG con cita obligatoria a la fuente</h3>
+          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Ingesta y limpieza del corpus, índice vectorial, y un asistente que solo responde con pasajes recuperados y enlace al documento. Batería de 120 preguntas reales para medir antes de abrirlo.</p>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Resultado medido</span>
+          <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">94% de respuestas correctas con fuente</h3>
+          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Sobre la batería de evaluación, con el 6% restante devolviendo "no encontrado" en lugar de inventar. Tiempo medio de consulta: de minutos de búsqueda manual a segundos.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(16px,2vw,24px);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">
+        <span style="padding:9px 14px;border:1px solid #e2ddd2">3 semanas</span>
+        <span style="padding:9px 14px;border:1px solid #e2ddd2">1.482 documentos</span>
+        <span style="padding:9px 14px;border:1px solid #e2ddd2">Despliegue on-premise</span>
+        <span style="padding:9px 14px;border:1px solid #e2ddd2">Evaluación reproducible</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculadora" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">04</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cuánto trabajo os quita</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Estimación rápida con vuestros números. Mover los tres valores da una idea del orden de magnitud, no un presupuesto.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.4vw,34px);align-items:stretch">
+        <div style="border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:clamp(20px,2.4vw,30px)">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Personas implicadas</span>
+              <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcPeople }}</span>
+            </div>
+            <input type="range" min="1" max="60" value="{{ calcPeople }}" onChange="{{ setPeople }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Horas a la semana en tareas repetitivas</span>
+              <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcHours }} h</span>
+            </div>
+            <input type="range" min="1" max="30" value="{{ calcHours }}" onChange="{{ setHours }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Coste medio por hora</span>
+              <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcRate }} €</span>
+            </div>
+            <input type="range" min="12" max="90" value="{{ calcRate }}" onChange="{{ setRate }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
+          </div>
+        </div>
+
+        <div style="border:1px solid #2f9be0;background:#faf8f3;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.2vw,26px)">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Horas al año en esas tareas</span>
+            <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1">{{ calcTotalHours }}</span>
+          </div>
+          <span style="height:1px;background:#e2ddd2"></span>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Recuperable automatizando el 60%</span>
+            <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1;color:#10699f">{{ calcSaving }}</span>
+            <span class="suxtr-num" style="color:#5b636c;font-size:14.5px">equivale a {{ calcSavedHours }} horas liberadas al año</span>
+          </div>
+          <a href="#contacto" style="margin-top:6px;display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#10699f" class="suxtr-ul">Validar el número con nosotros →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(28px,4vw,52px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">05</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cómo trabajamos</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#faf8f3">
+        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">1</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semana 1</span>
+          </div>
+          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Diagnóstico</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Entendemos el proceso, los datos disponibles y dónde se pierde tiempo. Salimos con una lista de casos ordenada por impacto y coste.</p>
+        </div>
+        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">2</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semanas 2-4</span>
+          </div>
+          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Prototipo</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Algo que se puede probar con vuestros datos reales y medir contra el proceso actual. Si no funciona, se sabe pronto y barato.</p>
+        </div>
+        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">3</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Producción</span>
+          </div>
+          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Despliegue</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Integración con vuestros sistemas, permisos, monitorización y documentación. Más formación al equipo que lo va a usar.</p>
+        </div>
+        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">4</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Continuo</span>
+          </div>
+          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Mejora</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Revisamos resultados con métricas acordadas, ajustamos y ampliamos al siguiente caso de la lista.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(28px,4vw,52px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">06</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Por qué con nosotros</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(16px,2vw,26px)">
+        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
+          <h3 style="margin:0;font-size:18px;font-weight:600">Producción, no demos</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">El objetivo es un sistema que se use a diario, con mantenimiento previsto, no una prueba que se apaga al mes.</p>
+        </div>
+        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
+          <h3 style="margin:0;font-size:18px;font-weight:600">Vuestros datos, vuestro control</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Elegimos el modelo y el despliegue según vuestros requisitos de privacidad, incluida opción en vuestra propia infraestructura.</p>
+        </div>
+        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
+          <h3 style="margin:0;font-size:18px;font-weight:600">Equipo pequeño, sin capas</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Quien habla con vosotros es quien construye. Sin comerciales intermedios ni traspasos de proyecto.</p>
+        </div>
+        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
+          <h3 style="margin:0;font-size:18px;font-weight:600">Alcance cerrado por fases</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Cada fase tiene entregable, plazo y precio definidos antes de empezar. Decidís si continuar al final de cada una.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="position:relative;border-bottom:1px solid #e2ddd2;background:#faf8f3;overflow:hidden;padding:16px 0">
+    <div style="display:flex;width:max-content;animation:suxtr-marquee-rev 34s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#a0a6ae">
+      <div style="display:flex;gap:36px;padding-right:36px">
+        <span>Python</span><span>·</span><span>LLMs</span><span>·</span><span>Bases de datos vectoriales</span><span>·</span><span>Orquestación de agentes</span><span>·</span><span>Evaluación</span><span>·</span><span>Cloud y on-premise</span><span>·</span><span>APIs</span><span>·</span><span>Integraciones ERP/CRM</span><span>·</span>
+      </div>
+      <div style="display:flex;gap:36px;padding-right:36px">
+        <span>Python</span><span>·</span><span>LLMs</span><span>·</span><span>Bases de datos vectoriales</span><span>·</span><span>Orquestación de agentes</span><span>·</span><span>Evaluación</span><span>·</span><span>Cloud y on-premise</span><span>·</span><span>APIs</span><span>·</span><span>Integraciones ERP/CRM</span><span>·</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="precios" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-bottom:1px solid #e2ddd2">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">07</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cómo empezamos</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Tres formas de entrar, de menor a mayor compromiso. Cada solución es completamente personalizada, así que el alcance y la propuesta se definen con vosotros antes de empezar.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(16px,2vw,26px)">
+        <div style="border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 0</span>
+          <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Sesión de diagnóstico</h3>
+          <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Sin coste</span>
+          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Una hora con vosotros para entender el proceso y decir con franqueza si hay algo que merezca la pena. Salís con una lista de candidatos priorizada.</p>
+        </div>
+        <div style="position:relative;border:1px solid #2f9be0;background:#faf8f3;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:transform .3s ease" style-hover="transform:translateY(-5px)" class="suxtr-rise">
+          <span style="position:absolute;top:-1px;right:-1px;padding:7px 12px;background:#14171a;color:#faf8f3;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Recomendado</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Fase 1</span>
+          <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Prototipo medible</h3>
+          <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">2 a 4 semanas</span>
+          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Un caso concreto funcionando con vuestros datos reales y una evaluación que dice si vale la pena escalarlo.</p>
+        </div>
+        <div style="border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 2</span>
+          <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Producción y evolución</h3>
+          <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Según alcance</span>
+          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Integración, despliegue, formación y mantenimiento. Por proyecto cerrado o por acompañamiento continuo, según lo que os encaje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="datos" style="position:relative;padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(#dcd6c8 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:relative;max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">08</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Vuestros datos</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Es la primera pregunta que nos hacen, así que la respondemos antes de que la hagáis.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#faf8f3">
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">01</span>
+          <h3 style="margin:0;font-size:18px;font-weight:700">Confidencialidad por escrito</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Acuerdo firmado antes de ver un solo documento vuestro.</p>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">02</span>
+          <h3 style="margin:0;font-size:18px;font-weight:700">Opción on-premise</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Si los datos no pueden salir de vuestra red, el sistema se despliega dentro de ella.</p>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">03</span>
+          <h3 style="margin:0;font-size:18px;font-weight:700">Sin entrenar con lo vuestro</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Trabajamos con proveedores que no usan vuestros datos para entrenar modelos, y lo dejamos documentado.</p>
+        </div>
+        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">04</span>
+          <h3 style="margin:0;font-size:18px;font-weight:700">Permisos heredados</h3>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Cada usuario solo recupera la documentación a la que ya tiene acceso en vuestros sistemas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(20px,2.6vw,36px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">09</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Quiénes somos</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <p style="margin:0 0 clamp(24px,3vw,40px);max-width:58ch;color:#3d444c;font-size:clamp(15px,1.3vw,18px);line-height:1.6;text-wrap:pretty">Tres fundadores. Cada proyecto lo lleva uno de nosotros de principio a fin.</p>
+
+      <div style="position:relative;margin:0 0 clamp(16px,2vw,28px);border:1px solid #e2ddd2;background:#f1eee6;overflow:hidden" class="suxtr-rise">
+        <img src="assets/equipo-suxtrai.jpg" alt="Jon Medina, Ibai García y Asier Merino" style="display:block;width:100%;height:clamp(300px,38vw,500px);object-fit:cover;object-position:center 45%;filter:saturate(.8) contrast(1.03) brightness(.94);transition:filter .6s ease" style-hover="filter:saturate(1) contrast(1) brightness(1)" />
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.22) 0%, transparent 34%, rgba(0,0,0,.72) 100%);pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:clamp(12px,1.6vw,20px) clamp(12px,2vw,24px);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#ffffff;pointer-events:none">
+          <span style="text-align:left">Jon Medina</span>
+          <span style="text-align:center">Ibai García</span>
+          <span style="text-align:right">Asier Merino</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,28px)">
+        <div style="position:relative;border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:38px;color:#10699f;letter-spacing:-.02em">JM</span>
+            <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out 0s infinite"></span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.015em">Jon Medina</h3>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
+            <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Desarrollo, integraciones y puesta en producción.</p>
+          </div>
+        </div>
+        <div style="position:relative;border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:38px;color:#10699f;letter-spacing:-.02em">IG</span>
+            <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out .6s infinite"></span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.015em">Ibai García</h3>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
+            <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Formación, evaluación de modelos y datos.</p>
+          </div>
+        </div>
+        <div style="position:relative;border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:38px;color:#10699f;letter-spacing:-.02em">AM</span>
+            <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out 1.2s infinite"></span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.015em">Asier Merino</h3>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
+            <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Diagnóstico de procesos y diseño de solución.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);border-top:1px solid #e2ddd2">
+    <div style="max-width:960px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(24px,3vw,44px)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">10</span>
+        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Preguntas frecuentes</h2>
+        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+      </div>
+      <div style="display:flex;flex-direction:column;border-top:1px solid #e2ddd2">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+          <div onClick="{{ f.toggle }}" style="cursor:pointer;padding:22px 0;border-bottom:1px solid #e2ddd2;display:flex;gap:16px;align-items:flex-start;transition:padding-left .3s ease" style-hover="padding-left:12px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:18px;color:#10699f;flex:none;transition:transform .3s ease;transform:{{ f.iconTransform }}">+</span>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px">
+              <h3 style="margin:0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.01em;color:{{ f.titleColor }}">{{ f.q }}</h3>
+              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;max-width:66ch;color:#5b636c;font-size:15px;line-height:1.65;animation:suxtr-rise .4s ease both;text-wrap:pretty">{{ f.a }}</p>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="position:relative;padding:clamp(70px,9vw,140px) clamp(16px,4vw,56px);border-top:1px solid #e2ddd2;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(#dcd6c8 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;bottom:-260px;left:50%;width:min(900px,120vw);height:520px;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(47,155,224,.18), transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(28px,4vw,72px);align-items:end">
+      <div>
+        <h2 style="margin:0;font-size:clamp(34px,6.4vw,86px);line-height:.95;letter-spacing:-.035em;font-weight:800;text-wrap:balance">Contadnos<br />vuestro caso.</h2>
+        <p style="margin:22px 0 0;max-width:46ch;color:#3d444c;font-size:clamp(15px,1.3vw,18px);line-height:1.6;text-wrap:pretty">Treinta minutos bastan para saber si hay algo que merezca la pena automatizar. Si no lo hay, os lo diremos.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#737b85">
+          <span style="padding:8px 14px;border:1px solid #e2ddd2">Respuesta en 24 h</span>
+          <span style="padding:8px 14px;border:1px solid #e2ddd2">Primera sesión sin coste</span>
+          <span style="padding:8px 14px;border:1px solid #e2ddd2">Proyectos en España</span>
+        </div>
+        <a href="{{ mailtoHref }}" class="suxtr-ul" style="display:inline-block;margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;letter-spacing:.04em">{{ contactEmail }}</a>
+      </div>
+      <div style="border:1px solid #e2ddd2;background:#f1eee6;padding:clamp(22px,2.8vw,34px);display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Nombre y empresa</label>
+          <input type="text" value="{{ formName }}" onChange="{{ setFormName }}" placeholder="Ane Uriarte · Talleres Bilbao" style="width:100%;padding:13px 14px;background:#faf8f3;border:1px solid #d7d1c4;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Correo</label>
+          <input type="email" value="{{ formEmail }}" onChange="{{ setFormEmail }}" placeholder="ane@empresa.com" style="width:100%;padding:13px 14px;background:#faf8f3;border:1px solid #d7d1c4;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Qué proceso os quita tiempo</label>
+          <textarea rows="4" value="{{ formMsg }}" onChange="{{ setFormMsg }}" placeholder="Cada semana revisamos a mano unas 300 facturas de proveedor..." style="width:100%;padding:13px 14px;background:#faf8f3;border:1px solid #d7d1c4;color:#14171a;font-size:15px;border-radius:2px;outline:none;resize:vertical;line-height:1.55" style-focus="border-color:#10699f"></textarea>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ interests }}" as="it" hint-placeholder-count="5">
+            <button onClick="{{ it.toggle }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;border-radius:999px;border:1px solid {{ it.border }};background:{{ it.bg }};color:{{ it.color }};transition:all .2s ease">{{ it.name }}</button>
+          </sc-for>
+        </div>
+        <button onClick="{{ submitForm }}" style="cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:18px 22px;background:#14171a;color:#faf8f3;border:none;border-radius:2px;font-weight:600;font-size:16px;transition:background .2s ease,transform .2s ease" style-hover="background:#10699f;transform:translateY(-2px)">
+          <span>Enviar</span>
+          <span style="font-family:'IBM Plex Mono',monospace">→</span>
+        </button>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:#a0a6ae">Se abre vuestro correo con el mensaje redactado a {{ contactEmail }}. Nada se guarda en esta web.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #e2ddd2;padding:clamp(34px,4vw,56px) clamp(16px,4vw,56px) 26px">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(24px,3vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#14171a">suxtr<span style="color:#10699f">AI</span></span>
+        <p style="margin:0;max-width:34ch;color:#737b85;font-size:14px;line-height:1.6">Soluciones de IA a medida para empresas. RAG, automatizaciones, formación y desarrollo end to end.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
+        <span style="color:#a0a6ae">Secciones</span>
+        <a href="#servicios" style="color:#5b636c" style-hover="color:#10699f">Servicios</a>
+        <a href="#caso" style="color:#5b636c" style-hover="color:#10699f">Caso</a>
+        <a href="#precios" style="color:#5b636c" style-hover="color:#10699f">Cómo empezamos</a>
+        <a href="#faq" style="color:#5b636c" style-hover="color:#10699f">FAQ</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
+        <span style="color:#a0a6ae">Contacto</span>
+        <a href="{{ mailtoHref }}" style="color:#5b636c;text-transform:none;letter-spacing:.04em" style-hover="color:#10699f">{{ contactEmail }}</a>
+        <span style="color:#5b636c">Euskadi · España</span>
+      </div>
+    </div>
+    <div style="max-width:1280px;margin:clamp(28px,3vw,44px) auto 0;padding-top:20px;border-top:1px solid #e2ddd2;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#a0a6ae">
+      <span>© 2026 SuxtrAI</span>
+      <span>Asier Merino · Jon Medina · Ibai García</span>
+    </div>
+  </footer>
+
+  <div style="position:fixed;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Space Grotesk',Helvetica,sans-serif">
+    <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:min(92vw,372px);max-height:min(74vh,560px);display:flex;flex-direction:column;background:#faf8f3;border:1px solid #14171a;box-shadow:0 26px 70px rgba(20,23,26,.22);animation:suxtr-rise .35s cubic-bezier(.16,.84,.28,1) both">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#14171a;color:#faf8f3">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:9px;height:9px;border-radius:50%;background:#5fb6ea;animation:suxtr-pulse 2.6s ease-in-out infinite"></span>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:14.5px;font-weight:600;letter-spacing:-.01em">Pregunta a SuxtrAI</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9aa3ad">Respuestas sobre la empresa</span>
+            </div>
+          </div>
+          <button onClick="{{ toggleChat }}" style="cursor:pointer;background:transparent;border:1px solid #3a4148;color:#faf8f3;width:28px;height:28px;border-radius:50%;font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center" style-hover="border-color:#faf8f3">×</button>
+        </div>
+
+        <div id="suxtr-chat-scroll" style="flex:1;min-height:150px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ chatMsgs }}" as="m" hint-placeholder-count="2">
+            <div style="display:flex;justify-content:{{ m.align }}">
+              <div style="max-width:86%;padding:11px 13px;font-size:14.5px;line-height:1.55;background:{{ m.bg }};color:{{ m.color }};border:1px solid {{ m.border }};border-radius:{{ m.radius }};white-space:pre-line">{{ m.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px">
+          <sc-for list="{{ chatChips }}" as="c" hint-placeholder-count="3">
+            <button onClick="{{ c.ask }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid #d7d1c4;background:transparent;color:#5b636c;transition:all .2s ease" style-hover="border-color:#14171a;color:#14171a">{{ c.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:8px;padding:12px 16px 16px;border-top:1px solid #e2ddd2">
+          <input type="text" value="{{ chatInput }}" onChange="{{ setChatInput }}" onKeyDown="{{ chatKey }}" placeholder="Escribe tu pregunta..." style="flex:1;min-width:0;padding:11px 12px;background:#ffffff;border:1px solid #d7d1c4;color:#14171a;font-size:14.5px;border-radius:2px;outline:none" style-focus="border-color:#2f9be0" />
+          <button onClick="{{ sendChat }}" style="cursor:pointer;flex:none;padding:11px 15px;background:#14171a;color:#faf8f3;border:none;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:13px" style-hover="background:#10699f">→</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <button onClick="{{ toggleChat }}" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 18px;background:#14171a;color:#faf8f3;border:none;border-radius:999px;box-shadow:0 14px 34px rgba(20,23,26,.24);font-size:14.5px;font-weight:600;letter-spacing:-.01em;transition:transform .2s ease,background .2s ease" style-hover="transform:translateY(-2px);background:#10699f">
+      <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none" aria-hidden="true">
+        <g stroke="#5fb6ea" stroke-width="1.5" fill="none"><line x1="12" y1="12" x2="12" y2="5" /><line x1="12" y1="12" x2="5.5" y2="15" /><line x1="12" y1="12" x2="18" y2="16" /></g>
+        <circle cx="12" cy="12" r="2.6" fill="#5fb6ea" /><circle cx="12" cy="5" r="1.9" fill="#faf8f3" /><circle cx="5.5" cy="15" r="1.9" fill="#faf8f3" /><circle cx="18" cy="16" r="1.9" fill="#faf8f3" />
+      </svg>
+      <span>{{ chatButtonLabel }}</span>
+    </button>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contact@suxtrai.es&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const SERVICES = [
+  { num: "/01", title: "RAG y búsqueda sobre vuestros datos",
+    desc: "Asistentes que responden con vuestra documentación: contratos, manuales, tickets, normativa interna. Con trazabilidad de la fuente y control de permisos.",
+    items: ["Ingesta de PDF, Office, correo y bases de datos", "Citas a la fuente en cada respuesta", "Permisos por usuario y departamento", "Evaluación de precisión antes de abrir a todo el equipo"] },
+  { num: "/02", title: "Automatizaciones",
+    desc: "Procesos que hoy se hacen a mano: clasificar correos, extraer datos de facturas, generar informes, mover información entre sistemas.",
+    items: ["Extracción de datos de documentos", "Clasificación y enrutado de entradas", "Informes periódicos generados solos", "Conexión con ERP, CRM y hojas de cálculo"] },
+  { num: "/03", title: "Formación a equipos",
+    desc: "Sesiones prácticas con los casos de vuestro día a día, para que el equipo use la IA con criterio y sepa dónde no usarla.",
+    items: ["Taller inicial de 4 horas", "Casos propios, no ejemplos genéricos", "Guía interna de uso y límites", "Seguimiento a las semanas"] },
+  { num: "/04", title: "Asesoramiento",
+    desc: "Qué automatizar primero, qué coste tiene, qué se puede hacer con los datos que hay y qué riesgos implica. Un plan priorizado antes de escribir código.",
+    items: ["Auditoría de procesos y datos", "Plan por impacto y esfuerzo", "Estimación de coste por caso", "Revisión de riesgos y cumplimiento"] },
+  { num: "/05", title: "Desarrollo end to end",
+    desc: "Del prototipo al sistema en producción: interfaz, infraestructura, despliegue, monitorización y mantenimiento posterior.",
+    items: ["Interfaz web o integración en vuestras herramientas", "Despliegue cloud u on-premise", "Monitorización y alertas", "Mantenimiento y evolución"] }
+];
+
+const SECTORS = [
+  { name: "Industria", headline: "Conocimiento de planta accesible en segundos",
+    body: "Manuales de máquina, partes de mantenimiento y procedimientos repartidos en carpetas y cabezas. Un asistente sobre esa documentación reduce las paradas por consulta.",
+    points: ["Consulta de manuales y esquemas en lenguaje natural", "Partes de trabajo transcritos y clasificados", "Histórico de averías consultable por síntoma"] },
+  { name: "Despachos y legal", headline: "Revisión documental con la fuente siempre a la vista",
+    body: "Búsqueda sobre expedientes, contratos y normativa con cita al documento de origen, para que la revisión humana sea rápida y verificable.",
+    points: ["Búsqueda por concepto, no por palabra exacta", "Resumen de expediente con referencias", "Comparación de versiones de contrato"] },
+  { name: "Retail y ecommerce", headline: "Atención y catálogo sin trabajo repetitivo",
+    body: "Las preguntas de cliente se repiten y el catálogo cambia. Automatizar la parte mecánica libera al equipo para los casos que importan.",
+    points: ["Respuestas a consultas frecuentes con datos de pedido", "Fichas y descripciones generadas desde el catálogo", "Clasificación de incidencias por urgencia"] },
+  { name: "Servicios profesionales", headline: "Menos horas en tareas no facturables",
+    body: "Propuestas, informes y seguimiento consumen tiempo que no se factura. Se puede automatizar buena parte con vuestras plantillas y datos.",
+    points: ["Borradores de propuesta desde plantilla", "Actas y resúmenes de reunión", "Informes de seguimiento automáticos"] },
+  { name: "Logística", headline: "Documentación de transporte al día",
+    body: "Albaranes, CMR y facturas llegan en mil formatos. Extraer y cotejar esos datos de forma automática evita errores y reclamaciones.",
+    points: ["Lectura automática de albaranes y facturas", "Cotejo con pedidos y detección de desvíos", "Alertas de incidencia en tiempo real"] }
+];
+
+const FAQS = [
+  { q: "No tenemos claro qué automatizar. ¿Podemos empezar igual?",
+    a: "Sí, es el punto de partida habitual. La primera fase es un diagnóstico: revisamos procesos y datos y salimos con una lista priorizada. Si no hay nada que compense, lo decimos." },
+  { q: "¿Cuánto cuesta un proyecto?",
+    a: "No publicamos tarifas porque cada solución se construye a medida. Trabajamos por fases cerradas: definimos con vosotros el alcance y la propuesta de cada fase antes de empezar, y decidís si continuar al terminarla. El diagnóstico inicial sirve precisamente para poder concretarlo." },
+  { q: "¿Qué pasa con nuestros datos?",
+    a: "Elegimos modelo y despliegue según vuestros requisitos. Si los datos no pueden salir de vuestra infraestructura, se despliega allí. Firmamos acuerdo de confidencialidad y tratamos solo los datos necesarios para el caso." },
+  { q: "¿Cuánto tarda en verse algo funcionando?",
+    a: "Normalmente entre dos y cuatro semanas hay un prototipo probable con vuestros datos reales. La puesta en producción depende de las integraciones que requiera." },
+  { q: "¿Y el mantenimiento después?",
+    a: "Lo contemplamos desde el principio. Podemos quedarnos con el mantenimiento y la evolución, o dejar todo documentado y formar a vuestro equipo técnico para que lo lleve." },
+  { q: "¿Trabajáis con empresas pequeñas?",
+    a: "Sí. Muchas automatizaciones de alto impacto son pequeñas y se amortizan rápido. El tamaño no es el criterio; que el proceso esté claro, sí." }
+];
+
+const LOG_SCRIPT = [
+  "Indexando documentación interna... 1.482 docs",
+  "Construyendo índice vectorial... listo",
+  "Evaluando respuestas sobre 120 preguntas reales",
+  "Precisión con cita a la fuente: 94%",
+  "Conectando con ERP y correo corporativo",
+  "Desplegando en infraestructura del cliente",
+  "Sistema en producción. Monitorización activa."
+];
+
+const KB = [
+  { tags: ["que hace", "que haceis", "servicios", "ofreceis", "soluciones", "a que os dedicais"],
+    a: "Construimos soluciones de IA a medida para empresas. Cinco líneas: RAG y búsqueda sobre vuestra documentación, automatizaciones de procesos, formación a equipos, asesoramiento y desarrollo end to end hasta producción." },
+  { tags: ["rag", "documentacion", "documentos", "buscar", "busqueda", "asistente"],
+    a: "Con RAG montamos un asistente que responde usando vuestra documentación (contratos, manuales, tickets, normativa) citando siempre el documento de origen, con permisos por usuario y una evaluación de precisión antes de abrirlo al equipo." },
+  { tags: ["automatizacion", "automatizar", "procesos", "facturas", "correos", "informes"],
+    a: "Automatizamos lo que hoy se hace a mano: extraer datos de documentos y facturas, clasificar y enrutar entradas, generar informes periódicos y mover información entre sistemas (ERP, CRM, hojas de cálculo)." },
+  { tags: ["formacion", "formar", "taller", "curso", "equipo aprenda"],
+    a: "La formación es práctica y con vuestros propios casos: taller inicial, guía interna de uso y límites, y seguimiento semanas después. El objetivo es que el equipo use la IA con criterio y sepa dónde no usarla." },
+  { tags: ["precio", "precios", "cuesta", "coste", "presupuesto", "tarifa", "cuanto vale"],
+    a: "No publicamos tarifas: cada solución es completamente personalizada. Trabajamos por fases cerradas y definimos con vosotros el alcance y la propuesta de cada fase antes de empezar. La primera sesión de diagnóstico no tiene coste." },
+  { tags: ["tiempo", "plazo", "cuanto tarda", "semanas", "rapido"],
+    a: "Normalmente en dos a cuatro semanas hay un prototipo probable con vuestros datos reales. La puesta en producción depende de las integraciones que haga falta." },
+  { tags: ["datos", "privacidad", "seguridad", "gdpr", "rgpd", "confidencial", "nda", "on premise", "onpremise"],
+    a: "Firmamos confidencialidad antes de ver un solo documento vuestro. Si los datos no pueden salir de vuestra red, desplegamos dentro de ella. Trabajamos con proveedores que no usan vuestros datos para entrenar modelos, y cada usuario solo recupera lo que ya tiene permiso para ver." },
+  { tags: ["equipo", "quien", "quienes", "fundadores", "sois", "asier", "jon", "ibai"],
+    a: "Somos tres fundadores: Jon Medina (desarrollo, integraciones y producción), Ibai García (formación, evaluación de modelos y datos) y Asier Merino (diagnóstico de procesos y diseño de solución). Quien habla con vosotros es quien construye." },
+  { tags: ["metodo", "como trabajais", "proceso", "fases", "empezar", "empezamos"],
+    a: "Cuatro pasos: diagnóstico (proceso, datos y lista priorizada), prototipo medible con vuestros datos, despliegue en producción con permisos y monitorización, y mejora continua con métricas acordadas." },
+  { tags: ["clientes", "casos", "referencias", "exito", "experiencia"],
+    a: "Somos una empresa joven y todavía estamos acumulando casos. Hoy podemos mostrar un piloto propio de RAG sobre 1.482 documentos con un 94% de respuestas correctas con cita a la fuente. La sección de clientes se publicará en cuanto tengamos casos que compartir." },
+  { tags: ["contacto", "contactar", "email", "correo", "reunion", "llamada", "hablar"],
+    a: "Escribidnos a contact@suxtrai.es o usad el formulario de la sección de contacto. Respondemos en 24 horas y la primera sesión de treinta minutos no tiene coste." },
+  { tags: ["sector", "sectores", "industria", "legal", "retail", "logistica", "servicios"],
+    a: "Trabajamos con industria, despachos y legal, retail y ecommerce, servicios profesionales y logística. En la sección \"Dónde encaja\" hay un ejemplo concreto de cada uno." },
+  { tags: ["tecnologia", "modelos", "herramientas", "stack", "llm", "python"],
+    a: "Elegimos herramienta según el caso: LLMs comerciales o abiertos, bases de datos vectoriales, orquestación de agentes, Python, APIs e integraciones con ERP y CRM, en cloud o on-premise." },
+  { tags: ["donde estais", "ubicacion", "pais", "euskadi", "españa", "remoto"],
+    a: "Estamos en Euskadi y trabajamos con empresas de toda España, en remoto y presencial cuando el proyecto lo pide." },
+  { tags: ["mantenimiento", "despues", "soporte"],
+    a: "El mantenimiento se contempla desde el principio: podemos quedarnos con la evolución del sistema o dejarlo documentado y formar a vuestro equipo técnico para que lo lleve." }
+];
+
+const CHAT_CHIPS = [
+  { label: "Qué hacéis", q: "¿Qué servicios ofrecéis?" },
+  { label: "Precios", q: "¿Cuánto cuesta un proyecto?" },
+  { label: "Mis datos", q: "¿Qué pasa con nuestros datos?" },
+  { label: "Plazos", q: "¿Cuánto tarda en verse algo funcionando?" },
+  { label: "Equipo", q: "¿Quiénes sois?" }
+];
+
+const norm = (s) => s.toLowerCase()
+  .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  .replace(/[¿?¡!.,:;"'()]/g, " ").replace(/\s+/g, " ").trim();
+
+function kbAnswer(question) {
+  const q = norm(question);
+  if (!q) return null;
+  let best = null, bestScore = 0;
+  for (const entry of KB) {
+    let score = 0;
+    for (const tag of entry.tags) {
+      const t = norm(tag);
+      if (q.includes(t)) score += t.split(" ").length * 2 + 1;
+      else if (t.split(" ").length === 1 && q.split(" ").some(w => w.length > 3 && (w.startsWith(t.slice(0, 5)) || t.startsWith(w.slice(0, 5))))) score += 1;
+    }
+    if (score > bestScore) { bestScore = score; best = entry; }
+  }
+  return bestScore >= 2 ? best.a : null;
+}
+
+class Component extends DCLogic {
+  state = { openService: 0, openFaq: -1, sector: 0, sectorFlip: false, logLines: [], typedLine: "", stats: [0, 0, 0, 0],
+    scrollPct: 0, people: 8, hours: 6, rate: 28,
+    formName: "", formEmail: "", formMsg: "", picked: [], heroTyped: "",
+    chatOpen: false, chatInput: "", chatMsgs: [{ who: "bot", text: "Hola. Soy el asistente de SuxtrAI: puedo contarte qué hacemos, cómo trabajamos, qué pasa con vuestros datos o cómo empezar. ¿Qué quieres saber?" }] };
+
+  ask = (question) => {
+    const text = (question || "").trim();
+    if (!text) return;
+    const answer = kbAnswer(text) || "Eso todavía no lo tengo recogido. Escribidnos a contact@suxtrai.es y os lo respondemos en 24 horas; también podéis contarnos el caso en el formulario de contacto.";
+    this.setState(p => ({
+      chatInput: "",
+      chatMsgs: [...p.chatMsgs, { who: "user", text }, { who: "bot", text: answer }]
+    }), () => {
+      const box = document.getElementById("suxtr-chat-scroll");
+      if (box) box.scrollTop = box.scrollHeight;
+    });
+  };
+
+  netRef = React.createRef();
+  glowRef = React.createRef();
+
+  componentDidMount() {
+    this.li = 0; this.ci = 0;
+    this.type();
+    this.hi = 0; this.hci = 0; this.herasing = false;
+    this.typeHero();
+    this.animateStats();
+    this.initGlow();
+    this.initNetwork();
+    this.onScroll = () => {
+      if (this.scrollQueued) return;
+      this.scrollQueued = true;
+      requestAnimationFrame(() => {
+        this.scrollQueued = false;
+        const bar = document.getElementById("suxtr-progress");
+        if (!bar) return;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0).toFixed(2) + "%";
+      });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    clearTimeout(this.t); clearTimeout(this.ht); clearInterval(this.si);
+    cancelAnimationFrame(this.raf);
+    this.netRunning = false;
+    clearInterval(this.netPoll);
+    if (this.ro) this.ro.disconnect();
+    if (this.onResize) window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("mousemove", this.onMove);
+    window.removeEventListener("scroll", this.onScroll);
+  }
+
+  submit = () => {
+    const s = this.state;
+    const email = this.props.contactEmail ?? "contact@suxtrai.es";
+    const body = [
+      "Nombre y empresa: " + (s.formName || "-"),
+      "Correo: " + (s.formEmail || "-"),
+      "Interes: " + (s.picked.length ? s.picked.join(", ") : "-"),
+      "",
+      "Proceso que quita tiempo:",
+      s.formMsg || "-"
+    ].join("\n");
+    window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent("Consulta desde la web - " + (s.formName || "SuxtrAI")) + "&body=" + encodeURIComponent(body);
+  };
+
+  initGlow() {
+    this.onMove = (e) => {
+      const g = this.glowRef.current;
+      if (g) {
+        g.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px)";
+        g.style.opacity = "1";
+      }
+      const c = this.netCanvas;
+      if (c) {
+        const r = c.getBoundingClientRect();
+        this.mouse = { x: e.clientX - r.left, y: e.clientY - r.top };
+      }
+    };
+    window.addEventListener("mousemove", this.onMove, { passive: true });
+  }
+
+  initNetwork() {
+    clearInterval(this.netPoll);
+    this.netPoll = setInterval(() => {
+      const c = document.querySelector("#top canvas") || document.querySelector("canvas");
+      if (!c) return;
+      if (c.offsetWidth < 2 || c.offsetHeight < 2) return;
+      if (c === this.netCanvas && this.netRunning) return;
+      this.netCanvas = c;
+      this.netRunning = true;
+      this.startNetwork(c);
+    }, 120);
+  }
+
+  startNetwork(canvas) {
+    const ctx = canvas.getContext("2d");
+    let w = 0, h = 0, nodes = [];
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.mouse = null;
+
+    const build = () => {
+      const bw = canvas.offsetWidth || canvas.getBoundingClientRect().width;
+      const bh = canvas.offsetHeight || canvas.getBoundingClientRect().height;
+      if (bw < 2 || bh < 2) return;
+      w = bw; h = bh;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.max(22, Math.min(42, Math.round((w * h) / 26000)));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22,
+        r: Math.random() < .16 ? 2.6 : 1.5,
+        white: Math.random() < .18
+      }));
+    };
+    build();
+    setTimeout(build, 0);
+    setTimeout(build, 400);
+    setTimeout(build, 1400);
+    if (this.ro) this.ro.disconnect();
+    this.ro = new ResizeObserver(build);
+    this.ro.observe(canvas);
+    this.onResize = build;
+    window.addEventListener("resize", this.onResize);
+
+    const frame = () => {
+      if (!canvas.isConnected) { this.netRunning = false; return; }
+      if (!w || !h || !nodes.length) {
+        this.raf = requestAnimationFrame(frame);
+        return;
+      }
+      ctx.clearRect(0, 0, w, h);
+      for (const n of nodes) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          if (dx > 132 || dx < -132 || dy > 132 || dy < -132) continue;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < 17424) {
+            const d = Math.sqrt(d2);
+            ctx.strokeStyle = "rgba(47,155,224," + (0.3 * (1 - d / 132)).toFixed(3) + ")";
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      for (const n of nodes) {
+        let glow = 0;
+        if (this.mouse) {
+          const dm = Math.hypot(n.x - this.mouse.x, n.y - this.mouse.y);
+          if (dm < 190) {
+            glow = 1 - dm / 190;
+            ctx.strokeStyle = "rgba(47,155,224," + (0.42 * glow).toFixed(3) + ")";
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(this.mouse.x, this.mouse.y); ctx.stroke();
+          }
+        }
+        ctx.fillStyle = n.white
+          ? "rgba(255,255,255," + (0.35 + 0.5 * glow).toFixed(3) + ")"
+          : "rgba(47,155,224," + (0.5 + 0.5 * glow).toFixed(3) + ")";
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r * (1 + glow * 0.9), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      this.raf = requestAnimationFrame(frame);
+    };
+    frame();
+  }
+  typeHero() {
+    const phrase = "Inteligencia artificial a medida.";
+    const el = document.getElementById("suxtr-hero-type");
+    if (el) el.textContent = phrase.slice(0, this.hci);
+    if (!this.herasing) {
+      if (this.hci <= phrase.length) {
+        this.hci += 1;
+        this.ht = setTimeout(() => this.typeHero(), 62);
+      } else {
+        this.ht = setTimeout(() => { this.herasing = true; this.typeHero(); }, 2600);
+      }
+    } else if (this.hci > 0) {
+      this.hci -= 1;
+      this.ht = setTimeout(() => this.typeHero(), 26);
+    } else {
+      this.herasing = false;
+      this.ht = setTimeout(() => this.typeHero(), 500);
+    }
+  }
+  paintLog() {
+    const box = document.getElementById("suxtr-log");
+    if (!box) return;
+    const done = this.doneLines || [];
+    const rows = done.map(l => '<div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>' + l + '</span></div>').join("");
+    box.innerHTML = rows + '<div style="display:flex;gap:10px;color:#f4f6f8"><span style="color:#5fb6ea">›</span><span>' + (this.curLine || "") + '<span style="display:inline-block;width:8px;height:15px;background:#5fb6ea;vertical-align:-2px;animation:suxtr-blink 1s step-end infinite"></span></span></div>';
+  }
+  type() {
+    const line = LOG_SCRIPT[this.li % LOG_SCRIPT.length];
+    if (this.ci <= line.length) {
+      this.curLine = line.slice(0, this.ci);
+      this.paintLog();
+      this.ci += 1;
+      this.t = setTimeout(() => this.type(), 26);
+    } else {
+      this.t = setTimeout(() => {
+        this.li += 1; this.ci = 0;
+        this.doneLines = [...(this.doneLines || []), line].slice(-4);
+        this.curLine = "";
+        this.paintLog();
+        this.type();
+      }, 1100);
+    }
+  }
+  animateStats() {
+    const targets = [2, 5, 4, 3];
+    let step = 0;
+    this.si = setInterval(() => {
+      step += 1;
+      const p = Math.min(1, step / 26);
+      const e = 1 - Math.pow(1 - p, 3);
+      this.setState({ stats: targets.map(t => Math.round(t * e)) });
+      if (p >= 1) clearInterval(this.si);
+    }, 34);
+  }
+
+  renderVals() {
+    const contactEmail = this.props.contactEmail ?? "contact@suxtrai.es";
+    const st = this.state;
+    const sec = SECTORS[st.sector];
+    return {
+      contactEmail,
+      mailtoHref: "mailto:" + contactEmail,
+      netRef: this.netRef,
+      glowRef: this.glowRef,
+      heroTyped: st.heroTyped,
+      logLines: st.logLines,
+      typedLine: st.typedLine,
+      stat1: st.stats[0] + "-" + (st.stats[0] ? 4 : 0),
+      stat2: String(st.stats[1]),
+      stat3: st.stats[2] + " h",
+      stat4: String(st.stats[3]),
+      services: SERVICES.map((s, i) => ({
+        ...s,
+        open: st.openService === i,
+        titleColor: st.openService === i ? "#2f9be0" : "#14171a",
+        iconTransform: st.openService === i ? "rotate(45deg)" : "rotate(0deg)",
+        toggle: () => this.setState(p => ({ openService: p.openService === i ? -1 : i }))
+      })),
+      faqs: FAQS.map((f, i) => ({
+        ...f,
+        open: st.openFaq === i,
+        titleColor: st.openFaq === i ? "#2f9be0" : "#14171a",
+        iconTransform: st.openFaq === i ? "rotate(45deg)" : "rotate(0deg)",
+        toggle: () => this.setState(p => ({ openFaq: p.openFaq === i ? -1 : i }))
+      })),
+      sectors: SECTORS.map((s, i) => ({
+        name: s.name,
+        border: st.sector === i ? "#2f9be0" : "#d7d1c4",
+        bg: st.sector === i ? "#2f9be0" : "transparent",
+        color: st.sector === i ? "#faf8f3" : "#5b636c",
+        select: () => this.setState(p => ({ sector: i, sectorFlip: !p.sectorFlip }))
+      })),
+      sectorAnim: st.sectorFlip ? "suxtr-slide-in-b" : "suxtr-slide-in",
+      scrollPct: st.scrollPct.toFixed(2) + "%",
+      calcPeople: st.people,
+      calcHours: st.hours,
+      calcRate: st.rate,
+      calcTotalHours: (st.people * st.hours * 46).toLocaleString("es-ES") + " h",
+      calcSavedHours: Math.round(st.people * st.hours * 46 * 0.6).toLocaleString("es-ES"),
+      calcSaving: Math.round(st.people * st.hours * 46 * 0.6 * st.rate).toLocaleString("es-ES") + " €",
+      setPeople: (e) => this.setState({ people: Number(e.target.value) }),
+      setHours: (e) => this.setState({ hours: Number(e.target.value) }),
+      setRate: (e) => this.setState({ rate: Number(e.target.value) }),
+      formName: st.formName,
+      formEmail: st.formEmail,
+      formMsg: st.formMsg,
+      setFormName: (e) => this.setState({ formName: e.target.value }),
+      setFormEmail: (e) => this.setState({ formEmail: e.target.value }),
+      setFormMsg: (e) => this.setState({ formMsg: e.target.value }),
+      submitForm: this.submit,
+      chatOpen: st.chatOpen,
+      chatInput: st.chatInput,
+      chatButtonLabel: st.chatOpen ? "Cerrar" : "¿Dudas? Pregunta",
+      toggleChat: () => this.setState(p => ({ chatOpen: !p.chatOpen })),
+      setChatInput: (e) => this.setState({ chatInput: e.target.value }),
+      chatKey: (e) => { if (e.key === "Enter") { e.preventDefault(); this.ask(this.state.chatInput); } },
+      sendChat: () => this.ask(this.state.chatInput),
+      chatChips: CHAT_CHIPS.map(c => ({ label: c.label, ask: () => this.ask(c.q) })),
+      chatMsgs: st.chatMsgs.map(m => ({
+        text: m.text,
+        align: m.who === "user" ? "flex-end" : "flex-start",
+        bg: m.who === "user" ? "#14171a" : "#ffffff",
+        color: m.who === "user" ? "#faf8f3" : "#3d444c",
+        border: m.who === "user" ? "#14171a" : "#e2ddd2",
+        radius: m.who === "user" ? "10px 10px 2px 10px" : "10px 10px 10px 2px"
+      })),
+      interests: ["RAG", "Automatizar", "Formación", "Asesoría", "Desarrollo"].map(name => {
+        const on = st.picked.includes(name);
+        return {
+          name,
+          border: on ? "#2f9be0" : "#d7d1c4",
+          bg: on ? "#2f9be0" : "transparent",
+          color: on ? "#faf8f3" : "#5b636c",
+          toggle: () => this.setState(p => ({ picked: on ? p.picked.filter(x => x !== name) : [...p.picked, name] }))
+        };
+      }),
+      activeSectorName: sec.name,
+      activeSectorHeadline: sec.headline,
+      activeSectorBody: sec.body,
+      activeSectorPoints: sec.points
+    };
+  }
+}
+</script>
+</body>
+</html>
