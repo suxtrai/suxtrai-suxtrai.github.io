@@ -113,6 +113,8 @@ window.__resources = {
   @keyframes suxtr-fade { from { opacity: 0; } to { opacity: 1; } }
   .suxtr-glass { -webkit-backdrop-filter: blur(16px) saturate(130%); backdrop-filter: blur(16px) saturate(130%); }
   .suxtr-curtain { clip-path: inset(0); }
+  @media (min-width: 641px) and (prefers-reduced-motion: no-preference) { .suxtr-herocanvas { display: none !important; } }
+  @media (max-width: 640px), (prefers-reduced-motion: reduce) { .suxtr-herovideo { display: none !important; } }
   @media (max-width: 560px) { .suxtr-cta { display: none !important; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -169,7 +171,8 @@ window.__resources = {
 
   <section id="top" class="suxtr-curtain" style="position:relative;min-height:100svh;background:#07090c">
     <div style="position:fixed;inset:0;z-index:0;background:radial-gradient(110% 80% at 72% 18%, #15324b 0%, #0b1219 46%, #06080b 100%)">
-      <canvas data-suxtr-net="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+      <video class="suxtr-herovideo" poster="assets/hero-poster.jpg" preload="none" loop aria-hidden="true" tabindex="-1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video>
+      <canvas class="suxtr-herocanvas" data-suxtr-net="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,11,.45) 0%,rgba(6,8,11,0) 26%,rgba(6,8,11,.2) 55%,rgba(6,8,11,.82) 100%);pointer-events:none"></div>
     </div>
 
@@ -982,6 +985,25 @@ class Component extends DCLogic {
     });
   };
 
+  initHeroVideo() {
+    const v = document.querySelector("video.suxtr-herovideo");
+    if (!v) return;
+    this.heroVideo = v;
+    const wide = window.matchMedia("(min-width: 641px)").matches;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const conn = navigator.connection || {};
+    const slow = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "");
+    if (!wide || still || slow) return;
+    v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true;
+    v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
+    const webm = v.canPlayType('video/webm; codecs="vp9"');
+    v.src = webm ? "assets/hero-loop.webm" : "assets/hero-loop.mp4";
+    v.preload = "auto";
+    v.dataset.ready = "1";
+    const pr = v.play();
+    if (pr && pr.catch) pr.catch(() => {});
+  }
+
   setMenu = (open) => {
     document.body.style.overflow = open ? "hidden" : "";
     this.setState({ menuOpen: open });
@@ -998,6 +1020,7 @@ class Component extends DCLogic {
     this.animateStats();
     this.initGlow();
     this.initNetwork();
+    this.initHeroVideo();
     this.onKey = (e) => { if (e.key === "Escape" && this.state.menuOpen) this.setMenu(false); };
     window.addEventListener("keydown", this.onKey);
     this.onScroll = () => {
@@ -1005,6 +1028,12 @@ class Component extends DCLogic {
       this.scrollQueued = true;
       requestAnimationFrame(() => {
         this.scrollQueued = false;
+        const hv = this.heroVideo;
+        if (hv && hv.dataset.ready) {
+          const away = window.scrollY > window.innerHeight * 1.15;
+          if (away && !hv.paused) hv.pause();
+          else if (!away && hv.paused) { const pr = hv.play(); if (pr && pr.catch) pr.catch(() => {}); }
+        }
         const bar = document.getElementById("suxtr-progress");
         if (!bar) return;
         const max = document.documentElement.scrollHeight - window.innerHeight;
