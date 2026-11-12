@@ -9,7 +9,14 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#14171a">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/assets/favicon-512.png">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<style>
+#suxtr-splash{position:fixed;inset:0;z-index:9999;background:#06080b;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s}
+#suxtr-splash.off{opacity:0;visibility:hidden;pointer-events:none}
+#suxtr-splash svg{width:clamp(72px,11vw,120px);height:auto;overflow:visible}
+</style>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
@@ -69,6 +76,39 @@ window.__resources = {
 <script src="./support.js"></script>
 </head>
 <body>
+<div id="suxtr-splash" aria-hidden="true">
+  <svg viewBox="278 266 699 748"><g fill="none" stroke="#1d99df" stroke-width="19" stroke-linejoin="round" stroke-linecap="butt">
+<path d="M629 330 L629 600" class="suxtr-edge2" pathLength="1" style="animation-delay:0.00s"/>
+<path d="M441 413 L600 596" class="suxtr-edge2" pathLength="1" style="animation-delay:0.05s"/>
+<path d="M337 573 L580 630" class="suxtr-edge2" pathLength="1" style="animation-delay:0.10s"/>
+<path d="M776 411 L695 600" class="suxtr-edge2" pathLength="1" style="animation-delay:0.15s"/>
+<path d="M901 461 L700 596" class="suxtr-edge2" pathLength="1" style="animation-delay:0.20s"/>
+<path d="M633 634 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.25s"/>
+<path d="M927 643 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.30s"/>
+<path d="M895 852 L746 741" class="suxtr-edge2" pathLength="1" style="animation-delay:0.35s"/>
+<path d="M752 923 L738 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.40s"/>
+<path d="M593 953 L638 781 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.45s"/>
+</g>
+<circle cx="629" cy="328" r="50" fill="#1d99df" class="suxtr-node" style="animation-delay:0.00s"/>
+<circle cx="441" cy="413" r="36" fill="#1d99df" class="suxtr-node" style="animation-delay:0.04s"/>
+<circle cx="773" cy="411" r="39" fill="#ffffff" class="suxtr-node" style="animation-delay:0.08s"/>
+<circle cx="901" cy="461" r="41" fill="#1d99df" class="suxtr-node" style="animation-delay:0.12s"/>
+<circle cx="337" cy="575" r="47" fill="#ffffff" class="suxtr-node" style="animation-delay:0.16s"/>
+<circle cx="633" cy="634" r="83" fill="#1d99df" class="suxtr-node" style="animation-delay:0.20s"/>
+<circle cx="746" cy="742" r="58" fill="#1d99df" class="suxtr-node" style="animation-delay:0.24s"/>
+<circle cx="927" cy="643" r="38" fill="#1d99df" class="suxtr-node" style="animation-delay:0.28s"/>
+<circle cx="895" cy="845" r="48" fill="#1d99df" class="suxtr-node" style="animation-delay:0.32s"/>
+<circle cx="760" cy="923" r="38" fill="#ffffff" class="suxtr-node" style="animation-delay:0.36s"/>
+<circle cx="590" cy="953" r="49" fill="#1d99df" class="suxtr-node" style="animation-delay:0.40s"/></svg>
+</div>
+<noscript><style>#suxtr-splash{display:none}</style></noscript>
+<script>
+(function(){var t0=Date.now(),el=document.getElementById('suxtr-splash');if(!el)return;
+function off(){el.classList.add('off');setTimeout(function(){el.remove()},600)}
+function chk(){var ready=document.getElementById('suxtr-hero-type');
+ if((ready&&Date.now()-t0>1000)||Date.now()-t0>7000)off();else setTimeout(chk,80)}
+chk()})();
+</script>
 <noscript>
   <h1>SuxtrAI · Soluciones de IA a medida para empresas</h1>
   <p>SuxtrAI diseña, construye y pone en producción sistemas de inteligencia artificial a medida: RAG y búsqueda sobre vuestra documentación, automatizaciones de procesos, formación a equipos, asesoramiento y desarrollo end to end. Somos un equipo de Bilbao (Euskadi).</p>
@@ -106,6 +146,9 @@ window.__resources = {
   @keyframes suxtr-word-in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
   .suxtr-node { transform-box: fill-box; transform-origin: center; animation: suxtr-node-in .55s cubic-bezier(.2,.9,.3,1.2) both; }
   .suxtr-edge { stroke-dasharray: 40; animation: suxtr-draw .7s ease both; }
+  @keyframes suxtr-draw2 { from { stroke-dashoffset: 1; opacity: 0; } 30% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
+  .suxtr-edge2 { stroke-dasharray: 1; animation: suxtr-draw2 .7s ease both; }
+  @media (prefers-reduced-motion: reduce) { .suxtr-edge2, .suxtr-node { animation: none !important; } }
   .suxtr-word { animation: suxtr-word-in .7s cubic-bezier(.16,.84,.28,1) both; }
   .suxtr-logo:hover .suxtr-node { animation: suxtr-node-in .55s cubic-bezier(.2,.9,.3,1.2) both; }
   .suxtr-rise { animation: suxtr-rise .8s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 0% entry 62%; }
@@ -138,26 +181,32 @@ window.__resources = {
   <header class="suxtr-glass" style="position:sticky;top:12px;z-index:60;margin:12px clamp(10px,1.4vw,20px) -76px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 clamp(16px,2vw,28px);background:rgba(16,19,23,.8);border:1px solid rgba(255,255,255,.09);border-radius:6px">
     <a href="#top" class="suxtr-logo" style="display:flex;align-items:center;flex:none">
       <svg viewBox="0 0 248 64" style="height:40px;width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
-        <g stroke="#2f9be0" stroke-width="1.6" fill="none" opacity="0.85">
-          <line class="suxtr-edge" style="animation-delay:.05s" x1="28" y1="30" x2="28" y2="13" />
-          <line class="suxtr-edge" style="animation-delay:.1s" x1="28" y1="30" x2="14" y2="22" />
-          <line class="suxtr-edge" style="animation-delay:.15s" x1="28" y1="30" x2="44" y2="22" />
-          <line class="suxtr-edge" style="animation-delay:.2s" x1="28" y1="30" x2="16" y2="34" />
-          <line class="suxtr-edge" style="animation-delay:.25s" x1="28" y1="30" x2="36" y2="38" />
-          <line class="suxtr-edge" style="animation-delay:.3s" x1="36" y1="38" x2="46" y2="40" />
-          <line class="suxtr-edge" style="animation-delay:.35s" x1="36" y1="38" x2="22" y2="48" />
-          <line class="suxtr-edge" style="animation-delay:.4s" x1="36" y1="38" x2="36" y2="52" />
+        <g transform="translate(2 2) scale(.0802) translate(-278 -266)">
+<g fill="none" stroke="#1d99df" stroke-width="24" stroke-linejoin="round" stroke-linecap="butt">
+<path d="M629 330 L629 600" class="suxtr-edge2" pathLength="1" style="animation-delay:0.00s"/>
+<path d="M441 413 L600 596" class="suxtr-edge2" pathLength="1" style="animation-delay:0.05s"/>
+<path d="M337 573 L580 630" class="suxtr-edge2" pathLength="1" style="animation-delay:0.10s"/>
+<path d="M776 411 L695 600" class="suxtr-edge2" pathLength="1" style="animation-delay:0.15s"/>
+<path d="M901 461 L700 596" class="suxtr-edge2" pathLength="1" style="animation-delay:0.20s"/>
+<path d="M633 634 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.25s"/>
+<path d="M927 643 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.30s"/>
+<path d="M895 852 L746 741" class="suxtr-edge2" pathLength="1" style="animation-delay:0.35s"/>
+<path d="M752 923 L738 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.40s"/>
+<path d="M593 953 L638 781 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.45s"/>
+</g>
+<circle cx="629" cy="328" r="50" fill="#1d99df" class="suxtr-node" style="animation-delay:0.00s"/>
+<circle cx="441" cy="413" r="36" fill="#1d99df" class="suxtr-node" style="animation-delay:0.04s"/>
+<circle cx="773" cy="411" r="39" fill="#ffffff" class="suxtr-node" style="animation-delay:0.08s"/>
+<circle cx="901" cy="461" r="41" fill="#1d99df" class="suxtr-node" style="animation-delay:0.12s"/>
+<circle cx="337" cy="575" r="47" fill="#ffffff" class="suxtr-node" style="animation-delay:0.16s"/>
+<circle cx="633" cy="634" r="83" fill="#1d99df" class="suxtr-node" style="animation-delay:0.20s"/>
+<circle cx="746" cy="742" r="58" fill="#1d99df" class="suxtr-node" style="animation-delay:0.24s"/>
+<circle cx="927" cy="643" r="38" fill="#1d99df" class="suxtr-node" style="animation-delay:0.28s"/>
+<circle cx="895" cy="845" r="48" fill="#1d99df" class="suxtr-node" style="animation-delay:0.32s"/>
+<circle cx="760" cy="923" r="38" fill="#ffffff" class="suxtr-node" style="animation-delay:0.36s"/>
+<circle cx="590" cy="953" r="49" fill="#1d99df" class="suxtr-node" style="animation-delay:0.40s"/>
         </g>
-        <circle class="suxtr-node" style="animation-delay:.02s" cx="28" cy="30" r="5.6" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.24s" cx="36" cy="38" r="4.2" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.1s" cx="28" cy="13" r="4.6" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.16s" cx="44" cy="22" r="3.6" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.32s" cx="46" cy="40" r="3.2" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.38s" cx="22" cy="48" r="4" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.14s" cx="14" cy="22" r="3" fill="#ffffff" />
-        <circle class="suxtr-node" style="animation-delay:.22s" cx="16" cy="34" r="2.6" fill="#ffffff" />
-        <circle class="suxtr-node" style="animation-delay:.44s" cx="36" cy="52" r="2.6" fill="#ffffff" />
-        <text class="suxtr-word" style="animation-delay:.3s" x="66" y="45" font-family="'Space Grotesk', Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5">
+        <text class="suxtr-word" style="animation-delay:.3s" x="68" y="45" font-family="'Space Grotesk', Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5">
           <tspan fill="#ffffff">suxtr</tspan><tspan fill="#2f9be0">AI</tspan>
         </text>
       </svg>
@@ -690,7 +739,29 @@ window.__resources = {
   <footer style="background:#14171a;border-top:1px solid #2a3037;padding:clamp(34px,4vw,56px) clamp(16px,4vw,56px) 26px">
     <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(24px,3vw,48px)">
       <div style="display:flex;flex-direction:column;gap:14px">
-        <span style="font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#ffffff">suxtr<span style="color:#5fb6ea">AI</span></span>
+        <span style="display:flex;align-items:center;gap:12px;font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#ffffff"><svg viewBox="278 266 699 748" style="height:38px;width:auto;flex:none" aria-hidden="true"><g fill="none" stroke="#1d99df" stroke-width="24" stroke-linejoin="round" stroke-linecap="butt">
+<path d="M629 330 L629 600"/>
+<path d="M441 413 L600 596"/>
+<path d="M337 573 L580 630"/>
+<path d="M776 411 L695 600"/>
+<path d="M901 461 L700 596"/>
+<path d="M633 634 L746 742"/>
+<path d="M927 643 L746 742"/>
+<path d="M895 852 L746 741"/>
+<path d="M752 923 L738 742"/>
+<path d="M593 953 L638 781 L746 742"/>
+</g>
+<circle cx="629" cy="328" r="50" fill="#1d99df"/>
+<circle cx="441" cy="413" r="36" fill="#1d99df"/>
+<circle cx="773" cy="411" r="39" fill="#ffffff"/>
+<circle cx="901" cy="461" r="41" fill="#1d99df"/>
+<circle cx="337" cy="575" r="47" fill="#ffffff"/>
+<circle cx="633" cy="634" r="83" fill="#1d99df"/>
+<circle cx="746" cy="742" r="58" fill="#1d99df"/>
+<circle cx="927" cy="643" r="38" fill="#1d99df"/>
+<circle cx="895" cy="845" r="48" fill="#1d99df"/>
+<circle cx="760" cy="923" r="38" fill="#ffffff"/>
+<circle cx="590" cy="953" r="49" fill="#1d99df"/></svg><span>suxtr<span style="color:#5fb6ea">AI</span></span></span>
         <p style="margin:0;max-width:34ch;color:#9aa3ad;font-size:14px;line-height:1.6">Soluciones de IA a medida para empresas. RAG, automatizaciones, formación y desarrollo end to end.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
@@ -720,26 +791,32 @@ window.__resources = {
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;margin:24px clamp(10px,1.4vw,20px) 0;padding:0 8px 0 clamp(16px,2vw,28px)">
         <a href="#top" onClick="{{ closeMenu }}" class="suxtr-logo" style="display:flex;align-items:center;flex:none">
       <svg viewBox="0 0 248 64" style="height:40px;width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
-        <g stroke="#2f9be0" stroke-width="1.6" fill="none" opacity="0.85">
-          <line class="suxtr-edge" style="animation-delay:.05s" x1="28" y1="30" x2="28" y2="13" />
-          <line class="suxtr-edge" style="animation-delay:.1s" x1="28" y1="30" x2="14" y2="22" />
-          <line class="suxtr-edge" style="animation-delay:.15s" x1="28" y1="30" x2="44" y2="22" />
-          <line class="suxtr-edge" style="animation-delay:.2s" x1="28" y1="30" x2="16" y2="34" />
-          <line class="suxtr-edge" style="animation-delay:.25s" x1="28" y1="30" x2="36" y2="38" />
-          <line class="suxtr-edge" style="animation-delay:.3s" x1="36" y1="38" x2="46" y2="40" />
-          <line class="suxtr-edge" style="animation-delay:.35s" x1="36" y1="38" x2="22" y2="48" />
-          <line class="suxtr-edge" style="animation-delay:.4s" x1="36" y1="38" x2="36" y2="52" />
+        <g transform="translate(2 2) scale(.0802) translate(-278 -266)">
+<g fill="none" stroke="#1d99df" stroke-width="24" stroke-linejoin="round" stroke-linecap="butt">
+<path d="M629 330 L629 600" class="suxtr-edge2" pathLength="1" style="animation-delay:0.00s"/>
+<path d="M441 413 L600 596" class="suxtr-edge2" pathLength="1" style="animation-delay:0.05s"/>
+<path d="M337 573 L580 630" class="suxtr-edge2" pathLength="1" style="animation-delay:0.10s"/>
+<path d="M776 411 L695 600" class="suxtr-edge2" pathLength="1" style="animation-delay:0.15s"/>
+<path d="M901 461 L700 596" class="suxtr-edge2" pathLength="1" style="animation-delay:0.20s"/>
+<path d="M633 634 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.25s"/>
+<path d="M927 643 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.30s"/>
+<path d="M895 852 L746 741" class="suxtr-edge2" pathLength="1" style="animation-delay:0.35s"/>
+<path d="M752 923 L738 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.40s"/>
+<path d="M593 953 L638 781 L746 742" class="suxtr-edge2" pathLength="1" style="animation-delay:0.45s"/>
+</g>
+<circle cx="629" cy="328" r="50" fill="#1d99df" class="suxtr-node" style="animation-delay:0.00s"/>
+<circle cx="441" cy="413" r="36" fill="#1d99df" class="suxtr-node" style="animation-delay:0.04s"/>
+<circle cx="773" cy="411" r="39" fill="#ffffff" class="suxtr-node" style="animation-delay:0.08s"/>
+<circle cx="901" cy="461" r="41" fill="#1d99df" class="suxtr-node" style="animation-delay:0.12s"/>
+<circle cx="337" cy="575" r="47" fill="#ffffff" class="suxtr-node" style="animation-delay:0.16s"/>
+<circle cx="633" cy="634" r="83" fill="#1d99df" class="suxtr-node" style="animation-delay:0.20s"/>
+<circle cx="746" cy="742" r="58" fill="#1d99df" class="suxtr-node" style="animation-delay:0.24s"/>
+<circle cx="927" cy="643" r="38" fill="#1d99df" class="suxtr-node" style="animation-delay:0.28s"/>
+<circle cx="895" cy="845" r="48" fill="#1d99df" class="suxtr-node" style="animation-delay:0.32s"/>
+<circle cx="760" cy="923" r="38" fill="#ffffff" class="suxtr-node" style="animation-delay:0.36s"/>
+<circle cx="590" cy="953" r="49" fill="#1d99df" class="suxtr-node" style="animation-delay:0.40s"/>
         </g>
-        <circle class="suxtr-node" style="animation-delay:.02s" cx="28" cy="30" r="5.6" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.24s" cx="36" cy="38" r="4.2" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.1s" cx="28" cy="13" r="4.6" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.16s" cx="44" cy="22" r="3.6" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.32s" cx="46" cy="40" r="3.2" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.38s" cx="22" cy="48" r="4" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.14s" cx="14" cy="22" r="3" fill="#ffffff" />
-        <circle class="suxtr-node" style="animation-delay:.22s" cx="16" cy="34" r="2.6" fill="#ffffff" />
-        <circle class="suxtr-node" style="animation-delay:.44s" cx="36" cy="52" r="2.6" fill="#ffffff" />
-        <text class="suxtr-word" style="animation-delay:.3s" x="66" y="45" font-family="'Space Grotesk', Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5">
+        <text class="suxtr-word" style="animation-delay:.3s" x="68" y="45" font-family="'Space Grotesk', Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5">
           <tspan fill="#ffffff">suxtr</tspan><tspan fill="#2f9be0">AI</tspan>
         </text>
       </svg>
@@ -814,7 +891,29 @@ window.__resources = {
       <div style="width:min(92vw,372px);max-height:min(74vh,560px);display:flex;flex-direction:column;background:#ffffff;border:1px solid #14171a;box-shadow:0 26px 70px rgba(20,23,26,.22);animation:suxtr-rise .35s cubic-bezier(.16,.84,.28,1) both">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#14171a;color:#ffffff">
           <div style="display:flex;align-items:center;gap:10px">
-            <span style="width:9px;height:9px;border-radius:50%;background:#5fb6ea;animation:suxtr-pulse 2.6s ease-in-out infinite"></span>
+            <svg viewBox="278 266 699 748" style="height:26px;width:auto;flex:none" aria-hidden="true"><g fill="none" stroke="#1d99df" stroke-width="30" stroke-linejoin="round" stroke-linecap="butt">
+<path d="M629 330 L629 600"/>
+<path d="M441 413 L600 596"/>
+<path d="M337 573 L580 630"/>
+<path d="M776 411 L695 600"/>
+<path d="M901 461 L700 596"/>
+<path d="M633 634 L746 742"/>
+<path d="M927 643 L746 742"/>
+<path d="M895 852 L746 741"/>
+<path d="M752 923 L738 742"/>
+<path d="M593 953 L638 781 L746 742"/>
+</g>
+<circle cx="629" cy="328" r="50" fill="#1d99df"/>
+<circle cx="441" cy="413" r="36" fill="#1d99df"/>
+<circle cx="773" cy="411" r="39" fill="#ffffff"/>
+<circle cx="901" cy="461" r="41" fill="#1d99df"/>
+<circle cx="337" cy="575" r="47" fill="#ffffff"/>
+<circle cx="633" cy="634" r="83" fill="#1d99df"/>
+<circle cx="746" cy="742" r="58" fill="#1d99df"/>
+<circle cx="927" cy="643" r="38" fill="#1d99df"/>
+<circle cx="895" cy="845" r="48" fill="#1d99df"/>
+<circle cx="760" cy="923" r="38" fill="#ffffff"/>
+<circle cx="590" cy="953" r="49" fill="#1d99df"/></svg>
             <div style="display:flex;flex-direction:column">
               <span style="font-size:14.5px;font-weight:600;letter-spacing:-.01em">Pregunta a SuxtrAI</span>
               <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9aa3ad">Respuestas sobre la empresa</span>
@@ -845,10 +944,29 @@ window.__resources = {
     </sc-if>
 
     <button onClick="{{ toggleChat }}" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 18px;background:#14171a;color:#ffffff;border:none;border-radius:0;box-shadow:0 14px 34px rgba(20,23,26,.24);font-size:14.5px;font-weight:600;letter-spacing:-.01em;transition:transform .2s ease,background .2s ease" style-hover="transform:translateY(-2px);background:#10699f">
-      <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none" aria-hidden="true">
-        <g stroke="#5fb6ea" stroke-width="1.5" fill="none"><line x1="12" y1="12" x2="12" y2="5" /><line x1="12" y1="12" x2="5.5" y2="15" /><line x1="12" y1="12" x2="18" y2="16" /></g>
-        <circle cx="12" cy="12" r="2.6" fill="#5fb6ea" /><circle cx="12" cy="5" r="1.9" fill="#ffffff" /><circle cx="5.5" cy="15" r="1.9" fill="#ffffff" /><circle cx="18" cy="16" r="1.9" fill="#ffffff" />
-      </svg>
+      <svg viewBox="278 266 699 748" style="height:22px;width:auto;flex:none" aria-hidden="true"><g fill="none" stroke="#1d99df" stroke-width="30" stroke-linejoin="round" stroke-linecap="butt">
+<path d="M629 330 L629 600"/>
+<path d="M441 413 L600 596"/>
+<path d="M337 573 L580 630"/>
+<path d="M776 411 L695 600"/>
+<path d="M901 461 L700 596"/>
+<path d="M633 634 L746 742"/>
+<path d="M927 643 L746 742"/>
+<path d="M895 852 L746 741"/>
+<path d="M752 923 L738 742"/>
+<path d="M593 953 L638 781 L746 742"/>
+</g>
+<circle cx="629" cy="328" r="50" fill="#1d99df"/>
+<circle cx="441" cy="413" r="36" fill="#1d99df"/>
+<circle cx="773" cy="411" r="39" fill="#ffffff"/>
+<circle cx="901" cy="461" r="41" fill="#1d99df"/>
+<circle cx="337" cy="575" r="47" fill="#ffffff"/>
+<circle cx="633" cy="634" r="83" fill="#1d99df"/>
+<circle cx="746" cy="742" r="58" fill="#1d99df"/>
+<circle cx="927" cy="643" r="38" fill="#1d99df"/>
+<circle cx="895" cy="845" r="48" fill="#1d99df"/>
+<circle cx="760" cy="923" r="38" fill="#ffffff"/>
+<circle cx="590" cy="953" r="49" fill="#1d99df"/></svg>
       <span>{{ chatButtonLabel }}</span>
     </button>
   </div>
