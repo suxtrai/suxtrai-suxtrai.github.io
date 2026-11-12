@@ -149,6 +149,11 @@ chk()})();
   @keyframes suxtr-draw2 { from { stroke-dashoffset: 1; opacity: 0; } 30% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
   .suxtr-edge2 { stroke-dasharray: 1; animation: suxtr-draw2 .7s ease both; }
   @media (prefers-reduced-motion: reduce) { .suxtr-edge2, .suxtr-node { animation: none !important; } }
+  @keyframes suxtr-fade2 { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes suxtr-fade3 { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .suxtr-glow { position: relative; }
+  .suxtr-glow::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .35s ease; background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(47,155,224,.16), transparent 70%); }
+  .suxtr-glow:hover::before { opacity: 1; }
   .suxtr-word { animation: suxtr-word-in .7s cubic-bezier(.16,.84,.28,1) both; }
   .suxtr-logo:hover .suxtr-node { animation: suxtr-node-in .55s cubic-bezier(.2,.9,.3,1.2) both; }
   .suxtr-rise { animation: suxtr-rise .8s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 0% entry 62%; }
@@ -239,7 +244,7 @@ chk()})();
             <span id="suxtr-hero-type"></span><span style="display:inline-block;width:.06em;min-width:4px;height:.86em;background:#2f9be0;vertical-align:-.08em;margin-left:.06em;animation:suxtr-blink 1s step-end infinite"></span>
           </h1>
           <p style="margin:clamp(18px,2.2vw,30px) 0 0;font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:rgba(255,255,255,.74);max-width:50ch;text-wrap:pretty">
-            Diseñamos, construimos y ponemos en producción sistemas de IA sobre vuestros procesos reales: RAG sobre vuestra documentación, automatizaciones que eliminan trabajo repetitivo, formación al equipo y desarrollo end to end. Sin plantillas.
+            Sistemas de IA sobre vuestros procesos reales: búsqueda en vuestra documentación, automatizaciones, formación al equipo y desarrollo end to end. Sin plantillas.
           </p>
           <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(24px,2.8vw,36px)">
             <a href="#contacto" style="padding:17px 28px;background:#ffffff;color:#14171a;border-radius:2px;font-weight:500;font-size:16px;letter-spacing:-.01em;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">Cuéntanos tu caso</a>
@@ -304,7 +309,7 @@ chk()})();
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Qué hacemos</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
-      <p style="margin:0 0 clamp(28px,4vw,50px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Cinco líneas de trabajo que se combinan según el caso. Pulsa en cada una para ver qué incluye.</p>
+      <p style="margin:0 0 clamp(28px,4vw,50px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Cinco líneas que se combinan según el caso. Pulsa en cada una para ver qué incluye.</p>
 
       <div style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6">
         <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
@@ -363,50 +368,15 @@ chk()})();
     </div>
   </section>
 
-  <section id="caso" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
-    <div style="max-width:1280px;margin:0 auto">
-      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">03</span>
-        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Un caso, de principio a fin</h2>
-        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
-      </div>
-      <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Piloto propio sobre documentación técnica, construido para validar el proceso completo antes de llevarlo a cliente. Mismo recorrido que seguiríamos con vosotros.</p>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#ffffff">
-        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">El problema</span>
-          <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">1.500 documentos, ninguna forma de buscar</h3>
-          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Manuales, procedimientos y fichas repartidos en carpetas compartidas, con nombres inconsistentes y versiones duplicadas. Encontrar un dato concreto exigía preguntar a la persona que lo escribió.</p>
-        </div>
-        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Qué hicimos</span>
-          <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">RAG con cita obligatoria a la fuente</h3>
-          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Ingesta y limpieza del corpus, índice vectorial, y un asistente que solo responde con pasajes recuperados y enlace al documento. Batería de 120 preguntas reales para medir antes de abrirlo.</p>
-        </div>
-        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Resultado medido</span>
-          <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">94% de respuestas correctas con fuente</h3>
-          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Sobre la batería de evaluación, con el 6% restante devolviendo "no encontrado" en lugar de inventar. Tiempo medio de consulta: de minutos de búsqueda manual a segundos.</p>
-        </div>
-      </div>
-
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(16px,2vw,24px);font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">
-        <span style="padding:9px 14px;border:1px solid #d6d6d6">3 semanas</span>
-        <span style="padding:9px 14px;border:1px solid #d6d6d6">1.482 documentos</span>
-        <span style="padding:9px 14px;border:1px solid #d6d6d6">Despliegue on-premise</span>
-        <span style="padding:9px 14px;border:1px solid #d6d6d6">Evaluación reproducible</span>
-      </div>
-    </div>
-  </section>
 
   <section id="calculadora" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">04</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">03</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cuánto trabajo os quita</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
-      <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Estimación rápida con vuestros números. Mover los tres valores da una idea del orden de magnitud, no un presupuesto.</p>
+      <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Estimación rápida con vuestros números: un orden de magnitud, no un presupuesto.</p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.4vw,34px);align-items:stretch">
         <div style="border:1px solid #d6d6d6;background:#ffffff;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:clamp(20px,2.4vw,30px)">
@@ -450,74 +420,62 @@ chk()})();
     </div>
   </section>
 
+
   <section id="metodo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
     <div style="max-width:1280px;margin:0 auto">
-      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(28px,4vw,52px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">05</span>
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">04</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cómo trabajamos</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#ffffff">
-        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">1</span>
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semana 1</span>
-          </div>
-          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Diagnóstico</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Entendemos el proceso, los datos disponibles y dónde se pierde tiempo. Salimos con una lista de casos ordenada por impacto y coste.</p>
+      <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Cuatro pasos, de menor a mayor compromiso. Se empieza por una sesión sin coste. Pulsa en cada paso.</p>
+      <div style="height:3px;background:#d6d6d6;margin-bottom:14px"><div style="height:100%;background:#2f9be0;width:{{ stepProgress }};transition:width .5s cubic-bezier(.16,.84,.28,1)"></div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:clamp(14px,2vw,22px)">
+        <sc-for list="{{ methodSteps }}" as="ms" hint-placeholder-count="4">
+          <button onClick="{{ ms.select }}" style="cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:8px;padding:16px 18px;border:1px solid {{ ms.border }};background:{{ ms.bg }};color:#14171a;border-radius:0;font-family:'Inter Tight',Helvetica,Arial,sans-serif;transition:all .25s ease" style-hover="border-color:#2f9be0">
+            <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:{{ ms.whenColor }}">{{ ms.num }} · {{ ms.when }}</span>
+            <span style="font-size:19px;font-weight:600;letter-spacing:-.01em">{{ ms.title }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div class="suxtr-glow" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,2.4vw,34px);border:1px solid #d6d6d6;background:#ffffff;padding:clamp(24px,3.4vw,46px);animation:{{ stepAnim }} .45s cubic-bezier(.16,.84,.28,1) both">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Paso {{ activeStepNum }} · {{ activeStepWhen }}</span>
+          <h3 style="margin:0;font-size:clamp(24px,3vw,38px);letter-spacing:-.02em;font-weight:600;line-height:1.1">{{ activeStepTitle }}</h3>
+          <p style="margin:0;color:#5b636c;font-size:16px;line-height:1.65;max-width:52ch;text-wrap:pretty">{{ activeStepText }}</p>
         </div>
-        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">2</span>
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semanas 2-4</span>
-          </div>
-          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Prototipo</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Algo que se puede probar con vuestros datos reales y medir contra el proceso actual. Si no funciona, se sabe pronto y barato.</p>
-        </div>
-        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">3</span>
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Producción</span>
-          </div>
-          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Despliegue</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Integración con vuestros sistemas, permisos, monitorización y documentación. Más formación al equipo que lo va a usar.</p>
-        </div>
-        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">4</span>
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Continuo</span>
-          </div>
-          <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Mejora</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Revisamos resultados con métricas acordadas, ajustamos y ampliamos al siguiente caso de la lista.</p>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:6px;padding:clamp(16px,2vw,26px);border:1px solid #d6d6d6;background:#e8e8e8">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Compromiso</span>
+          <span style="font-family:'Inter Tight',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.03em">{{ activeStepCost }}</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
+  <section id="porque" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(28px,4vw,52px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">06</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">05</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Por qué con nosotros</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(16px,2vw,26px)">
-        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Producción, no demos</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">El objetivo es un sistema que se use a diario, con mantenimiento previsto, no una prueba que se apaga al mes.</p>
         </div>
-        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Vuestros datos, vuestro control</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Elegimos el modelo y el despliegue según vuestros requisitos de privacidad, incluida opción en vuestra propia infraestructura.</p>
+          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Confidencialidad firmada antes de ver nada vuestro, opción en vuestra propia infraestructura y proveedores que no entrenan con vuestros datos.</p>
         </div>
-        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Equipo pequeño, sin capas</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Los cuatro conocemos vuestro proyecto de principio a fin. Sin intermediarios ni traspasos entre equipos.</p>
         </div>
-        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Alcance cerrado por fases</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Cada fase tiene entregable, plazo y precio definidos antes de empezar. Decidís si continuar al final de cada una.</p>
@@ -537,83 +495,18 @@ chk()})();
     </div>
   </div>
 
-  <section id="precios" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-bottom:1px solid #d6d6d6">
-    <div style="max-width:1280px;margin:0 auto">
-      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">07</span>
-        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cómo empezamos</h2>
-        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
-      </div>
-      <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Tres formas de entrar, de menor a mayor compromiso. Cada solución es completamente personalizada, así que el alcance y la propuesta se definen con vosotros antes de empezar.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(16px,2vw,26px)">
-        <div style="border:1px solid #d6d6d6;background:#ffffff;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 0</span>
-          <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Sesión de diagnóstico</h3>
-          <span style="font-family:'Inter Tight',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Sin coste</span>
-          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Una hora con vosotros para entender el proceso y decir con franqueza si hay algo que merezca la pena. Salís con una lista de candidatos priorizada.</p>
-        </div>
-        <div style="position:relative;border:1px solid #2f9be0;background:#ffffff;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:transform .3s ease" style-hover="transform:translateY(-5px)" class="suxtr-rise">
-          <span style="position:absolute;top:-1px;right:-1px;padding:7px 12px;background:#14171a;color:#ffffff;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Recomendado</span>
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Fase 1</span>
-          <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Prototipo medible</h3>
-          <span style="font-family:'Inter Tight',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">2 a 4 semanas</span>
-          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Un caso concreto funcionando con vuestros datos reales y una evaluación que dice si vale la pena escalarlo.</p>
-        </div>
-        <div style="border:1px solid #d6d6d6;background:#ffffff;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 2</span>
-          <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Producción y evolución</h3>
-          <span style="font-family:'Inter Tight',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Según alcance</span>
-          <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Integración, despliegue, formación y mantenimiento. Por proyecto cerrado o por acompañamiento continuo, según lo que os encaje.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="datos" style="position:relative;padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);overflow:hidden">
-    <div style="position:absolute;inset:0;background-image:radial-gradient(#d0d0d0 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
-    <div style="position:relative;max-width:1280px;margin:0 auto">
-      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">08</span>
-        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Vuestros datos</h2>
-        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
-      </div>
-      <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Es la primera pregunta que nos hacen, así que la respondemos antes de que la hagáis.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#ffffff">
-        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">01</span>
-          <h3 style="margin:0;font-size:18px;font-weight:700">Confidencialidad por escrito</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Acuerdo firmado antes de ver un solo documento vuestro.</p>
-        </div>
-        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">02</span>
-          <h3 style="margin:0;font-size:18px;font-weight:700">Opción on-premise</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Si los datos no pueden salir de vuestra red, el sistema se despliega dentro de ella.</p>
-        </div>
-        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">03</span>
-          <h3 style="margin:0;font-size:18px;font-weight:700">Sin entrenar con lo vuestro</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Trabajamos con proveedores que no usan vuestros datos para entrenar modelos, y lo dejamos documentado.</p>
-        </div>
-        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">04</span>
-          <h3 style="margin:0;font-size:18px;font-weight:700">Permisos heredados</h3>
-          <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Cada usuario solo recupera la documentación a la que ya tiene acceso en vuestros sistemas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="equipo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(20px,2.6vw,36px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">09</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">06</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Quiénes somos</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(24px,3vw,40px);max-width:58ch;color:#3d444c;font-size:clamp(15px,1.3vw,18px);line-height:1.6;text-wrap:pretty">Cuatro fundadores. Los cuatro conocemos cada proyecto de principio a fin.</p>
 
-      <div style="position:relative;margin:0 0 clamp(16px,2vw,28px);border:1px solid #d6d6d6;background:#e8e8e8;overflow:hidden" class="suxtr-rise">
+      <div style="position:relative;margin:0 0 clamp(16px,2vw,28px);border:1px solid #d6d6d6;background:#e8e8e8;overflow:hidden" class="suxtr-rise suxtr-glow">
         <img src="assets/equipo-suxtrai.jpg" alt="Jon Medina, Ibai García y Asier Merino" style="display:block;width:100%;height:clamp(300px,38vw,500px);object-fit:cover;object-position:center 45%;filter:saturate(.8) contrast(1.03) brightness(.94);transition:filter .6s ease" style-hover="filter:saturate(1) contrast(1) brightness(1)" />
         <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.22) 0%, transparent 34%, rgba(0,0,0,.72) 100%);pointer-events:none"></div>
         <div style="position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:clamp(12px,1.6vw,20px) clamp(12px,2vw,24px);font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#ffffff;pointer-events:none">
@@ -623,7 +516,7 @@ chk()})();
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,28px)">
-        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <div style="display:flex;align-items:center;justify-content:space-between">
             <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:38px;color:#10699f;letter-spacing:-.02em">JM</span>
             <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out 0s infinite"></span>
@@ -634,7 +527,7 @@ chk()})();
             <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Desarrollo, integraciones y puesta en producción.</p>
           </div>
         </div>
-        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <div style="display:flex;align-items:center;justify-content:space-between">
             <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:38px;color:#10699f;letter-spacing:-.02em">IG</span>
             <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out .6s infinite"></span>
@@ -645,7 +538,7 @@ chk()})();
             <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Formación, evaluación de modelos y datos.</p>
           </div>
         </div>
-        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <div style="display:flex;align-items:center;justify-content:space-between">
             <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:38px;color:#10699f;letter-spacing:-.02em">AM</span>
             <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out 1.2s infinite"></span>
@@ -656,7 +549,7 @@ chk()})();
             <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Diagnóstico de procesos y diseño de solución.</p>
           </div>
         </div>
-        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise suxtr-glow">
           <div style="display:flex;align-items:center;justify-content:space-between">
             <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:38px;color:#10699f;letter-spacing:-.02em">JG</span>
             <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out 1.8s infinite"></span>
@@ -675,7 +568,7 @@ chk()})();
   <section id="faq" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);border-top:1px solid #d6d6d6">
     <div style="max-width:960px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(24px,3vw,44px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">10</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">07</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Preguntas frecuentes</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
@@ -767,8 +660,7 @@ chk()})();
       <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
         <span style="color:#6f7882">Secciones</span>
         <a href="#servicios" style="color:#c3c9d0" style-hover="color:#5fb6ea">Servicios</a>
-        <a href="#caso" style="color:#c3c9d0" style-hover="color:#5fb6ea">Caso</a>
-        <a href="#precios" style="color:#c3c9d0" style-hover="color:#5fb6ea">Cómo empezamos</a>
+        <a href="#metodo" style="color:#c3c9d0" style-hover="color:#5fb6ea">Cómo empezamos</a>
         <a href="#faq" style="color:#c3c9d0" style-hover="color:#5fb6ea">FAQ</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
@@ -839,9 +731,7 @@ chk()})();
             <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ Automatizaciones</a>
             <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ Formación</a>
             <a href="#sectores" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Sectores</a>
-            <a href="#caso" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Caso</a>
             <a href="#metodo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Método</a>
-            <a href="#precios" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Precios</a>
             <a href="#equipo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Equipo</a>
             <a href="#faq" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Preguntas frecuentes</a>
             <a href="#contacto" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Contacto</a>
@@ -851,7 +741,7 @@ chk()})();
         <div style="border-top:1px solid rgba(255,255,255,.28);padding-top:22px;min-width:0">
           <div style="display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:clamp(24px,3vw,40px)">
             <span>Cómo empezamos</span>
-            <a href="#precios" onClick="{{ closeMenu }}" style="color:#ffffff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#5fb6ea">Ver precios ↗</a>
+            <a href="#metodo" onClick="{{ closeMenu }}" style="color:#ffffff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#5fb6ea">Ver los pasos ↗</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:30px">
             <div>
@@ -877,7 +767,7 @@ chk()})();
           <p style="margin:0;font-size:clamp(20px,1.9vw,28px);letter-spacing:-.02em;line-height:1.3;max-width:26ch;text-wrap:pretty">Treinta minutos bastan para saber si hay algo que merezca la pena automatizar. Si no lo hay, os lo diremos.</p>
           <a href="{{ mailtoHref }}" style="display:inline-block;margin-top:24px;font-size:17px;color:#ffffff;text-decoration:underline;text-underline-offset:4px" style-hover="color:#5fb6ea">↳ {{ contactEmail }}</a>
           <div style="margin-top:clamp(36px,5vw,72px);padding-top:22px;border-top:1px solid rgba(255,255,255,.28);display:flex;flex-direction:column;gap:10px;font-size:17px">
-            <a href="#datos" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Vuestros datos</a>
+            <a href="#porque" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Vuestros datos</a>
             <a href="#metodo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Cómo trabajamos</a>
             <span style="color:rgba(255,255,255,.58)">Euskadi · España</span>
           </div>
@@ -1025,11 +915,18 @@ const FAQS = [
     a: "Sí. Muchas automatizaciones de alto impacto son pequeñas y se amortizan rápido. El tamaño no es el criterio; que el proceso esté claro, sí." }
 ];
 
+const STEPS = [
+  { when: "Semana 1", title: "Diagnóstico", cost: "Sin coste", text: "Una hora con vosotros para entender el proceso y los datos. Salís con una lista de casos ordenada por impacto. Si no hay nada que compense, os lo decimos." },
+  { when: "Semanas 2-4", title: "Prototipo", cost: "Alcance cerrado", text: "Un caso funcionando con vuestros datos reales y medido contra el proceso actual. Si no funciona, se sabe pronto y barato." },
+  { when: "Producción", title: "Despliegue", cost: "Según alcance", text: "Integración con vuestros sistemas, permisos, monitorización y formación al equipo que lo va a usar." },
+  { when: "Continuo", title: "Mejora", cost: "Por proyecto o continuo", text: "Revisamos resultados con métricas acordadas, ajustamos y pasamos al siguiente caso de la lista." }
+];
+
 const LOG_SCRIPT = [
-  "Indexando documentación interna... 1.482 docs",
+  "Indexando documentación interna... listo",
   "Construyendo índice vectorial... listo",
-  "Evaluando respuestas sobre 120 preguntas reales",
-  "Precisión con cita a la fuente: 94%",
+  "Evaluando respuestas con preguntas reales",
+  "Citando la fuente en cada respuesta",
   "Conectando con ERP y correo corporativo",
   "Desplegando en infraestructura del cliente",
   "Sistema en producción. Monitorización activa."
@@ -1055,7 +952,7 @@ const KB = [
   { tags: ["metodo", "como trabajais", "proceso", "fases", "empezar", "empezamos"],
     a: "Cuatro pasos: diagnóstico (proceso, datos y lista priorizada), prototipo medible con vuestros datos, despliegue en producción con permisos y monitorización, y mejora continua con métricas acordadas." },
   { tags: ["clientes", "casos", "referencias", "exito", "experiencia"],
-    a: "Somos una empresa joven y todavía estamos acumulando casos. Hoy podemos mostrar un piloto propio de RAG sobre 1.482 documentos con un 94% de respuestas correctas con cita a la fuente. La sección de clientes se publicará en cuanto tengamos casos que compartir." },
+    a: "Somos una empresa joven y todavía estamos acumulando casos. En una sesión os contamos cómo lo plantearíamos con vuestros datos. Publicaremos casos en cuanto tengamos clientes que compartir." },
   { tags: ["contacto", "contactar", "email", "correo", "reunion", "llamada", "hablar"],
     a: "Escribidnos a contact@suxtrai.es o usad el formulario de la sección de contacto. Respondemos en 24 horas y la primera sesión de treinta minutos no tiene coste." },
   { tags: ["sector", "sectores", "industria", "legal", "retail", "logistica", "servicios"],
@@ -1097,7 +994,7 @@ function kbAnswer(question) {
 }
 
 class Component extends DCLogic {
-  state = { barOpen: true, menuOpen: false, openService: 0, openFaq: -1, sector: 0, sectorFlip: false, logLines: [], typedLine: "", stats: [0, 0, 0, 0],
+  state = { barOpen: true, menuOpen: false, methodStep: 0, stepFlip: false, openService: 0, openFaq: -1, sector: 0, sectorFlip: false, logLines: [], typedLine: "", stats: [0, 0, 0, 0],
     scrollPct: 0, people: 8, hours: 6, rate: 28,
     formName: "", formEmail: "", formMsg: "", picked: [], heroTyped: "",
     chatOpen: false, chatInput: "", chatMsgs: [{ who: "bot", text: "Hola. Soy el asistente de SuxtrAI: puedo contarte qué hacemos, cómo trabajamos, qué pasa con vuestros datos o cómo empezar. ¿Qué quieres saber?" }] };
@@ -1153,6 +1050,14 @@ class Component extends DCLogic {
     this.initHeroVideo();
     this.onKey = (e) => { if (e.key === "Escape" && this.state.menuOpen) this.setMenu(false); };
     window.addEventListener("keydown", this.onKey);
+    this.onGlow = (e) => {
+      const c = e.target && e.target.closest ? e.target.closest(".suxtr-glow") : null;
+      if (!c) return;
+      const r = c.getBoundingClientRect();
+      c.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      c.style.setProperty("--my", (e.clientY - r.top) + "px");
+    };
+    document.addEventListener("pointermove", this.onGlow, { passive: true });
     this.onScroll = () => {
       if (this.scrollQueued) return;
       this.scrollQueued = true;
@@ -1183,6 +1088,7 @@ class Component extends DCLogic {
     window.removeEventListener("mousemove", this.onMove);
     window.removeEventListener("scroll", this.onScroll);
     window.removeEventListener("keydown", this.onKey);
+    document.removeEventListener("pointermove", this.onGlow);
     document.body.style.overflow = "";
   }
 
@@ -1385,6 +1291,21 @@ class Component extends DCLogic {
       stat2: String(st.stats[1]),
       stat3: st.stats[2] + " h",
       stat4: String(st.stats[3]),
+      methodSteps: STEPS.map((p, i) => ({
+        ...p,
+        num: String(i + 1),
+        bg: st.methodStep === i ? "#ffffff" : "transparent",
+        border: st.methodStep === i ? "#2f9be0" : "#c8c8c8",
+        whenColor: st.methodStep === i ? "#10699f" : "#737b85",
+        select: () => this.setState(q => q.methodStep === i ? null : { methodStep: i, stepFlip: !q.stepFlip })
+      })),
+      stepProgress: ((st.methodStep + 1) / STEPS.length * 100) + "%",
+      stepAnim: st.stepFlip ? "suxtr-fade2" : "suxtr-fade3",
+      activeStepNum: String(st.methodStep + 1),
+      activeStepWhen: STEPS[st.methodStep].when,
+      activeStepTitle: STEPS[st.methodStep].title,
+      activeStepText: STEPS[st.methodStep].text,
+      activeStepCost: STEPS[st.methodStep].cost,
       services: SERVICES.map((s, i) => ({
         ...s,
         open: st.openService === i,
