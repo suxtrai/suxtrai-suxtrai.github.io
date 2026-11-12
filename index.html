@@ -7,7 +7,7 @@
 <meta name="description" content="SuxtrAI diseña, construye y pone en producción sistemas de IA a medida para empresas: RAG sobre vuestra documentación, automatizaciones, formación, asesoramiento y desarrollo end to end. Bilbao, Euskadi.">
 <link rel="canonical" href="https://suxtrai.es/">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#faf8f3">
+<meta name="theme-color" content="#14171a">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/assets/favicon-512.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -75,15 +75,16 @@ window.__resources = {
 </noscript>
 <x-dc>
 <helmet>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Space+Grotesk:wght@600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: #faf8f3; color: #14171a; font-family: 'Space Grotesk', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #efefef; color: #14171a; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: #2f9be0; text-decoration: none; }
   a:hover { color: #10699f; }
   * { box-sizing: border-box; }
-  ::selection { background: #cfe6f6; color: #14171a; }
-  h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Space Grotesk', Helvetica, sans-serif; font-variation-settings: 'opsz' 64; }
+  ::selection { background: #2f9be0; color: #ffffff; }
+  h1, h2, h3 { font-family: 'Inter Tight', Helvetica, Arial, sans-serif; }
+  h2 { font-weight: 500 !important; letter-spacing: -.035em !important; }
   input, textarea, button { font-family: inherit; }
   .suxtr-num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
   .suxtr-ul { text-decoration: underline; text-decoration-color: rgba(47,155,224,.45); text-underline-offset: 4px; text-decoration-thickness: 1px; }
@@ -109,18 +110,31 @@ window.__resources = {
   .suxtr-rise { animation: suxtr-rise .8s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 0% entry 62%; }
   .suxtr-wipe { animation: suxtr-wipe 1s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 4% entry 70%; }
   .suxtr-line { transform-origin: left center; animation: suxtr-grow 1.1s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+  @keyframes suxtr-fade { from { opacity: 0; } to { opacity: 1; } }
+  .suxtr-glass { -webkit-backdrop-filter: blur(16px) saturate(130%); backdrop-filter: blur(16px) saturate(130%); }
+  .suxtr-curtain { clip-path: inset(0); }
+  @media (max-width: 560px) { .suxtr-cta { display: none !important; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </helmet>
-<div style="width:100%;background:#faf8f3;overflow:hidden">
-  <div ref="{{ glowRef }}" style="position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle, rgba(47,155,224,.16), rgba(47,155,224,.05) 42%, transparent 66%);pointer-events:none;z-index:50;opacity:0;transition:opacity .4s ease;will-change:transform"></div>
+<div style="width:100%;background:#efefef;overflow:clip">
 
   <div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:70;background:transparent;pointer-events:none">
-    <div id="suxtr-progress" style="height:100%;background:linear-gradient(90deg,#2f9be0,#10699f);width:0%"></div>
+    <div id="suxtr-progress" style="height:100%;background:linear-gradient(90deg,#2f9be0,#5fb6ea);width:0%"></div>
   </div>
 
-  <header style="position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,56px);background:rgba(250,248,243,.88);backdrop-filter:blur(16px);border-bottom:1px solid #e2ddd2">
+  <sc-if value="{{ barOpen }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;z-index:61;background:#1a1d27;color:#ffffff;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(16px,2.4vw,32px);min-height:52px;font-size:clamp(13.5px,1.15vw,16px);letter-spacing:-.005em">
+      <span>Primera sesión sin coste. <a href="#contacto" style="color:#ffffff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#5fb6ea">Cuéntanos tu caso</a></span>
+      <button onClick="{{ closeBar }}" aria-label="Cerrar aviso" style="cursor:pointer;background:transparent;border:0;color:#ffffff;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex:none">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" fill="none"><line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" /></g></svg>
+      </button>
+    </div>
+  </sc-if>
+
+  <header class="suxtr-glass" style="position:sticky;top:12px;z-index:60;margin:12px clamp(10px,1.4vw,20px) -76px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 clamp(16px,2vw,28px);background:rgba(16,19,23,.8);border:1px solid rgba(255,255,255,.09);border-radius:6px">
     <a href="#top" class="suxtr-logo" style="display:flex;align-items:center;flex:none">
-      <svg viewBox="0 0 248 64" style="height:clamp(44px,5.2vw,64px);width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
+      <svg viewBox="0 0 248 64" style="height:40px;width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
         <g stroke="#2f9be0" stroke-width="1.6" fill="none" opacity="0.85">
           <line class="suxtr-edge" style="animation-delay:.05s" x1="28" y1="30" x2="28" y2="13" />
           <line class="suxtr-edge" style="animation-delay:.1s" x1="28" y1="30" x2="14" y2="22" />
@@ -137,55 +151,53 @@ window.__resources = {
         <circle class="suxtr-node" style="animation-delay:.16s" cx="44" cy="22" r="3.6" fill="#2f9be0" />
         <circle class="suxtr-node" style="animation-delay:.32s" cx="46" cy="40" r="3.2" fill="#2f9be0" />
         <circle class="suxtr-node" style="animation-delay:.38s" cx="22" cy="48" r="4" fill="#2f9be0" />
-        <circle class="suxtr-node" style="animation-delay:.14s" cx="14" cy="22" r="3" fill="#14171a" />
-        <circle class="suxtr-node" style="animation-delay:.22s" cx="16" cy="34" r="2.6" fill="#14171a" />
-        <circle class="suxtr-node" style="animation-delay:.44s" cx="36" cy="52" r="2.6" fill="#14171a" />
+        <circle class="suxtr-node" style="animation-delay:.14s" cx="14" cy="22" r="3" fill="#ffffff" />
+        <circle class="suxtr-node" style="animation-delay:.22s" cx="16" cy="34" r="2.6" fill="#ffffff" />
+        <circle class="suxtr-node" style="animation-delay:.44s" cx="36" cy="52" r="2.6" fill="#ffffff" />
         <text class="suxtr-word" style="animation-delay:.3s" x="66" y="45" font-family="'Space Grotesk', Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5">
-          <tspan fill="#14171a">suxtr</tspan><tspan fill="#2f9be0">AI</tspan>
+          <tspan fill="#ffffff">suxtr</tspan><tspan fill="#2f9be0">AI</tspan>
         </text>
       </svg>
     </a>
-    <nav style="display:flex;align-items:center;gap:clamp(12px,1.8vw,28px);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
-      <a href="#servicios" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Servicios</a>
-      <a href="#sectores" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Sectores</a>
-      <a href="#caso" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Caso</a>
-      <a href="#metodo" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Método</a>
-      <a href="#precios" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Precios</a>
-      <a href="#equipo" style="color:#5b636c;padding:6px 0;border-bottom:1px solid transparent" style-hover="color:#14171a;border-bottom-color:#2f9be0">Equipo</a>
-      <a href="#contacto" style="display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid #2f9be0;color:#10699f;border-radius:999px;transition:background .2s ease,color .2s ease" style-hover="background:#14171a;color:#faf8f3">Hablemos</a>
-    </nav>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="#contacto" class="suxtr-cta" style="height:46px;padding:0 clamp(18px,2.2vw,34px);display:flex;align-items:center;background:#ffffff;color:#14171a;font-size:16px;font-weight:500;letter-spacing:-.01em;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">Hablemos</a>
+      <button onClick="{{ toggleMenu }}" aria-label="Abrir menú" style="cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#ffffff;color:#14171a;border:0;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" fill="none"><line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" /></g></svg>
+      </button>
+    </div>
   </header>
 
-  <section id="top" style="position:relative;padding:clamp(48px,7vw,104px) clamp(16px,4vw,56px) 0">
-    <div style="position:absolute;inset:0;background-image:radial-gradient(#dcd6c8 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
-    <div style="position:absolute;top:-220px;left:50%;width:min(1100px,120vw);height:520px;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(47,155,224,.13), transparent 68%);pointer-events:none;filter:blur(10px)"></div>
-    <canvas data-suxtr-net="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9"></canvas>
-    <div style="position:relative;max-width:1280px;margin:0 auto">
-      <div style="display:flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#737b85">
-        <span style="width:7px;height:7px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 2.4s ease-in-out infinite"></span>
-        <span>Consultora de IA aplicada</span>
-        <span style="flex:1;height:1px;background:#e2ddd2;min-width:20px"></span>
-        <span>Aceptando proyectos · 2026</span>
-      </div>
+  <section id="top" class="suxtr-curtain" style="position:relative;min-height:100svh;background:#07090c">
+    <div style="position:fixed;inset:0;z-index:0;background:radial-gradient(110% 80% at 72% 18%, #15324b 0%, #0b1219 46%, #06080b 100%)">
+      <canvas data-suxtr-net="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,11,.45) 0%,rgba(6,8,11,0) 26%,rgba(6,8,11,.2) 55%,rgba(6,8,11,.82) 100%);pointer-events:none"></div>
+    </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(22px,3vw,40px)">
-        <div>
-          <h1 style="margin:0;font-size:clamp(32px,5.6vw,74px);line-height:1.02;letter-spacing:-.04em;font-weight:800;min-height:2.1em">
+    <div style="position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(120px,14vw,180px) clamp(16px,4vw,56px) clamp(84px,8vw,116px)">
+      <div style="width:100%;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,64px);align-items:end">
+        <div style="min-width:0">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.66)">
+            <span style="width:7px;height:7px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 2.4s ease-in-out infinite"></span>
+            <span>Consultora de IA aplicada</span>
+            <span style="width:28px;height:1px;background:rgba(255,255,255,.3)"></span>
+            <span>Aceptando proyectos · 2026</span>
+          </div>
+          <h1 style="margin:clamp(18px,2vw,28px) 0 0;color:#ffffff;font-size:clamp(40px,7.4vw,112px);line-height:.98;letter-spacing:-.045em;font-weight:500;min-height:2.96em">
             <span id="suxtr-hero-type"></span><span style="display:inline-block;width:.06em;min-width:4px;height:.86em;background:#2f9be0;vertical-align:-.08em;margin-left:.06em;animation:suxtr-blink 1s step-end infinite"></span>
           </h1>
-          <p style="margin:clamp(22px,2.6vw,34px) 0 0;font-size:clamp(17px,1.5vw,21px);line-height:1.6;color:#3d444c;max-width:46ch;text-wrap:pretty">
+          <p style="margin:clamp(18px,2.2vw,30px) 0 0;font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:rgba(255,255,255,.74);max-width:50ch;text-wrap:pretty">
             Diseñamos, construimos y ponemos en producción sistemas de IA sobre vuestros procesos reales: RAG sobre vuestra documentación, automatizaciones que eliminan trabajo repetitivo, formación al equipo y desarrollo end to end. Sin plantillas.
           </p>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(26px,3vw,38px)">
-            <a href="#contacto" style="padding:16px 26px;background:#14171a;color:#faf8f3;border-radius:2px;font-weight:600;font-size:15px;transition:background .2s ease,transform .2s ease" style-hover="background:#10699f;transform:translateY(-2px)">Cuéntanos tu caso</a>
-            <a href="#servicios" style="padding:16px 26px;border:1px solid #cfc9bb;color:#14171a;border-radius:2px;font-weight:500;font-size:15px;transition:border-color .2s ease,transform .2s ease" style-hover="border-color:#14171a;transform:translateY(-2px)">Ver servicios</a>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(24px,2.8vw,36px)">
+            <a href="#contacto" style="padding:17px 28px;background:#ffffff;color:#14171a;border-radius:2px;font-weight:500;font-size:16px;letter-spacing:-.01em;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">Cuéntanos tu caso</a>
+            <a href="#servicios" style="padding:17px 28px;border:1px solid rgba(255,255,255,.45);color:#ffffff;border-radius:2px;font-weight:500;font-size:16px;letter-spacing:-.01em;transition:border-color .2s ease,background .2s ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,.1)">Ver servicios</a>
           </div>
         </div>
 
-        <div style="position:relative;min-height:360px;display:flex;align-items:center;justify-content:center">
-          <div style="position:relative;width:100%;max-width:440px;border:1px solid #14171a;background:#14171a;overflow:hidden;box-shadow:0 26px 60px rgba(20,23,26,.22)">
+        <div style="position:relative;justify-self:end;width:100%;max-width:440px">
+          <div class="suxtr-glass" style="position:relative;border:1px solid rgba(255,255,255,.16);background:rgba(8,11,15,.58);overflow:hidden">
             <div style="position:absolute;left:0;right:0;top:0;height:42px;background:linear-gradient(180deg,rgba(47,155,224,.16),transparent);pointer-events:none;animation:suxtr-scan 6s linear infinite"></div>
-            <div style="display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid #2a3037;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9aa3ad">
+            <div style="display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.12);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9aa3ad">
               <span style="width:8px;height:8px;border-radius:50%;background:#2f9be0"></span>
               <span>suxtrai · pipeline</span>
             </div>
@@ -195,30 +207,34 @@ window.__resources = {
           </div>
         </div>
       </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:#faf8f3;margin:clamp(44px,6vw,86px) 0 0">
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat1 }}</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Semanas al primer prototipo</span>
-        </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat2 }}</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Líneas de servicio</span>
-        </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat3 }}</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Horas de diagnóstico inicial</span>
-        </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-          <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;color:#14171a">{{ stat4 }}</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Personas, contacto directo</span>
-        </div>
-      </div>
     </div>
   </section>
 
-  <div style="position:relative;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2;background:#f1eee6;overflow:hidden;padding:18px 0;margin-top:clamp(44px,6vw,80px)">
-    <div style="display:flex;width:max-content;animation:suxtr-marquee 30s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a0a6ae">
+  <div style="position:relative;z-index:2;background:#efefef">
+
+  <div style="padding:clamp(40px,5vw,72px) clamp(16px,4vw,56px) 0">
+    <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:#efefef">
+      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat1 }}</span>
+        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Semanas al primer prototipo</span>
+      </div>
+      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat2 }}</span>
+        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Líneas de servicio</span>
+      </div>
+      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat3 }}</span>
+        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Horas de diagnóstico inicial</span>
+      </div>
+      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
+        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat4 }}</span>
+        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Personas, contacto directo</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6;background:#e8e8e8;overflow:hidden;padding:18px 0;margin-top:clamp(44px,6vw,80px)">
+    <div style="display:flex;width:max-content;animation:suxtr-marquee 30s linear infinite;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a0a6ae">
       <div style="display:flex;gap:44px;padding-right:44px">
         <span>RAG</span><span style="color:#10699f">◆</span><span>Automatizaciones</span><span style="color:#10699f">◆</span><span>Formación</span><span style="color:#10699f">◆</span><span>Asesoramiento</span><span style="color:#10699f">◆</span><span>Desarrollo end to end</span><span style="color:#10699f">◆</span>
       </div>
@@ -231,29 +247,29 @@ window.__resources = {
   <section id="servicios" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">01</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">01</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Qué hacemos</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(28px,4vw,50px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Cinco líneas de trabajo que se combinan según el caso. Pulsa en cada una para ver qué incluye.</p>
 
-      <div style="display:flex;flex-direction:column;border-top:1px solid #e2ddd2">
+      <div style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6">
         <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
-          <div onClick="{{ s.toggle }}" style="cursor:pointer;padding:clamp(20px,2.8vw,32px) 0;border-bottom:1px solid #e2ddd2;transition:padding-left .3s ease,background .3s ease" style-hover="padding-left:18px;background:#070a0e" class="suxtr-rise">
+          <div onClick="{{ s.toggle }}" style="cursor:pointer;padding:clamp(20px,2.8vw,32px) 0;border-bottom:1px solid #d6d6d6;transition:padding-left .3s ease,background .3s ease" style-hover="padding-left:18px;background:#ffffff" class="suxtr-rise">
             <div style="display:flex;align-items:flex-start;gap:16px">
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#10699f;width:32px;flex:none;padding-top:10px">{{ s.num }}</span>
+              <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;color:#10699f;width:32px;flex:none;padding-top:10px">{{ s.num }}</span>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
                 <h3 style="margin:0;font-size:clamp(22px,3vw,38px);letter-spacing:-.02em;font-weight:600;color:{{ s.titleColor }}">{{ s.title }}</h3>
                 <p style="margin:0;max-width:64ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">{{ s.desc }}</p>
                 <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
                   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:8px;animation:suxtr-rise .45s ease both">
                     <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="3">
-                      <div style="border:1px solid #e2ddd2;background:#f1eee6;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.55;color:#3d444c">{{ it }}</div>
+                      <div style="border:1px solid #d6d6d6;background:#e8e8e8;padding:14px 16px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12.5px;line-height:1.55;color:#3d444c">{{ it }}</div>
                     </sc-for>
                   </div>
                 </sc-if>
               </div>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:#10699f;flex:none;padding-top:6px;transition:transform .3s ease;transform:{{ s.iconTransform }}">+</span>
+              <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:20px;color:#10699f;flex:none;padding-top:6px;transition:transform .3s ease;transform:{{ s.iconTransform }}">+</span>
             </div>
           </div>
         </sc-for>
@@ -261,30 +277,30 @@ window.__resources = {
     </div>
   </section>
 
-  <section id="sectores" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2">
+  <section id="sectores" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">02</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">02</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Dónde encaja</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Ejemplos de trabajo que podemos abordar hoy, por sector.</p>
 
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(20px,2.4vw,32px)">
         <sc-for list="{{ sectors }}" as="sec" hint-placeholder-count="5">
-          <button onClick="{{ sec.select }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;border-radius:999px;border:1px solid {{ sec.border }};background:{{ sec.bg }};color:{{ sec.color }};transition:all .2s ease">{{ sec.name }}</button>
+          <button onClick="{{ sec.select }}" style="cursor:pointer;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;border-radius:0;border:1px solid {{ sec.border }};background:{{ sec.bg }};color:{{ sec.color }};transition:all .2s ease">{{ sec.name }}</button>
         </sc-for>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.4vw,34px);border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(24px,3.4vw,46px);animation:{{ sectorAnim }} .5s cubic-bezier(.16,.84,.28,1) both">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.4vw,34px);border:1px solid #d6d6d6;background:#ffffff;padding:clamp(24px,3.4vw,46px);animation:{{ sectorAnim }} .5s cubic-bezier(.16,.84,.28,1) both">
         <div style="display:flex;flex-direction:column;gap:14px">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">{{ activeSectorName }}</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">{{ activeSectorName }}</span>
           <h3 style="margin:0;font-size:clamp(22px,2.8vw,34px);letter-spacing:-.02em;font-weight:600;line-height:1.15;text-wrap:balance">{{ activeSectorHeadline }}</h3>
           <p style="margin:0;color:#5b636c;font-size:15.5px;line-height:1.65;max-width:52ch;text-wrap:pretty">{{ activeSectorBody }}</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
           <sc-for list="{{ activeSectorPoints }}" as="p" hint-placeholder-count="3">
-            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid #e2ddd2;background:#f1eee6">
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid #d6d6d6;background:#e8e8e8">
               <span style="width:7px;height:7px;border-radius:50%;background:#2f9be0;flex:none;margin-top:7px"></span>
               <span style="color:#3d444c;font-size:14.5px;line-height:1.55">{{ p }}</span>
             </div>
@@ -297,85 +313,85 @@ window.__resources = {
   <section id="caso" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">03</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">03</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Un caso, de principio a fin</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Piloto propio sobre documentación técnica, construido para validar el proceso completo antes de llevarlo a cliente. Mismo recorrido que seguiríamos con vosotros.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#faf8f3">
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">El problema</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#ffffff">
+        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">El problema</span>
           <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">1.500 documentos, ninguna forma de buscar</h3>
           <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Manuales, procedimientos y fichas repartidos en carpetas compartidas, con nombres inconsistentes y versiones duplicadas. Encontrar un dato concreto exigía preguntar a la persona que lo escribió.</p>
         </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Qué hicimos</span>
+        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Qué hicimos</span>
           <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">RAG con cita obligatoria a la fuente</h3>
           <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Ingesta y limpieza del corpus, índice vectorial, y un asistente que solo responde con pasajes recuperados y enlace al documento. Batería de 120 preguntas reales para medir antes de abrirlo.</p>
         </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Resultado medido</span>
+        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:14px" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Resultado medido</span>
           <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:-.015em">94% de respuestas correctas con fuente</h3>
           <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Sobre la batería de evaluación, con el 6% restante devolviendo "no encontrado" en lugar de inventar. Tiempo medio de consulta: de minutos de búsqueda manual a segundos.</p>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(16px,2vw,24px);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">
-        <span style="padding:9px 14px;border:1px solid #e2ddd2">3 semanas</span>
-        <span style="padding:9px 14px;border:1px solid #e2ddd2">1.482 documentos</span>
-        <span style="padding:9px 14px;border:1px solid #e2ddd2">Despliegue on-premise</span>
-        <span style="padding:9px 14px;border:1px solid #e2ddd2">Evaluación reproducible</span>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(16px,2vw,24px);font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">
+        <span style="padding:9px 14px;border:1px solid #d6d6d6">3 semanas</span>
+        <span style="padding:9px 14px;border:1px solid #d6d6d6">1.482 documentos</span>
+        <span style="padding:9px 14px;border:1px solid #d6d6d6">Despliegue on-premise</span>
+        <span style="padding:9px 14px;border:1px solid #d6d6d6">Evaluación reproducible</span>
       </div>
     </div>
   </section>
 
-  <section id="calculadora" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2">
+  <section id="calculadora" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">04</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">04</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cuánto trabajo os quita</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Estimación rápida con vuestros números. Mover los tres valores da una idea del orden de magnitud, no un presupuesto.</p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.4vw,34px);align-items:stretch">
-        <div style="border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:clamp(20px,2.4vw,30px)">
+        <div style="border:1px solid #d6d6d6;background:#ffffff;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;gap:clamp(20px,2.4vw,30px)">
           <div style="display:flex;flex-direction:column;gap:10px">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Personas implicadas</span>
+              <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Personas implicadas</span>
               <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcPeople }}</span>
             </div>
             <input type="range" min="1" max="60" value="{{ calcPeople }}" onChange="{{ setPeople }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Horas a la semana en tareas repetitivas</span>
+              <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Horas a la semana en tareas repetitivas</span>
               <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcHours }} h</span>
             </div>
             <input type="range" min="1" max="30" value="{{ calcHours }}" onChange="{{ setHours }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Coste medio por hora</span>
+              <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Coste medio por hora</span>
               <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcRate }} €</span>
             </div>
             <input type="range" min="12" max="90" value="{{ calcRate }}" onChange="{{ setRate }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
           </div>
         </div>
 
-        <div style="border:1px solid #2f9be0;background:#faf8f3;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.2vw,26px)">
+        <div style="border:1px solid #2f9be0;background:#ffffff;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.2vw,26px)">
           <div style="display:flex;flex-direction:column;gap:6px">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Horas al año en esas tareas</span>
-            <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1">{{ calcTotalHours }}</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Horas al año en esas tareas</span>
+            <span class="suxtr-num" style="font-family:'Inter Tight',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1">{{ calcTotalHours }}</span>
           </div>
-          <span style="height:1px;background:#e2ddd2"></span>
+          <span style="height:1px;background:#d6d6d6"></span>
           <div style="display:flex;flex-direction:column;gap:6px">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Recuperable automatizando el 60%</span>
-            <span class="suxtr-num" style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1;color:#10699f">{{ calcSaving }}</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Recuperable automatizando el 60%</span>
+            <span class="suxtr-num" style="font-family:'Inter Tight',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1;color:#10699f">{{ calcSaving }}</span>
             <span class="suxtr-num" style="color:#5b636c;font-size:14.5px">equivale a {{ calcSavedHours }} horas liberadas al año</span>
           </div>
-          <a href="#contacto" style="margin-top:6px;display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#10699f" class="suxtr-ul">Validar el número con nosotros →</a>
+          <a href="#contacto" style="margin-top:6px;display:inline-flex;align-items:center;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#10699f" class="suxtr-ul">Validar el número con nosotros →</a>
         </div>
       </div>
     </div>
@@ -384,39 +400,39 @@ window.__resources = {
   <section id="metodo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(28px,4vw,52px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">05</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">05</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cómo trabajamos</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#faf8f3">
-        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#ffffff">
+        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
           <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">1</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semana 1</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">1</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semana 1</span>
           </div>
           <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Diagnóstico</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Entendemos el proceso, los datos disponibles y dónde se pierde tiempo. Salimos con una lista de casos ordenada por impacto y coste.</p>
         </div>
-        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
           <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">2</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semanas 2-4</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">2</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Semanas 2-4</span>
           </div>
           <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Prototipo</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Algo que se puede probar con vuestros datos reales y medir contra el proceso actual. Si no funciona, se sabe pronto y barato.</p>
         </div>
-        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
           <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">3</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Producción</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">3</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Producción</span>
           </div>
           <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Despliegue</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Integración con vuestros sistemas, permisos, monitorización y documentación. Más formación al equipo que lo va a usar.</p>
         </div>
-        <div style="position:relative;background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#f1eee6" class="suxtr-rise">
+        <div style="position:relative;background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-height:240px;transition:background .3s ease" style-hover="background:#e8e8e8" class="suxtr-rise">
           <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:44px;line-height:1;color:#dcd6c8">4</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Continuo</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:44px;line-height:1;color:#d0d0d0">4</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#10699f">Continuo</span>
           </div>
           <h3 style="margin:0;font-size:19px;font-weight:600;letter-spacing:-.01em">Mejora</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Revisamos resultados con métricas acordadas, ajustamos y ampliamos al siguiente caso de la lista.</p>
@@ -425,30 +441,30 @@ window.__resources = {
     </div>
   </section>
 
-  <section style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2;border-bottom:1px solid #e2ddd2">
+  <section style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(28px,4vw,52px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">06</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">06</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Por qué con nosotros</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(16px,2vw,26px)">
-        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Producción, no demos</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">El objetivo es un sistema que se use a diario, con mantenimiento previsto, no una prueba que se apaga al mes.</p>
         </div>
-        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Vuestros datos, vuestro control</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Elegimos el modelo y el despliegue según vuestros requisitos de privacidad, incluida opción en vuestra propia infraestructura.</p>
         </div>
-        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Equipo pequeño, sin capas</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Quien habla con vosotros es quien construye. Sin comerciales intermedios ni traspasos de proyecto.</p>
         </div>
-        <div style="border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#faf8f3;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;background:#ffffff;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
           <span style="width:12px;height:12px;border-radius:50%;background:#2f9be0"></span>
           <h3 style="margin:0;font-size:18px;font-weight:600">Alcance cerrado por fases</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Cada fase tiene entregable, plazo y precio definidos antes de empezar. Decidís si continuar al final de cada una.</p>
@@ -457,8 +473,8 @@ window.__resources = {
     </div>
   </section>
 
-  <div style="position:relative;border-bottom:1px solid #e2ddd2;background:#faf8f3;overflow:hidden;padding:16px 0">
-    <div style="display:flex;width:max-content;animation:suxtr-marquee-rev 34s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#a0a6ae">
+  <div style="position:relative;border-bottom:1px solid #d6d6d6;background:#ffffff;overflow:hidden;padding:16px 0">
+    <div style="display:flex;width:max-content;animation:suxtr-marquee-rev 34s linear infinite;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#a0a6ae">
       <div style="display:flex;gap:36px;padding-right:36px">
         <span>Python</span><span>·</span><span>LLMs</span><span>·</span><span>Bases de datos vectoriales</span><span>·</span><span>Orquestación de agentes</span><span>·</span><span>Evaluación</span><span>·</span><span>Cloud y on-premise</span><span>·</span><span>APIs</span><span>·</span><span>Integraciones ERP/CRM</span><span>·</span>
       </div>
@@ -468,33 +484,33 @@ window.__resources = {
     </div>
   </div>
 
-  <section id="precios" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-bottom:1px solid #e2ddd2">
+  <section id="precios" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">07</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">07</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cómo empezamos</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Tres formas de entrar, de menor a mayor compromiso. Cada solución es completamente personalizada, así que el alcance y la propuesta se definen con vosotros antes de empezar.</p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(16px,2vw,26px)">
-        <div style="border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 0</span>
+        <div style="border:1px solid #d6d6d6;background:#ffffff;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 0</span>
           <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Sesión de diagnóstico</h3>
-          <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Sin coste</span>
+          <span style="font-family:'Inter Tight',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Sin coste</span>
           <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Una hora con vosotros para entender el proceso y decir con franqueza si hay algo que merezca la pena. Salís con una lista de candidatos priorizada.</p>
         </div>
-        <div style="position:relative;border:1px solid #2f9be0;background:#faf8f3;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:transform .3s ease" style-hover="transform:translateY(-5px)" class="suxtr-rise">
-          <span style="position:absolute;top:-1px;right:-1px;padding:7px 12px;background:#14171a;color:#faf8f3;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Recomendado</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Fase 1</span>
+        <div style="position:relative;border:1px solid #2f9be0;background:#ffffff;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:transform .3s ease" style-hover="transform:translateY(-5px)" class="suxtr-rise">
+          <span style="position:absolute;top:-1px;right:-1px;padding:7px 12px;background:#14171a;color:#ffffff;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Recomendado</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">Fase 1</span>
           <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Prototipo medible</h3>
-          <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">2 a 4 semanas</span>
+          <span style="font-family:'Inter Tight',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">2 a 4 semanas</span>
           <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Un caso concreto funcionando con vuestros datos reales y una evaluación que dice si vale la pena escalarlo.</p>
         </div>
-        <div style="border:1px solid #e2ddd2;background:#faf8f3;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 2</span>
+        <div style="border:1px solid #d6d6d6;background:#ffffff;padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;gap:16px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#14171a;transform:translateY(-5px)" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Fase 2</span>
           <h3 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em">Producción y evolución</h3>
-          <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Según alcance</span>
+          <span style="font-family:'Inter Tight',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em">Según alcance</span>
           <p style="margin:0;color:#5b636c;font-size:15px;line-height:1.65">Integración, despliegue, formación y mantenimiento. Por proyecto cerrado o por acompañamiento continuo, según lo que os encaje.</p>
         </div>
       </div>
@@ -502,32 +518,32 @@ window.__resources = {
   </section>
 
   <section id="datos" style="position:relative;padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);overflow:hidden">
-    <div style="position:absolute;inset:0;background-image:radial-gradient(#dcd6c8 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background-image:radial-gradient(#d0d0d0 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
     <div style="position:relative;max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">08</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">08</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Vuestros datos</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(26px,3.4vw,44px);max-width:62ch;color:#5b636c;font-size:16px;line-height:1.65;text-wrap:pretty">Es la primera pregunta que nos hacen, así que la respondemos antes de que la hagáis.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#faf8f3">
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">01</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#ffffff">
+        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">01</span>
           <h3 style="margin:0;font-size:18px;font-weight:700">Confidencialidad por escrito</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Acuerdo firmado antes de ver un solo documento vuestro.</p>
         </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">02</span>
+        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">02</span>
           <h3 style="margin:0;font-size:18px;font-weight:700">Opción on-premise</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Si los datos no pueden salir de vuestra red, el sistema se despliega dentro de ella.</p>
         </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">03</span>
+        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">03</span>
           <h3 style="margin:0;font-size:18px;font-weight:700">Sin entrenar con lo vuestro</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Trabajamos con proveedores que no usan vuestros datos para entrenar modelos, y lo dejamos documentado.</p>
         </div>
-        <div style="background:#faf8f3;box-shadow:0 0 0 1px #e2ddd2;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#10699f">04</span>
+        <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px" class="suxtr-rise">
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:22px;color:#10699f">04</span>
           <h3 style="margin:0;font-size:18px;font-weight:700">Permisos heredados</h3>
           <p style="margin:0;color:#5b636c;font-size:14.5px;line-height:1.6">Cada usuario solo recupera la documentación a la que ya tiene acceso en vuestros sistemas.</p>
         </div>
@@ -535,55 +551,55 @@ window.__resources = {
     </div>
   </section>
 
-  <section id="equipo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#f1eee6;border-top:1px solid #e2ddd2">
+  <section id="equipo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(20px,2.6vw,36px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">09</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">09</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Quiénes somos</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
       <p style="margin:0 0 clamp(24px,3vw,40px);max-width:58ch;color:#3d444c;font-size:clamp(15px,1.3vw,18px);line-height:1.6;text-wrap:pretty">Tres fundadores. Cada proyecto lo lleva uno de nosotros de principio a fin.</p>
 
-      <div style="position:relative;margin:0 0 clamp(16px,2vw,28px);border:1px solid #e2ddd2;background:#f1eee6;overflow:hidden" class="suxtr-rise">
+      <div style="position:relative;margin:0 0 clamp(16px,2vw,28px);border:1px solid #d6d6d6;background:#e8e8e8;overflow:hidden" class="suxtr-rise">
         <img src="assets/equipo-suxtrai.jpg" alt="Jon Medina, Ibai García y Asier Merino" style="display:block;width:100%;height:clamp(300px,38vw,500px);object-fit:cover;object-position:center 45%;filter:saturate(.8) contrast(1.03) brightness(.94);transition:filter .6s ease" style-hover="filter:saturate(1) contrast(1) brightness(1)" />
         <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.22) 0%, transparent 34%, rgba(0,0,0,.72) 100%);pointer-events:none"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:clamp(12px,1.6vw,20px) clamp(12px,2vw,24px);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#ffffff;pointer-events:none">
+        <div style="position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:clamp(12px,1.6vw,20px) clamp(12px,2vw,24px);font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#ffffff;pointer-events:none">
           <span style="text-align:left">Jon Medina</span>
           <span style="text-align:center">Ibai García</span>
           <span style="text-align:right">Asier Merino</span>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,28px)">
-        <div style="position:relative;border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
           <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:38px;color:#10699f;letter-spacing:-.02em">JM</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:38px;color:#10699f;letter-spacing:-.02em">JM</span>
             <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out 0s infinite"></span>
           </div>
           <div style="display:flex;flex-direction:column;gap:8px">
             <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.015em">Jon Medina</h3>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
             <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Desarrollo, integraciones y puesta en producción.</p>
           </div>
         </div>
-        <div style="position:relative;border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
           <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:38px;color:#10699f;letter-spacing:-.02em">IG</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:38px;color:#10699f;letter-spacing:-.02em">IG</span>
             <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out .6s infinite"></span>
           </div>
           <div style="display:flex;flex-direction:column;gap:8px">
             <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.015em">Ibai García</h3>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
             <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Formación, evaluación de modelos y datos.</p>
           </div>
         </div>
-        <div style="position:relative;border:1px solid #e2ddd2;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
+        <div style="position:relative;border:1px solid #d6d6d6;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;overflow:hidden;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#10699f;transform:translateY(-5px)" class="suxtr-rise">
           <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:38px;color:#10699f;letter-spacing:-.02em">AM</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:38px;color:#10699f;letter-spacing:-.02em">AM</span>
             <span style="width:9px;height:9px;border-radius:50%;background:#2f9be0;animation:suxtr-pulse 3s ease-in-out 1.2s infinite"></span>
           </div>
           <div style="display:flex;flex-direction:column;gap:8px">
             <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.015em">Asier Merino</h3>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Cofundador</span>
             <p style="margin:6px 0 0;color:#5b636c;font-size:14.5px;line-height:1.6">Diagnóstico de procesos y diseño de solución.</p>
           </div>
         </div>
@@ -592,17 +608,17 @@ window.__resources = {
     </div>
   </section>
 
-  <section id="faq" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);border-top:1px solid #e2ddd2">
+  <section id="faq" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);border-top:1px solid #d6d6d6">
     <div style="max-width:960px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(24px,3vw,44px)">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#10699f">10</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">10</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Preguntas frecuentes</h2>
-        <span style="flex:1;height:1px;background:#e2ddd2" class="suxtr-line"></span>
+        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
-      <div style="display:flex;flex-direction:column;border-top:1px solid #e2ddd2">
+      <div style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
-          <div onClick="{{ f.toggle }}" style="cursor:pointer;padding:22px 0;border-bottom:1px solid #e2ddd2;display:flex;gap:16px;align-items:flex-start;transition:padding-left .3s ease" style-hover="padding-left:12px">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:18px;color:#10699f;flex:none;transition:transform .3s ease;transform:{{ f.iconTransform }}">+</span>
+          <div onClick="{{ f.toggle }}" style="cursor:pointer;padding:22px 0;border-bottom:1px solid #d6d6d6;display:flex;gap:16px;align-items:flex-start;transition:padding-left .3s ease" style-hover="padding-left:12px">
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:18px;color:#10699f;flex:none;transition:transform .3s ease;transform:{{ f.iconTransform }}">+</span>
             <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px">
               <h3 style="margin:0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.01em;color:{{ f.titleColor }}">{{ f.q }}</h3>
               <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
@@ -615,84 +631,181 @@ window.__resources = {
     </div>
   </section>
 
-  <section id="contacto" style="position:relative;padding:clamp(70px,9vw,140px) clamp(16px,4vw,56px);border-top:1px solid #e2ddd2;overflow:hidden">
-    <div style="position:absolute;inset:0;background-image:radial-gradient(#dcd6c8 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
+  <section id="contacto" style="position:relative;padding:clamp(70px,9vw,140px) clamp(16px,4vw,56px);border-top:1px solid #d6d6d6;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(#d0d0d0 1px, transparent 1px);background-size:26px 26px;pointer-events:none"></div>
     <div style="position:absolute;bottom:-260px;left:50%;width:min(900px,120vw);height:520px;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(47,155,224,.18), transparent 70%);pointer-events:none"></div>
     <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(28px,4vw,72px);align-items:end">
       <div>
         <h2 style="margin:0;font-size:clamp(34px,6.4vw,86px);line-height:.95;letter-spacing:-.035em;font-weight:800;text-wrap:balance">Contadnos<br />vuestro caso.</h2>
         <p style="margin:22px 0 0;max-width:46ch;color:#3d444c;font-size:clamp(15px,1.3vw,18px);line-height:1.6;text-wrap:pretty">Treinta minutos bastan para saber si hay algo que merezca la pena automatizar. Si no lo hay, os lo diremos.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#737b85">
-          <span style="padding:8px 14px;border:1px solid #e2ddd2">Respuesta en 24 h</span>
-          <span style="padding:8px 14px;border:1px solid #e2ddd2">Primera sesión sin coste</span>
-          <span style="padding:8px 14px;border:1px solid #e2ddd2">Proyectos en España</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#737b85">
+          <span style="padding:8px 14px;border:1px solid #d6d6d6">Respuesta en 24 h</span>
+          <span style="padding:8px 14px;border:1px solid #d6d6d6">Primera sesión sin coste</span>
+          <span style="padding:8px 14px;border:1px solid #d6d6d6">Proyectos en España</span>
         </div>
-        <a href="{{ mailtoHref }}" class="suxtr-ul" style="display:inline-block;margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;letter-spacing:.04em">{{ contactEmail }}</a>
+        <a href="{{ mailtoHref }}" class="suxtr-ul" style="display:inline-block;margin-top:22px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:13.5px;letter-spacing:.04em">{{ contactEmail }}</a>
       </div>
-      <div style="border:1px solid #e2ddd2;background:#f1eee6;padding:clamp(22px,2.8vw,34px);display:flex;flex-direction:column;gap:16px">
+      <div style="border:1px solid #d6d6d6;background:#e8e8e8;padding:clamp(22px,2.8vw,34px);display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;flex-direction:column;gap:8px">
-          <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Nombre y empresa</label>
-          <input type="text" value="{{ formName }}" onChange="{{ setFormName }}" placeholder="Ane Uriarte · Talleres Bilbao" style="width:100%;padding:13px 14px;background:#faf8f3;border:1px solid #d7d1c4;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
+          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Nombre y empresa</label>
+          <input type="text" value="{{ formName }}" onChange="{{ setFormName }}" placeholder="Ane Uriarte · Talleres Bilbao" style="width:100%;padding:13px 14px;background:#ffffff;border:1px solid #c8c8c8;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
         </div>
         <div style="display:flex;flex-direction:column;gap:8px">
-          <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Correo</label>
-          <input type="email" value="{{ formEmail }}" onChange="{{ setFormEmail }}" placeholder="ane@empresa.com" style="width:100%;padding:13px 14px;background:#faf8f3;border:1px solid #d7d1c4;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
+          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Correo</label>
+          <input type="email" value="{{ formEmail }}" onChange="{{ setFormEmail }}" placeholder="ane@empresa.com" style="width:100%;padding:13px 14px;background:#ffffff;border:1px solid #c8c8c8;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
         </div>
         <div style="display:flex;flex-direction:column;gap:8px">
-          <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Qué proceso os quita tiempo</label>
-          <textarea rows="4" value="{{ formMsg }}" onChange="{{ setFormMsg }}" placeholder="Cada semana revisamos a mano unas 300 facturas de proveedor..." style="width:100%;padding:13px 14px;background:#faf8f3;border:1px solid #d7d1c4;color:#14171a;font-size:15px;border-radius:2px;outline:none;resize:vertical;line-height:1.55" style-focus="border-color:#10699f"></textarea>
+          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Qué proceso os quita tiempo</label>
+          <textarea rows="4" value="{{ formMsg }}" onChange="{{ setFormMsg }}" placeholder="Cada semana revisamos a mano unas 300 facturas de proveedor..." style="width:100%;padding:13px 14px;background:#ffffff;border:1px solid #c8c8c8;color:#14171a;font-size:15px;border-radius:2px;outline:none;resize:vertical;line-height:1.55" style-focus="border-color:#10699f"></textarea>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
           <sc-for list="{{ interests }}" as="it" hint-placeholder-count="5">
-            <button onClick="{{ it.toggle }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;border-radius:999px;border:1px solid {{ it.border }};background:{{ it.bg }};color:{{ it.color }};transition:all .2s ease">{{ it.name }}</button>
+            <button onClick="{{ it.toggle }}" style="cursor:pointer;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;border-radius:0;border:1px solid {{ it.border }};background:{{ it.bg }};color:{{ it.color }};transition:all .2s ease">{{ it.name }}</button>
           </sc-for>
         </div>
-        <button onClick="{{ submitForm }}" style="cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:18px 22px;background:#14171a;color:#faf8f3;border:none;border-radius:2px;font-weight:600;font-size:16px;transition:background .2s ease,transform .2s ease" style-hover="background:#10699f;transform:translateY(-2px)">
+        <button onClick="{{ submitForm }}" style="cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:18px 22px;background:#14171a;color:#ffffff;border:none;border-radius:2px;font-weight:600;font-size:16px;transition:background .2s ease,transform .2s ease" style-hover="background:#10699f;transform:translateY(-2px)">
           <span>Enviar</span>
-          <span style="font-family:'IBM Plex Mono',monospace">→</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif">→</span>
         </button>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:#a0a6ae">Se abre vuestro correo con el mensaje redactado a {{ contactEmail }}. Nada se guarda en esta web.</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#a0a6ae">Se abre vuestro correo con el mensaje redactado a {{ contactEmail }}. Nada se guarda en esta web.</span>
       </div>
     </div>
   </section>
 
-  <footer style="border-top:1px solid #e2ddd2;padding:clamp(34px,4vw,56px) clamp(16px,4vw,56px) 26px">
+  <footer style="background:#14171a;border-top:1px solid #2a3037;padding:clamp(34px,4vw,56px) clamp(16px,4vw,56px) 26px">
     <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(24px,3vw,48px)">
       <div style="display:flex;flex-direction:column;gap:14px">
-        <span style="font-family:'Bricolage Grotesque','Space Grotesk',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#14171a">suxtr<span style="color:#10699f">AI</span></span>
-        <p style="margin:0;max-width:34ch;color:#737b85;font-size:14px;line-height:1.6">Soluciones de IA a medida para empresas. RAG, automatizaciones, formación y desarrollo end to end.</p>
+        <span style="font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#ffffff">suxtr<span style="color:#5fb6ea">AI</span></span>
+        <p style="margin:0;max-width:34ch;color:#9aa3ad;font-size:14px;line-height:1.6">Soluciones de IA a medida para empresas. RAG, automatizaciones, formación y desarrollo end to end.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
-        <span style="color:#a0a6ae">Secciones</span>
-        <a href="#servicios" style="color:#5b636c" style-hover="color:#10699f">Servicios</a>
-        <a href="#caso" style="color:#5b636c" style-hover="color:#10699f">Caso</a>
-        <a href="#precios" style="color:#5b636c" style-hover="color:#10699f">Cómo empezamos</a>
-        <a href="#faq" style="color:#5b636c" style-hover="color:#10699f">FAQ</a>
+      <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
+        <span style="color:#6f7882">Secciones</span>
+        <a href="#servicios" style="color:#c3c9d0" style-hover="color:#5fb6ea">Servicios</a>
+        <a href="#caso" style="color:#c3c9d0" style-hover="color:#5fb6ea">Caso</a>
+        <a href="#precios" style="color:#c3c9d0" style-hover="color:#5fb6ea">Cómo empezamos</a>
+        <a href="#faq" style="color:#c3c9d0" style-hover="color:#5fb6ea">FAQ</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
-        <span style="color:#a0a6ae">Contacto</span>
-        <a href="{{ mailtoHref }}" style="color:#5b636c;text-transform:none;letter-spacing:.04em" style-hover="color:#10699f">{{ contactEmail }}</a>
-        <span style="color:#5b636c">Euskadi · España</span>
+      <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
+        <span style="color:#6f7882">Contacto</span>
+        <a href="{{ mailtoHref }}" style="color:#c3c9d0;text-transform:none;letter-spacing:.04em" style-hover="color:#5fb6ea">{{ contactEmail }}</a>
+        <span style="color:#c3c9d0">Euskadi · España</span>
       </div>
     </div>
-    <div style="max-width:1280px;margin:clamp(28px,3vw,44px) auto 0;padding-top:20px;border-top:1px solid #e2ddd2;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#a0a6ae">
+    <div style="max-width:1280px;margin:clamp(28px,3vw,44px) auto 0;padding-top:20px;border-top:1px solid #2a3037;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f7882">
       <span>© 2026 SuxtrAI</span>
       <span>Asier Merino · Jon Medina · Ibai García</span>
     </div>
   </footer>
 
-  <div style="position:fixed;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Space Grotesk',Helvetica,sans-serif">
+
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="Menú" style="position:fixed;inset:0;z-index:100;background:#171a1f;color:#ffffff;overflow-y:auto;animation:suxtr-fade .25s ease both">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;margin:24px clamp(10px,1.4vw,20px) 0;padding:0 8px 0 clamp(16px,2vw,28px)">
+        <a href="#top" onClick="{{ closeMenu }}" class="suxtr-logo" style="display:flex;align-items:center;flex:none">
+      <svg viewBox="0 0 248 64" style="height:40px;width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
+        <g stroke="#2f9be0" stroke-width="1.6" fill="none" opacity="0.85">
+          <line class="suxtr-edge" style="animation-delay:.05s" x1="28" y1="30" x2="28" y2="13" />
+          <line class="suxtr-edge" style="animation-delay:.1s" x1="28" y1="30" x2="14" y2="22" />
+          <line class="suxtr-edge" style="animation-delay:.15s" x1="28" y1="30" x2="44" y2="22" />
+          <line class="suxtr-edge" style="animation-delay:.2s" x1="28" y1="30" x2="16" y2="34" />
+          <line class="suxtr-edge" style="animation-delay:.25s" x1="28" y1="30" x2="36" y2="38" />
+          <line class="suxtr-edge" style="animation-delay:.3s" x1="36" y1="38" x2="46" y2="40" />
+          <line class="suxtr-edge" style="animation-delay:.35s" x1="36" y1="38" x2="22" y2="48" />
+          <line class="suxtr-edge" style="animation-delay:.4s" x1="36" y1="38" x2="36" y2="52" />
+        </g>
+        <circle class="suxtr-node" style="animation-delay:.02s" cx="28" cy="30" r="5.6" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.24s" cx="36" cy="38" r="4.2" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.1s" cx="28" cy="13" r="4.6" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.16s" cx="44" cy="22" r="3.6" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.32s" cx="46" cy="40" r="3.2" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.38s" cx="22" cy="48" r="4" fill="#2f9be0" />
+        <circle class="suxtr-node" style="animation-delay:.14s" cx="14" cy="22" r="3" fill="#ffffff" />
+        <circle class="suxtr-node" style="animation-delay:.22s" cx="16" cy="34" r="2.6" fill="#ffffff" />
+        <circle class="suxtr-node" style="animation-delay:.44s" cx="36" cy="52" r="2.6" fill="#ffffff" />
+        <text class="suxtr-word" style="animation-delay:.3s" x="66" y="45" font-family="'Space Grotesk', Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5">
+          <tspan fill="#ffffff">suxtr</tspan><tspan fill="#2f9be0">AI</tspan>
+        </text>
+      </svg>
+        </a>
+        <div style="display:flex;align-items:center;gap:8px">
+          <a href="#contacto" onClick="{{ closeMenu }}" class="suxtr-cta" style="height:46px;padding:0 clamp(18px,2.2vw,34px);display:flex;align-items:center;background:transparent;border:1px solid rgba(255,255,255,.55);color:#ffffff;font-size:16px;font-weight:500;letter-spacing:-.01em;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#ffffff;color:#14171a">Hablemos</a>
+          <button onClick="{{ toggleMenu }}" aria-label="Cerrar menú" style="cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#ffffff;color:#14171a;border:0;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">
+            <svg viewBox="0 0 24 24" style="width:22px;height:22px" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" fill="none"><line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" /></g></svg>
+          </button>
+        </div>
+      </div>
+
+      <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(36px,4vw,64px);padding:clamp(36px,5vw,72px) clamp(16px,2.4vw,32px) 72px">
+
+        <div style="border-top:1px solid rgba(255,255,255,.28);padding-top:22px;min-width:0">
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:clamp(24px,3vw,40px)">Navegación</div>
+          <nav style="display:flex;flex-direction:column;gap:6px;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.03em;font-weight:400;line-height:1.12">
+            <a href="#servicios" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Servicios</a>
+            <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ RAG y búsqueda</a>
+            <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ Automatizaciones</a>
+            <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ Formación</a>
+            <a href="#sectores" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Sectores</a>
+            <a href="#caso" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Caso</a>
+            <a href="#metodo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Método</a>
+            <a href="#precios" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Precios</a>
+            <a href="#equipo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Equipo</a>
+            <a href="#faq" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Preguntas frecuentes</a>
+            <a href="#contacto" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Contacto</a>
+          </nav>
+        </div>
+
+        <div style="border-top:1px solid rgba(255,255,255,.28);padding-top:22px;min-width:0">
+          <div style="display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:clamp(24px,3vw,40px)">
+            <span>Cómo empezamos</span>
+            <a href="#precios" onClick="{{ closeMenu }}" style="color:#ffffff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#5fb6ea">Ver precios ↗</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:30px">
+            <div>
+              <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.58)">Fase 0 · Sin coste</div>
+              <div style="margin-top:10px;font-size:clamp(20px,1.7vw,26px);letter-spacing:-.02em;line-height:1.2">Sesión de diagnóstico</div>
+              <p style="margin:10px 0 0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.76);max-width:44ch">Una hora con vosotros para entender el proceso y decir con franqueza si hay algo que merezca la pena. Salís con una lista de candidatos priorizada.</p>
+            </div>
+            <div>
+              <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.58)">Fase 1 · 2 a 4 semanas</div>
+              <div style="margin-top:10px;font-size:clamp(20px,1.7vw,26px);letter-spacing:-.02em;line-height:1.2">Prototipo medible</div>
+              <p style="margin:10px 0 0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.76);max-width:44ch">Un caso concreto funcionando con vuestros datos reales y una evaluación que dice si vale la pena escalarlo.</p>
+            </div>
+            <div>
+              <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.58)">Fase 2 · Según alcance</div>
+              <div style="margin-top:10px;font-size:clamp(20px,1.7vw,26px);letter-spacing:-.02em;line-height:1.2">Producción y evolución</div>
+              <p style="margin:10px 0 0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.76);max-width:44ch">Integración, despliegue, formación y mantenimiento. Por proyecto cerrado o por acompañamiento continuo, según lo que os encaje.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid rgba(255,255,255,.28);padding-top:22px;min-width:0">
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:clamp(24px,3vw,40px)">Hablemos</div>
+          <p style="margin:0;font-size:clamp(20px,1.9vw,28px);letter-spacing:-.02em;line-height:1.3;max-width:26ch;text-wrap:pretty">Treinta minutos bastan para saber si hay algo que merezca la pena automatizar. Si no lo hay, os lo diremos.</p>
+          <a href="{{ mailtoHref }}" style="display:inline-block;margin-top:24px;font-size:17px;color:#ffffff;text-decoration:underline;text-underline-offset:4px" style-hover="color:#5fb6ea">↳ {{ contactEmail }}</a>
+          <div style="margin-top:clamp(36px,5vw,72px);padding-top:22px;border-top:1px solid rgba(255,255,255,.28);display:flex;flex-direction:column;gap:10px;font-size:17px">
+            <a href="#datos" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Vuestros datos</a>
+            <a href="#metodo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Cómo trabajamos</a>
+            <span style="color:rgba(255,255,255,.58)">Euskadi · España</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:fixed;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Inter Tight',Helvetica,sans-serif">
     <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
-      <div style="width:min(92vw,372px);max-height:min(74vh,560px);display:flex;flex-direction:column;background:#faf8f3;border:1px solid #14171a;box-shadow:0 26px 70px rgba(20,23,26,.22);animation:suxtr-rise .35s cubic-bezier(.16,.84,.28,1) both">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#14171a;color:#faf8f3">
+      <div style="width:min(92vw,372px);max-height:min(74vh,560px);display:flex;flex-direction:column;background:#ffffff;border:1px solid #14171a;box-shadow:0 26px 70px rgba(20,23,26,.22);animation:suxtr-rise .35s cubic-bezier(.16,.84,.28,1) both">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#14171a;color:#ffffff">
           <div style="display:flex;align-items:center;gap:10px">
             <span style="width:9px;height:9px;border-radius:50%;background:#5fb6ea;animation:suxtr-pulse 2.6s ease-in-out infinite"></span>
             <div style="display:flex;flex-direction:column">
               <span style="font-size:14.5px;font-weight:600;letter-spacing:-.01em">Pregunta a SuxtrAI</span>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9aa3ad">Respuestas sobre la empresa</span>
+              <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9aa3ad">Respuestas sobre la empresa</span>
             </div>
           </div>
-          <button onClick="{{ toggleChat }}" style="cursor:pointer;background:transparent;border:1px solid #3a4148;color:#faf8f3;width:28px;height:28px;border-radius:50%;font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center" style-hover="border-color:#faf8f3">×</button>
+          <button onClick="{{ toggleChat }}" style="cursor:pointer;background:transparent;border:1px solid #3a4148;color:#ffffff;width:28px;height:28px;border-radius:0;font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center" style-hover="border-color:#ffffff">×</button>
         </div>
 
         <div id="suxtr-chat-scroll" style="flex:1;min-height:150px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px">
@@ -705,21 +818,21 @@ window.__resources = {
 
         <div style="display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px">
           <sc-for list="{{ chatChips }}" as="c" hint-placeholder-count="3">
-            <button onClick="{{ c.ask }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid #d7d1c4;background:transparent;color:#5b636c;transition:all .2s ease" style-hover="border-color:#14171a;color:#14171a">{{ c.label }}</button>
+            <button onClick="{{ c.ask }}" style="cursor:pointer;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:7px 11px;border-radius:0;border:1px solid #c8c8c8;background:transparent;color:#5b636c;transition:all .2s ease" style-hover="border-color:#14171a;color:#14171a">{{ c.label }}</button>
           </sc-for>
         </div>
 
-        <div style="display:flex;gap:8px;padding:12px 16px 16px;border-top:1px solid #e2ddd2">
-          <input type="text" value="{{ chatInput }}" onChange="{{ setChatInput }}" onKeyDown="{{ chatKey }}" placeholder="Escribe tu pregunta..." style="flex:1;min-width:0;padding:11px 12px;background:#ffffff;border:1px solid #d7d1c4;color:#14171a;font-size:14.5px;border-radius:2px;outline:none" style-focus="border-color:#2f9be0" />
-          <button onClick="{{ sendChat }}" style="cursor:pointer;flex:none;padding:11px 15px;background:#14171a;color:#faf8f3;border:none;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:13px" style-hover="background:#10699f">→</button>
+        <div style="display:flex;gap:8px;padding:12px 16px 16px;border-top:1px solid #d6d6d6">
+          <input type="text" value="{{ chatInput }}" onChange="{{ setChatInput }}" onKeyDown="{{ chatKey }}" placeholder="Escribe tu pregunta..." style="flex:1;min-width:0;padding:11px 12px;background:#ffffff;border:1px solid #c8c8c8;color:#14171a;font-size:14.5px;border-radius:2px;outline:none" style-focus="border-color:#2f9be0" />
+          <button onClick="{{ sendChat }}" style="cursor:pointer;flex:none;padding:11px 15px;background:#14171a;color:#ffffff;border:none;border-radius:2px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:13px" style-hover="background:#10699f">→</button>
         </div>
       </div>
     </sc-if>
 
-    <button onClick="{{ toggleChat }}" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 18px;background:#14171a;color:#faf8f3;border:none;border-radius:999px;box-shadow:0 14px 34px rgba(20,23,26,.24);font-size:14.5px;font-weight:600;letter-spacing:-.01em;transition:transform .2s ease,background .2s ease" style-hover="transform:translateY(-2px);background:#10699f">
+    <button onClick="{{ toggleChat }}" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 18px;background:#14171a;color:#ffffff;border:none;border-radius:0;box-shadow:0 14px 34px rgba(20,23,26,.24);font-size:14.5px;font-weight:600;letter-spacing:-.01em;transition:transform .2s ease,background .2s ease" style-hover="transform:translateY(-2px);background:#10699f">
       <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none" aria-hidden="true">
         <g stroke="#5fb6ea" stroke-width="1.5" fill="none"><line x1="12" y1="12" x2="12" y2="5" /><line x1="12" y1="12" x2="5.5" y2="15" /><line x1="12" y1="12" x2="18" y2="16" /></g>
-        <circle cx="12" cy="12" r="2.6" fill="#5fb6ea" /><circle cx="12" cy="5" r="1.9" fill="#faf8f3" /><circle cx="5.5" cy="15" r="1.9" fill="#faf8f3" /><circle cx="18" cy="16" r="1.9" fill="#faf8f3" />
+        <circle cx="12" cy="12" r="2.6" fill="#5fb6ea" /><circle cx="12" cy="5" r="1.9" fill="#ffffff" /><circle cx="5.5" cy="15" r="1.9" fill="#ffffff" /><circle cx="18" cy="16" r="1.9" fill="#ffffff" />
       </svg>
       <span>{{ chatButtonLabel }}</span>
     </button>
@@ -851,7 +964,7 @@ function kbAnswer(question) {
 }
 
 class Component extends DCLogic {
-  state = { openService: 0, openFaq: -1, sector: 0, sectorFlip: false, logLines: [], typedLine: "", stats: [0, 0, 0, 0],
+  state = { barOpen: true, menuOpen: false, openService: 0, openFaq: -1, sector: 0, sectorFlip: false, logLines: [], typedLine: "", stats: [0, 0, 0, 0],
     scrollPct: 0, people: 8, hours: 6, rate: 28,
     formName: "", formEmail: "", formMsg: "", picked: [], heroTyped: "",
     chatOpen: false, chatInput: "", chatMsgs: [{ who: "bot", text: "Hola. Soy el asistente de SuxtrAI: puedo contarte qué hacemos, cómo trabajamos, qué pasa con vuestros datos o cómo empezar. ¿Qué quieres saber?" }] };
@@ -869,6 +982,11 @@ class Component extends DCLogic {
     });
   };
 
+  setMenu = (open) => {
+    document.body.style.overflow = open ? "hidden" : "";
+    this.setState({ menuOpen: open });
+  };
+
   netRef = React.createRef();
   glowRef = React.createRef();
 
@@ -880,6 +998,8 @@ class Component extends DCLogic {
     this.animateStats();
     this.initGlow();
     this.initNetwork();
+    this.onKey = (e) => { if (e.key === "Escape" && this.state.menuOpen) this.setMenu(false); };
+    window.addEventListener("keydown", this.onKey);
     this.onScroll = () => {
       if (this.scrollQueued) return;
       this.scrollQueued = true;
@@ -903,6 +1023,8 @@ class Component extends DCLogic {
     if (this.onResize) window.removeEventListener("resize", this.onResize);
     window.removeEventListener("mousemove", this.onMove);
     window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("keydown", this.onKey);
+    document.body.style.overflow = "";
   }
 
   submit = () => {
@@ -961,7 +1083,7 @@ class Component extends DCLogic {
       w = bw; h = bh;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.max(22, Math.min(42, Math.round((w * h) / 26000)));
+      const count = Math.max(30, Math.min(70, Math.round((w * h) / 18000)));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * w, y: Math.random() * h,
         vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22,
@@ -985,6 +1107,7 @@ class Component extends DCLogic {
         this.raf = requestAnimationFrame(frame);
         return;
       }
+      if (window.scrollY > window.innerHeight * 1.15) { this.raf = requestAnimationFrame(frame); return; }
       ctx.clearRect(0, 0, w, h);
       for (const n of nodes) {
         n.x += n.vx; n.y += n.vy;
@@ -1028,7 +1151,7 @@ class Component extends DCLogic {
     frame();
   }
   typeHero() {
-    const phrase = "Inteligencia artificial a medida.";
+    const phrase = "Inteligencia artificial a\u00a0medida.";
     const el = document.getElementById("suxtr-hero-type");
     if (el) el.textContent = phrase.slice(0, this.hci);
     if (!this.herasing) {
@@ -1088,6 +1211,11 @@ class Component extends DCLogic {
     const sec = SECTORS[st.sector];
     return {
       contactEmail,
+      barOpen: st.barOpen,
+      closeBar: () => this.setState({ barOpen: false }),
+      menuOpen: st.menuOpen,
+      toggleMenu: () => this.setMenu(!this.state.menuOpen),
+      closeMenu: () => this.setMenu(false),
       mailtoHref: "mailto:" + contactEmail,
       netRef: this.netRef,
       glowRef: this.glowRef,
@@ -1114,9 +1242,9 @@ class Component extends DCLogic {
       })),
       sectors: SECTORS.map((s, i) => ({
         name: s.name,
-        border: st.sector === i ? "#2f9be0" : "#d7d1c4",
+        border: st.sector === i ? "#2f9be0" : "#c8c8c8",
         bg: st.sector === i ? "#2f9be0" : "transparent",
-        color: st.sector === i ? "#faf8f3" : "#5b636c",
+        color: st.sector === i ? "#ffffff" : "#5b636c",
         select: () => this.setState(p => ({ sector: i, sectorFlip: !p.sectorFlip }))
       })),
       sectorAnim: st.sectorFlip ? "suxtr-slide-in-b" : "suxtr-slide-in",
@@ -1149,17 +1277,17 @@ class Component extends DCLogic {
         text: m.text,
         align: m.who === "user" ? "flex-end" : "flex-start",
         bg: m.who === "user" ? "#14171a" : "#ffffff",
-        color: m.who === "user" ? "#faf8f3" : "#3d444c",
-        border: m.who === "user" ? "#14171a" : "#e2ddd2",
-        radius: m.who === "user" ? "10px 10px 2px 10px" : "10px 10px 10px 2px"
+        color: m.who === "user" ? "#ffffff" : "#3d444c",
+        border: m.who === "user" ? "#14171a" : "#d6d6d6",
+        radius: "2px"
       })),
       interests: ["RAG", "Automatizar", "Formación", "Asesoría", "Desarrollo"].map(name => {
         const on = st.picked.includes(name);
         return {
           name,
-          border: on ? "#2f9be0" : "#d7d1c4",
+          border: on ? "#2f9be0" : "#c8c8c8",
           bg: on ? "#2f9be0" : "transparent",
-          color: on ? "#faf8f3" : "#5b636c",
+          color: on ? "#ffffff" : "#5b636c",
           toggle: () => this.setState(p => ({ picked: on ? p.picked.filter(x => x !== name) : [...p.picked, name] }))
         };
       }),
