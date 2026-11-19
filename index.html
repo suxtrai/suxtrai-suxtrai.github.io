@@ -149,6 +149,9 @@ chk()})();
   @keyframes suxtr-draw2 { from { stroke-dashoffset: 1; opacity: 0; } 30% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
   .suxtr-edge2 { stroke-dasharray: 1; animation: suxtr-draw2 .7s ease both; }
   @media (prefers-reduced-motion: reduce) { .suxtr-edge2, .suxtr-node { animation: none !important; } }
+  .suxtr-svc-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+  .suxtr-ill-wrap { position: sticky; top: 110px; }
+  @media (max-width: 980px) { .suxtr-svc-grid { grid-template-columns: 1fr; } .suxtr-ill-wrap { display: none; } }
   @keyframes suxtr-fade2 { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @keyframes suxtr-fade3 { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   .suxtr-glow { position: relative; }
@@ -290,6 +293,7 @@ chk()})();
       </div>
       <p style="margin:0 0 clamp(28px,4vw,50px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Cinco líneas que se combinan según el caso. Pulsa en cada una para ver qué incluye.</p>
 
+      <div class="suxtr-svc-grid">
       <div style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6">
         <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
           <div onClick="{{ s.toggle }}" style="cursor:pointer;padding:clamp(20px,2.8vw,32px) 0;border-bottom:1px solid #d6d6d6;transition:padding-left .3s ease,background .3s ease" style-hover="padding-left:18px;background:#ffffff" class="suxtr-rise">
@@ -310,6 +314,126 @@ chk()})();
             </div>
           </div>
         </sc-for>
+      </div>
+        <aside class="suxtr-ill-wrap" aria-hidden="true">
+          <div style="border:1px solid #d6d6d6;background:#ffffff;padding:clamp(14px,1.6vw,22px)">
+            <sc-if value="{{ ill0 }}" hint-placeholder-val="{{ true }}">
+              <svg viewBox="0 0 460 340" width="100%" style="display:block" font-family="'Inter Tight',Helvetica,Arial,sans-serif">
+                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="54" y="52" width="96" height="124" fill="#e8e8e8" stroke="#c8c8c8"/>
+                  <rect x="44" y="42" width="96" height="124" fill="#f4f4f4" stroke="#c8c8c8"/>
+                  <rect x="34" y="32" width="96" height="124" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M48 52h40M48 66h68M48 80h60M48 94h68M48 122h56M48 136h40" stroke="#c8c8c8" stroke-width="3"/>
+                  <path d="M48 108h68" stroke="#2f9be0" stroke-width="4"/>
+                  <rect x="270" y="38" width="160" height="124" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M286 58h44" stroke="#14171a" stroke-width="3"/>
+                  <path d="M286 78h128M286 92h112M286 106h120" stroke="#c8c8c8" stroke-width="3"/>
+                  <rect x="286" y="124" width="92" height="22" fill="#2f9be0"/>
+                  <path d="M130 108C200 108 200 135 286 135" stroke="#2f9be0" stroke-width="2" pathLength="1" class="suxtr-edge2" style="animation-delay:.2s"/>
+                  <circle cx="130" cy="108" r="4" fill="#2f9be0" stroke="none"/>
+                  <rect x="34" y="226" width="396" height="48" rx="24" fill="#14171a" stroke="none"/>
+                  <circle cx="64" cy="250" r="9" stroke="#2f9be0" stroke-width="2.5"/>
+                  <path d="M71 257l7 7" stroke="#2f9be0" stroke-width="2.5"/>
+                  <path d="M96 250h150" stroke="#ffffff" stroke-width="3" opacity=".85"/>
+                  <path d="M350 226V168" stroke="#2f9be0" stroke-width="2" pathLength="1" class="suxtr-edge2" style="animation-delay:.5s"/>
+                  <path d="M344 176l6-8 6 8" stroke="#2f9be0" stroke-width="2"/>
+                </g>
+                <text x="294" y="139.5" font-size="10" fill="#ffffff" letter-spacing=".5">FUENTE [1]</text>
+                <text x="34" y="306" font-size="10.5" fill="#737b85" letter-spacing="1.4">PREGUNTA · BÚSQUEDA · RESPUESTA CON CITA</text>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ ill1 }}" hint-placeholder-val="{{ false }}">
+              <svg viewBox="0 0 460 340" width="100%" style="display:block" font-family="'Inter Tight',Helvetica,Arial,sans-serif">
+                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="24" y="132" width="84" height="58" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M24 134l42 30 42-30" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M108 161h46" stroke="#2f9be0" stroke-width="2" pathLength="1" class="suxtr-edge2" style="animation-delay:.1s"/>
+                  <circle cx="218" cy="161" r="24" fill="#2f9be0" stroke="none"/>
+                  <circle cx="218" cy="161" r="9" fill="#ffffff" stroke="none"/>
+                  <path d="M218 126v9M218 187v9M183 161h9M244 161h9M193 136l6 6M237 180l6 6M243 136l-6 6M199 180l-6 6" stroke="#2f9be0" stroke-width="6"/>
+                  <path d="M242 161C290 161 290 82 338 82M242 161H338M242 161C290 161 290 240 338 240" stroke="#2f9be0" stroke-width="2" pathLength="1" class="suxtr-edge2" style="animation-delay:.35s"/>
+                  <rect x="338" y="56" width="98" height="52" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M338 74h98M338 91h98M372 56v52M404 56v52" stroke="#c8c8c8"/>
+                  <rect x="338" y="135" width="98" height="52" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M354 175v-16M372 175v-26M390 175v-20M408 175v-32" stroke="#2f9be0" stroke-width="6"/>
+                  <rect x="338" y="214" width="98" height="52" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <circle cx="362" cy="233" r="7" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M350 255c0-10 24-10 24 0" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M388 232h36M388 246h26" stroke="#c8c8c8" stroke-width="3"/>
+                </g>
+                <text x="24" y="316" font-size="10.5" fill="#737b85" letter-spacing="1.4">ENTRADA · REGLAS + IA · HOJA, INFORME, CRM</text>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ ill2 }}" hint-placeholder-val="{{ false }}">
+              <svg viewBox="0 0 460 340" width="100%" style="display:block" font-family="'Inter Tight',Helvetica,Arial,sans-serif">
+                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="70" y="24" width="320" height="150" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M70 46h320" stroke="#14171a" stroke-width="1.5"/>
+                  <circle cx="86" cy="35" r="3" fill="#2f9be0" stroke="none"/>
+                  <path d="M94 74h110M94 92h84M94 110h96" stroke="#c8c8c8" stroke-width="3"/>
+                  <rect x="236" y="68" width="136" height="84" fill="#e8e8e8" stroke="none"/>
+                  <path d="M254 140v-28M278 140v-44M302 140v-34M326 140v-56M350 140v-72" stroke="#2f9be0" stroke-width="9"/>
+                  <path d="M40 318H420" stroke="#14171a" stroke-width="1.5"/>
+                  <g fill="#e8e8e8" stroke="#14171a" stroke-width="1.5">
+                    <circle cx="96" cy="240" r="17"/><path d="M66 318c0-50 60-50 60 0"/>
+                    <circle cx="186" cy="240" r="17" fill="#2f9be0"/><path d="M156 318c0-50 60-50 60 0"/>
+                    <circle cx="276" cy="240" r="17"/><path d="M246 318c0-50 60-50 60 0"/>
+                    <circle cx="366" cy="240" r="17"/><path d="M336 318c0-50 60-50 60 0"/>
+                  </g>
+                </g>
+                <rect x="296" y="196" width="28" height="24" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                <text x="304" y="213" font-size="14" font-weight="700" fill="#14171a">?</text>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ ill3 }}" hint-placeholder-val="{{ false }}">
+              <svg viewBox="0 0 460 340" width="100%" style="display:block" font-family="'Inter Tight',Helvetica,Arial,sans-serif">
+                <rect x="72" y="26" width="168" height="134" fill="#2f9be0" opacity=".09"/>
+                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M72 300V20M72 300H440" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M66 28l6-8 6 8M432 294l8 6-8 6" stroke="#14171a" stroke-width="1.5"/>
+                  <path d="M240 26V294M72 160H434" stroke="#c8c8c8" stroke-dasharray="4 5"/>
+                  <path d="M150 90L208 128" stroke="#2f9be0" stroke-width="2" pathLength="1" class="suxtr-edge2" style="animation-delay:.2s"/>
+                  <circle cx="140" cy="84" r="15" fill="#2f9be0" stroke="none"/>
+                  <circle cx="214" cy="132" r="15" fill="#2f9be0" stroke="none"/>
+                  <circle cx="338" cy="96" r="15" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <circle cx="146" cy="240" r="15" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <circle cx="352" cy="244" r="15" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                </g>
+                <g font-size="12" font-weight="700" text-anchor="middle">
+                  <text x="140" y="88.5" fill="#ffffff">1</text><text x="214" y="136.5" fill="#ffffff">2</text>
+                  <text x="338" y="100.5" fill="#14171a">3</text><text x="146" y="244.5" fill="#14171a">4</text><text x="352" y="248.5" fill="#14171a">5</text>
+                </g>
+                <text x="82" y="46" font-size="10" fill="#10699f" letter-spacing="1.4">PRIMERO</text>
+                <text x="440" y="322" font-size="10.5" fill="#737b85" letter-spacing="1.4" text-anchor="end">ESFUERZO</text>
+                <text x="0" y="0" font-size="10.5" fill="#737b85" letter-spacing="1.4" text-anchor="end" transform="translate(56 20) rotate(-90)">IMPACTO</text>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ ill4 }}" hint-placeholder-val="{{ false }}">
+              <svg viewBox="0 0 460 340" width="100%" style="display:block" font-family="'Inter Tight',Helvetica,Arial,sans-serif">
+                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="30" y="26" width="360" height="56" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <rect x="30" y="26" width="6" height="56" fill="#2f9be0" stroke="none"/>
+                  <rect x="30" y="96" width="360" height="56" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <rect x="30" y="96" width="6" height="56" fill="#2f9be0" stroke="none"/>
+                  <rect x="30" y="166" width="360" height="56" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <rect x="30" y="166" width="6" height="56" fill="#2f9be0" stroke="none"/>
+                  <rect x="30" y="236" width="360" height="56" fill="#ffffff" stroke="#14171a" stroke-width="1.5"/>
+                  <rect x="30" y="236" width="6" height="56" fill="#2f9be0" stroke="none"/>
+                  <path d="M300 44h72M300 54h52M300 64h62" stroke="#c8c8c8" stroke-width="3"/>
+                  <circle cx="318" cy="124" r="5" fill="#2f9be0" stroke="none"/><circle cx="340" cy="124" r="5" fill="#c8c8c8" stroke="none"/><circle cx="362" cy="124" r="5" fill="#c8c8c8" stroke="none"/>
+                  <path d="M312 194h60M312 206h40" stroke="#c8c8c8" stroke-width="3"/>
+                  <path d="M312 270c10-14 20-14 30 0s20 14 30 0" stroke="#2f9be0" stroke-width="2.5"/>
+                  <path d="M424 292V40" stroke="#2f9be0" stroke-width="2.5" pathLength="1" class="suxtr-edge2" style="animation-delay:.2s"/>
+                  <path d="M416 50l8-10 8 10" stroke="#2f9be0" stroke-width="2.5"/>
+                </g>
+                <g font-size="12" font-weight="600" fill="#14171a">
+                  <text x="52" y="59">Interfaz</text><text x="52" y="129">Lógica e IA</text><text x="52" y="199">Datos</text><text x="52" y="269">Infraestructura</text>
+                </g>
+              </svg>
+            </sc-if>
+            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #d6d6d6;font-size:12px;letter-spacing:.06em;color:#5b636c;line-height:1.5">{{ illCaption }}</div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -804,6 +928,14 @@ const SERVICES = [
     items: ["Interfaz web o integración en vuestras herramientas", "Despliegue cloud u on-premise", "Monitorización y alertas", "Mantenimiento y evolución"] }
 ];
 
+const ILL_CAPTIONS = [
+  "Cada respuesta cita el documento de origen, para que se pueda comprobar.",
+  "El trabajo repetitivo pasa de la bandeja de entrada a la hoja, el informe o el CRM sin tocarlo.",
+  "El equipo practica con sus propios casos y aprende también cuándo no usar la IA.",
+  "Se ordenan los casos por impacto y esfuerzo para empezar por el que más compensa.",
+  "Del prototipo a producción: interfaz, lógica, datos e infraestructura, con mantenimiento."
+];
+
 const FAQS = [
   { q: "No tenemos claro qué automatizar. ¿Podemos empezar igual?",
     a: "Sí, es el punto de partida habitual. La primera fase es un diagnóstico: revisamos procesos y datos y salimos con una lista priorizada. Si no hay nada que compense, lo decimos." },
@@ -896,7 +1028,7 @@ function kbAnswer(question) {
 }
 
 class Component extends DCLogic {
-  state = { barOpen: true, menuOpen: false, methodStep: 0, stepFlip: false, openService: 0, openFaq: -1, logLines: [], typedLine: "",
+  state = { barOpen: true, menuOpen: false, methodStep: 0, stepFlip: false, openService: 0, illService: 0, openFaq: -1, logLines: [], typedLine: "",
     scrollPct: 0, people: 8, hours: 6, rate: 28,
     formName: "", formEmail: "", formMsg: "", picked: [], heroTyped: "",
     chatOpen: false, chatInput: "", chatMsgs: [{ who: "bot", text: "Hola. Soy el asistente de SuxtrAI: puedo contarte qué hacemos, cómo trabajamos, qué pasa con vuestros datos o cómo empezar. ¿Qué quieres saber?" }] };
@@ -1190,12 +1322,14 @@ class Component extends DCLogic {
       activeStepTitle: STEPS[st.methodStep].title,
       activeStepText: STEPS[st.methodStep].text,
       activeStepCost: STEPS[st.methodStep].cost,
+      ill0: st.illService === 0, ill1: st.illService === 1, ill2: st.illService === 2, ill3: st.illService === 3, ill4: st.illService === 4,
+      illCaption: ILL_CAPTIONS[st.illService] || "",
       services: SERVICES.map((s, i) => ({
         ...s,
         open: st.openService === i,
         titleColor: st.openService === i ? "#2f9be0" : "#14171a",
         iconTransform: st.openService === i ? "rotate(45deg)" : "rotate(0deg)",
-        toggle: () => this.setState(p => ({ openService: p.openService === i ? -1 : i }))
+        toggle: () => this.setState(p => ({ openService: p.openService === i ? -1 : i, illService: i }))
       })),
       faqs: FAQS.map((f, i) => ({
         ...f,
