@@ -74,6 +74,25 @@ window.__resources = {
 };
 </script>
 <script src="./support.js"></script>
+<!-- Analítica sin cookies (Umami Cloud). Solo cuenta visitas en suxtrai.es, no en local ni en github.io -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="adb6b538-9ae7-48ce-9cd4-6067065a8fb9" data-domains="suxtrai.es,www.suxtrai.es"></script>
+<script>
+// Eventos de Umami: clics en los botones de contacto, el formulario y el correo.
+document.addEventListener('click', function (e) {
+  var el = e.target.closest && e.target.closest('a, button, [role="button"]');
+  if (!el || !window.umami) return;
+  var href = (el.getAttribute('href') || '').toLowerCase();
+  var txt = (el.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  var ev = null;
+  if (href.indexOf('mailto:') === 0) ev = 'clic-correo';
+  else if (txt.indexOf('enviar') === 0) ev = 'formulario-enviar';
+  else if (txt.indexOf('hablemos') === 0) ev = 'cta-hablemos';
+  else if (txt.indexOf('cuéntanos tu caso') !== -1 || txt.indexOf('cuentanos tu caso') !== -1) ev = 'cta-cuentanos-caso';
+  else if (txt.indexOf('ver servicios') === 0) ev = 'cta-ver-servicios';
+  else if (txt.indexOf('dudas') !== -1) ev = 'chat-abrir';
+  if (ev) window.umami.track(ev);
+}, true);
+</script>
 </head>
 <body>
 <div id="suxtr-splash" aria-hidden="true">
