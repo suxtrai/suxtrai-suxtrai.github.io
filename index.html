@@ -270,28 +270,7 @@ chk()})();
 
   <div style="position:relative;z-index:2;background:#efefef">
 
-  <div style="padding:clamp(40px,5vw,72px) clamp(16px,4vw,56px) 0">
-    <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:#efefef">
-      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat1 }}</span>
-        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Semanas al primer prototipo</span>
-      </div>
-      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat2 }}</span>
-        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Líneas de servicio</span>
-      </div>
-      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat3 }}</span>
-        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Horas de diagnóstico inicial</span>
-      </div>
-      <div style="background:#ffffff;box-shadow:0 0 0 1px #d6d6d6;padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px">
-        <span class="suxtr-num" style="font-size:clamp(30px,3.6vw,50px);font-weight:500;letter-spacing:-.04em;color:#14171a">{{ stat4 }}</span>
-        <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#737b85">Personas, contacto directo</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="position:relative;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6;background:#e8e8e8;overflow:hidden;padding:18px 0;margin-top:clamp(44px,6vw,80px)">
+  <div style="position:relative;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6;background:#e8e8e8;overflow:hidden;padding:18px 0">
     <div style="display:flex;width:max-content;animation:suxtr-marquee 30s linear infinite;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a0a6ae">
       <div style="display:flex;gap:44px;padding-right:44px">
         <span>RAG</span><span style="color:#10699f">◆</span><span>Automatizaciones</span><span style="color:#10699f">◆</span><span>Formación</span><span style="color:#10699f">◆</span><span>Asesoramiento</span><span style="color:#10699f">◆</span><span>Desarrollo end to end</span><span style="color:#10699f">◆</span>
@@ -335,44 +314,10 @@ chk()})();
     </div>
   </section>
 
-  <section id="sectores" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
-    <div style="max-width:1280px;margin:0 auto">
-      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">02</span>
-        <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Dónde encaja</h2>
-        <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
-      </div>
-      <p style="margin:0 0 clamp(24px,3vw,40px);max-width:60ch;color:#5b636c;font-size:15.5px;line-height:1.6;text-wrap:pretty">Ejemplos de trabajo que podemos abordar hoy, por sector.</p>
-
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(20px,2.4vw,32px)">
-        <sc-for list="{{ sectors }}" as="sec" hint-placeholder-count="5">
-          <button onClick="{{ sec.select }}" style="cursor:pointer;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;border-radius:0;border:1px solid {{ sec.border }};background:{{ sec.bg }};color:{{ sec.color }};transition:all .2s ease">{{ sec.name }}</button>
-        </sc-for>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.4vw,34px);border:1px solid #d6d6d6;background:#ffffff;padding:clamp(24px,3.4vw,46px);animation:{{ sectorAnim }} .5s cubic-bezier(.16,.84,.28,1) both">
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#10699f">{{ activeSectorName }}</span>
-          <h3 style="margin:0;font-size:clamp(22px,2.8vw,34px);letter-spacing:-.02em;font-weight:600;line-height:1.15;text-wrap:balance">{{ activeSectorHeadline }}</h3>
-          <p style="margin:0;color:#5b636c;font-size:15.5px;line-height:1.65;max-width:52ch;text-wrap:pretty">{{ activeSectorBody }}</p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
-          <sc-for list="{{ activeSectorPoints }}" as="p" hint-placeholder-count="3">
-            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid #d6d6d6;background:#e8e8e8">
-              <span style="width:7px;height:7px;border-radius:50%;background:#2f9be0;flex:none;margin-top:7px"></span>
-              <span style="color:#3d444c;font-size:14.5px;line-height:1.55">{{ p }}</span>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <section id="calculadora" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">03</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">02</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cuánto trabajo os quita</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
@@ -424,7 +369,7 @@ chk()})();
   <section id="metodo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px)">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(14px,2vw,26px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">04</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">03</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Cómo trabajamos</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
@@ -455,7 +400,7 @@ chk()})();
   <section id="porque" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(28px,4vw,52px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">05</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">04</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Por qué con nosotros</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
@@ -500,7 +445,7 @@ chk()})();
   <section id="equipo" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);background:#e8e8e8;border-top:1px solid #d6d6d6">
     <div style="max-width:1280px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(20px,2.6vw,36px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">06</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">05</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Quiénes somos</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
@@ -546,7 +491,7 @@ chk()})();
   <section id="faq" style="padding:clamp(60px,8vw,118px) clamp(16px,4vw,56px);border-top:1px solid #d6d6d6">
     <div style="max-width:960px;margin:0 auto">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(24px,3vw,44px)">
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">07</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.18em;color:#10699f">06</span>
         <h2 style="margin:0;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;font-weight:700">Preguntas frecuentes</h2>
         <span style="flex:1;height:1px;background:#d6d6d6" class="suxtr-line"></span>
       </div>
@@ -708,7 +653,6 @@ chk()})();
             <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ RAG y búsqueda</a>
             <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ Automatizaciones</a>
             <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.82);font-size:.8em;padding-left:.2em" style-hover="color:#5fb6ea">↳ Formación</a>
-            <a href="#sectores" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Sectores</a>
             <a href="#metodo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Método</a>
             <a href="#equipo" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Equipo</a>
             <a href="#faq" onClick="{{ closeMenu }}" style="color:#ffffff" style-hover="color:#5fb6ea">Preguntas frecuentes</a>
@@ -860,24 +804,6 @@ const SERVICES = [
     items: ["Interfaz web o integración en vuestras herramientas", "Despliegue cloud u on-premise", "Monitorización y alertas", "Mantenimiento y evolución"] }
 ];
 
-const SECTORS = [
-  { name: "Industria", headline: "Conocimiento de planta accesible en segundos",
-    body: "Manuales de máquina, partes de mantenimiento y procedimientos repartidos en carpetas y cabezas. Un asistente sobre esa documentación reduce las paradas por consulta.",
-    points: ["Consulta de manuales y esquemas en lenguaje natural", "Partes de trabajo transcritos y clasificados", "Histórico de averías consultable por síntoma"] },
-  { name: "Despachos y legal", headline: "Revisión documental con la fuente siempre a la vista",
-    body: "Búsqueda sobre expedientes, contratos y normativa con cita al documento de origen, para que la revisión humana sea rápida y verificable.",
-    points: ["Búsqueda por concepto, no por palabra exacta", "Resumen de expediente con referencias", "Comparación de versiones de contrato"] },
-  { name: "Retail y ecommerce", headline: "Atención y catálogo sin trabajo repetitivo",
-    body: "Las preguntas de cliente se repiten y el catálogo cambia. Automatizar la parte mecánica libera al equipo para los casos que importan.",
-    points: ["Respuestas a consultas frecuentes con datos de pedido", "Fichas y descripciones generadas desde el catálogo", "Clasificación de incidencias por urgencia"] },
-  { name: "Servicios profesionales", headline: "Menos horas en tareas no facturables",
-    body: "Propuestas, informes y seguimiento consumen tiempo que no se factura. Se puede automatizar buena parte con vuestras plantillas y datos.",
-    points: ["Borradores de propuesta desde plantilla", "Actas y resúmenes de reunión", "Informes de seguimiento automáticos"] },
-  { name: "Logística", headline: "Documentación de transporte al día",
-    body: "Albaranes, CMR y facturas llegan en mil formatos. Extraer y cotejar esos datos de forma automática evita errores y reclamaciones.",
-    points: ["Lectura automática de albaranes y facturas", "Cotejo con pedidos y detección de desvíos", "Alertas de incidencia en tiempo real"] }
-];
-
 const FAQS = [
   { q: "No tenemos claro qué automatizar. ¿Podemos empezar igual?",
     a: "Sí, es el punto de partida habitual. La primera fase es un diagnóstico: revisamos procesos y datos y salimos con una lista priorizada. Si no hay nada que compense, lo decimos." },
@@ -933,8 +859,6 @@ const KB = [
     a: "Somos una empresa joven y todavía estamos acumulando casos. En una sesión os contamos cómo lo plantearíamos con vuestros datos. Publicaremos casos en cuanto tengamos clientes que compartir." },
   { tags: ["contacto", "contactar", "email", "correo", "reunion", "llamada", "hablar"],
     a: "Escribidnos a contact@suxtrai.es o usad el formulario de la sección de contacto. Respondemos en 24 horas y la primera sesión de treinta minutos no tiene coste." },
-  { tags: ["sector", "sectores", "industria", "legal", "retail", "logistica", "servicios"],
-    a: "Trabajamos con industria, despachos y legal, retail y ecommerce, servicios profesionales y logística. En la sección \"Dónde encaja\" hay un ejemplo concreto de cada uno." },
   { tags: ["tecnologia", "modelos", "herramientas", "stack", "llm", "python"],
     a: "Elegimos herramienta según el caso: LLMs comerciales o abiertos, bases de datos vectoriales, orquestación de agentes, Python, APIs e integraciones con ERP y CRM, en cloud o on-premise." },
   { tags: ["donde estais", "ubicacion", "pais", "euskadi", "españa", "remoto"],
@@ -972,7 +896,7 @@ function kbAnswer(question) {
 }
 
 class Component extends DCLogic {
-  state = { barOpen: true, menuOpen: false, methodStep: 0, stepFlip: false, openService: 0, openFaq: -1, sector: 0, sectorFlip: false, logLines: [], typedLine: "", stats: [0, 0, 0, 0],
+  state = { barOpen: true, menuOpen: false, methodStep: 0, stepFlip: false, openService: 0, openFaq: -1, logLines: [], typedLine: "",
     scrollPct: 0, people: 8, hours: 6, rate: 28,
     formName: "", formEmail: "", formMsg: "", picked: [], heroTyped: "",
     chatOpen: false, chatInput: "", chatMsgs: [{ who: "bot", text: "Hola. Soy el asistente de SuxtrAI: puedo contarte qué hacemos, cómo trabajamos, qué pasa con vuestros datos o cómo empezar. ¿Qué quieres saber?" }] };
@@ -1022,7 +946,6 @@ class Component extends DCLogic {
     this.type();
     this.hi = 0; this.hci = 0; this.herasing = false;
     this.typeHero();
-    this.animateStats();
     this.initGlow();
     this.initNetwork();
     this.initHeroVideo();
@@ -1057,7 +980,7 @@ class Component extends DCLogic {
     this.onScroll();
   }
   componentWillUnmount() {
-    clearTimeout(this.t); clearTimeout(this.ht); clearInterval(this.si);
+    clearTimeout(this.t); clearTimeout(this.ht);
     cancelAnimationFrame(this.raf);
     this.netRunning = false;
     clearInterval(this.netPoll);
@@ -1236,22 +1159,9 @@ class Component extends DCLogic {
       }, 1100);
     }
   }
-  animateStats() {
-    const targets = [2, 5, 4, 4];
-    let step = 0;
-    this.si = setInterval(() => {
-      step += 1;
-      const p = Math.min(1, step / 26);
-      const e = 1 - Math.pow(1 - p, 3);
-      this.setState({ stats: targets.map(t => Math.round(t * e)) });
-      if (p >= 1) clearInterval(this.si);
-    }, 34);
-  }
-
   renderVals() {
     const contactEmail = this.props.contactEmail ?? "contact@suxtrai.es";
     const st = this.state;
-    const sec = SECTORS[st.sector];
     return {
       contactEmail,
       barOpen: st.barOpen,
@@ -1265,10 +1175,6 @@ class Component extends DCLogic {
       heroTyped: st.heroTyped,
       logLines: st.logLines,
       typedLine: st.typedLine,
-      stat1: st.stats[0] + "-" + (st.stats[0] ? 4 : 0),
-      stat2: String(st.stats[1]),
-      stat3: st.stats[2] + " h",
-      stat4: String(st.stats[3]),
       methodSteps: STEPS.map((p, i) => ({
         ...p,
         num: String(i + 1),
@@ -1298,14 +1204,6 @@ class Component extends DCLogic {
         iconTransform: st.openFaq === i ? "rotate(45deg)" : "rotate(0deg)",
         toggle: () => this.setState(p => ({ openFaq: p.openFaq === i ? -1 : i }))
       })),
-      sectors: SECTORS.map((s, i) => ({
-        name: s.name,
-        border: st.sector === i ? "#2f9be0" : "#c8c8c8",
-        bg: st.sector === i ? "#2f9be0" : "transparent",
-        color: st.sector === i ? "#ffffff" : "#5b636c",
-        select: () => this.setState(p => ({ sector: i, sectorFlip: !p.sectorFlip }))
-      })),
-      sectorAnim: st.sectorFlip ? "suxtr-slide-in-b" : "suxtr-slide-in",
       scrollPct: st.scrollPct.toFixed(2) + "%",
       calcPeople: st.people,
       calcHours: st.hours,
@@ -1348,11 +1246,7 @@ class Component extends DCLogic {
           color: on ? "#ffffff" : "#5b636c",
           toggle: () => this.setState(p => ({ picked: on ? p.picked.filter(x => x !== name) : [...p.picked, name] }))
         };
-      }),
-      activeSectorName: sec.name,
-      activeSectorHeadline: sec.headline,
-      activeSectorBody: sec.body,
-      activeSectorPoints: sec.points
+      })
     };
   }
 }
