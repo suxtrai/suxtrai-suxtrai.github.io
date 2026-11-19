@@ -207,9 +207,26 @@ chk()})();
   @keyframes suxtr-fade { from { opacity: 0; } to { opacity: 1; } }
   .suxtr-glass { -webkit-backdrop-filter: blur(16px) saturate(130%); backdrop-filter: blur(16px) saturate(130%); }
   .suxtr-curtain { clip-path: inset(0); }
-  /* Barra superior: transparente sobre el hero, se funde en un velo oscuro al hacer scroll */
-  .suxtr-nav { position: sticky; top: 0; z-index: 60; margin: 0 0 -72px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 clamp(16px, 4vw, 56px); background: rgba(9,12,16,0); border-bottom: 1px solid rgba(255,255,255,0); transition: background .35s ease, border-color .35s ease, -webkit-backdrop-filter .35s ease, backdrop-filter .35s ease; }
-  .suxtr-nav[data-scrolled="1"] { background: rgba(9,12,16,.74); border-bottom-color: rgba(255,255,255,.08); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+  /* Barra superior: semitransparente y teñida con el color de la sección que tiene debajo (--nav-rgb lo pone el JS) */
+  .suxtr-nav { --nav-rgb: 7,9,12; position: sticky; top: 0; z-index: 60; margin: 0 0 -72px; height: 72px; display: flex; align-items: center; gap: clamp(16px, 3vw, 48px); padding: 0 clamp(16px, 4vw, 56px); background-color: rgba(var(--nav-rgb), 0); border-bottom: 1px solid rgba(255,255,255,0); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); transition: background-color .4s ease, border-color .4s ease; }
+  /* Por defecto (y sobre la portada) solo difuminado, sin color ni línea. Fuera de la portada el JS pone data-tint="1" */
+  .suxtr-nav[data-tint="1"] { background-color: rgba(var(--nav-rgb), .72); border-bottom-color: rgba(255,255,255,.08); }
+  .suxtr-nav .suxtr-nav-actions { margin-left: auto; }
+  .suxtr-nav .suxtr-logo circle, .suxtr-nav .suxtr-logo tspan { transition: fill .4s ease; }
+  .suxtr-nav-links { display: flex; align-items: center; gap: clamp(18px, 2.2vw, 34px); font-size: 15px; letter-spacing: -.01em; }
+  .suxtr-nav-links a { color: rgba(255,255,255,.74); padding: 6px 0; border-bottom: 1px solid transparent; transition: color .2s ease, border-color .2s ease; }
+  .suxtr-nav-links a:hover { color: #ffffff; border-bottom-color: #2f9be0; }
+  @media (max-width: 900px) { .suxtr-nav-links { display: none; } }
+  /* Variante clara: cuando la sección de debajo es clara, textos e iconos pasan a oscuro */
+  .suxtr-nav[data-tint="1"][data-theme="light"] { border-bottom-color: rgba(20,23,26,.08); }
+  .suxtr-nav[data-theme="light"] .suxtr-logo circle[fill="#ffffff"], .suxtr-nav[data-theme="light"] .suxtr-logo tspan[fill="#ffffff"] { fill: #14171a; }
+  .suxtr-nav[data-theme="light"] .suxtr-nav-links a { color: #4a525b; }
+  .suxtr-nav[data-theme="light"] .suxtr-nav-links a:hover { color: #14171a; }
+  .suxtr-nav[data-theme="light"] .suxtr-nav-cta { background: #14171a; border-color: #14171a; color: #ffffff; }
+  .suxtr-nav[data-theme="light"] .suxtr-nav-cta:hover { background: #2f9be0; border-color: #2f9be0; }
+  .suxtr-nav[data-theme="light"] .suxtr-nav-sep { background: rgba(20,23,26,.16); }
+  .suxtr-nav[data-theme="light"] .suxtr-nav-burger { color: #14171a; }
+  .suxtr-nav[data-theme="light"] .suxtr-nav-burger:hover { color: #10699f; background: rgba(20,23,26,.05); }
   .suxtr-nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; padding: 0 clamp(16px, 4vw, 56px); border-bottom: 1px solid rgba(255,255,255,.08); }
   .suxtr-nav-actions { display: flex; align-items: center; gap: clamp(10px, 1.4vw, 18px); }
   .suxtr-nav-cta { height: 42px; padding: 0 clamp(16px, 1.8vw, 24px); display: flex; align-items: center; background: transparent; border: 1px solid rgba(255,255,255,.4); color: #ffffff; font-size: 15px; font-weight: 500; letter-spacing: -.01em; border-radius: 2px; transition: background .2s ease, border-color .2s ease, color .2s ease; }
@@ -275,6 +292,12 @@ chk()})();
         </text>
       </svg>
     </a>
+    <nav class="suxtr-nav-links" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#metodo">Método</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </nav>
     <div class="suxtr-nav-actions">
       <a href="#contacto" class="suxtr-cta suxtr-nav-cta">Hablemos</a>
       <span class="suxtr-cta suxtr-nav-sep" aria-hidden="true"></span>
@@ -1143,11 +1166,7 @@ class Component extends DCLogic {
           if (away && !hv.paused) hv.pause();
           else if (!away && hv.paused) { const pr = hv.play(); if (pr && pr.catch) pr.catch(() => {}); }
         }
-        const nav = document.getElementById("suxtr-nav");
-        if (nav) {
-          const scrolled = window.scrollY > 24 ? "1" : "0";
-          if (nav.getAttribute("data-scrolled") !== scrolled) nav.setAttribute("data-scrolled", scrolled);
-        }
+        this.updateNav();
         const bar = document.getElementById("suxtr-progress");
         if (!bar) return;
         const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -1155,7 +1174,40 @@ class Component extends DCLogic {
       });
     };
     window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onScroll, { passive: true });
     this.onScroll();
+    // Repasa el color cuando termina de cargar y cuando se quita la pantalla de carga (sin esperar a un scroll)
+    this.navTimers = [400, 1500, 3000, 7800].map(ms => setTimeout(() => this.updateNav(), ms));
+  }
+  // Tiñe la barra superior con el color de la sección que queda justo detrás de ella.
+  // Solo cuenta elementos a todo el ancho, para que una tarjeta o imagen no la haga parpadear.
+  updateNav() {
+    const nav = document.getElementById("suxtr-nav");
+    if (!nav) return;
+    const r = nav.getBoundingClientRect();
+    const y = Math.max(0, r.top + r.height / 2), vw = window.innerWidth;
+    let rgb = null, overHero = false;
+    for (const hit of document.elementsFromPoint(4, y)) {
+      if (nav.contains(hit)) continue;
+      // La pantalla de carga y el menú abierto están por encima de todo: no son "la sección de detrás"
+      if (hit.closest("#suxtr-splash, [role=dialog]")) continue;
+      if (hit.closest("#top")) overHero = true;
+      for (let el = hit; el && el !== document.documentElement; el = el.parentElement) {
+        if (el.offsetWidth < vw * 0.9) continue;
+        const m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+        if (m && (m.length < 4 || +m[3] > 0.5)) { rgb = m.slice(0, 3).map(Number); break; }
+      }
+      if (rgb) break;
+    }
+    const tint = overHero ? "0" : "1";
+    if (nav.getAttribute("data-tint") !== tint) nav.setAttribute("data-tint", tint);
+    if (!rgb) return;
+    const key = rgb.join(",");
+    if (key === this.navKey) return;
+    this.navKey = key;
+    nav.style.setProperty("--nav-rgb", key);
+    const lum = (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+    nav.setAttribute("data-theme", lum < 0.5 ? "dark" : "light");
   }
   goSvc(i, dir) {
     this.setState(p => ({ svc: i, svcDir: dir || (i >= p.svc ? 1 : -1), svcFlip: !p.svcFlip }));
@@ -1171,6 +1223,8 @@ class Component extends DCLogic {
     if (this.onResize) window.removeEventListener("resize", this.onResize);
     window.removeEventListener("mousemove", this.onMove);
     window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onScroll);
+    (this.navTimers || []).forEach(clearTimeout);
     window.removeEventListener("keydown", this.onKey);
     document.removeEventListener("pointermove", this.onGlow);
     document.body.style.overflow = "";
