@@ -207,6 +207,20 @@ chk()})();
   @keyframes suxtr-fade { from { opacity: 0; } to { opacity: 1; } }
   .suxtr-glass { -webkit-backdrop-filter: blur(16px) saturate(130%); backdrop-filter: blur(16px) saturate(130%); }
   .suxtr-curtain { clip-path: inset(0); }
+  /* Barra superior: transparente sobre el hero, se funde en un velo oscuro al hacer scroll */
+  .suxtr-nav { position: sticky; top: 0; z-index: 60; margin: 0 0 -72px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 clamp(16px, 4vw, 56px); background: rgba(9,12,16,0); border-bottom: 1px solid rgba(255,255,255,0); transition: background .35s ease, border-color .35s ease, -webkit-backdrop-filter .35s ease, backdrop-filter .35s ease; }
+  .suxtr-nav[data-scrolled="1"] { background: rgba(9,12,16,.74); border-bottom-color: rgba(255,255,255,.08); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+  .suxtr-nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; padding: 0 clamp(16px, 4vw, 56px); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .suxtr-nav-actions { display: flex; align-items: center; gap: clamp(10px, 1.4vw, 18px); }
+  .suxtr-nav-cta { height: 42px; padding: 0 clamp(16px, 1.8vw, 24px); display: flex; align-items: center; background: transparent; border: 1px solid rgba(255,255,255,.4); color: #ffffff; font-size: 15px; font-weight: 500; letter-spacing: -.01em; border-radius: 2px; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+  .suxtr-nav-cta:hover { background: #ffffff; border-color: #ffffff; color: #14171a; }
+  .suxtr-nav-sep { width: 1px; height: 22px; background: rgba(255,255,255,.18); }
+  .suxtr-nav-burger { cursor: pointer; width: 44px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; background: transparent; color: #ffffff; border: 0; border-radius: 2px; transition: color .2s ease, background .2s ease; }
+  .suxtr-nav-burger:hover { color: #5fb6ea; background: rgba(255,255,255,.06); }
+  .suxtr-nav-burger line { transform-box: fill-box; transform-origin: right center; transition: transform .25s cubic-bezier(.16,.84,.28,1); }
+  .suxtr-nav-burger .suxtr-burger-short { transform: scaleX(.6); }
+  .suxtr-nav-burger:hover .suxtr-burger-short { transform: scaleX(1); }
+  .suxtr-nav a:focus-visible, .suxtr-nav button:focus-visible, .suxtr-nav-bar a:focus-visible, .suxtr-nav-bar button:focus-visible { outline: 2px solid #2f9be0; outline-offset: 3px; }
   @media (min-width: 641px) and (prefers-reduced-motion: no-preference) { .suxtr-herocanvas { display: none !important; } }
   @media (max-width: 640px), (prefers-reduced-motion: reduce) { .suxtr-herovideo { display: none !important; } }
   @media (max-width: 560px) { .suxtr-cta { display: none !important; } }
@@ -228,7 +242,7 @@ chk()})();
     </div>
   </sc-if>
 
-  <header class="suxtr-glass" style="position:sticky;top:12px;z-index:60;margin:12px clamp(10px,1.4vw,20px) -76px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 clamp(16px,2vw,28px);background:rgba(16,19,23,.8);border:1px solid rgba(255,255,255,.09);border-radius:6px">
+  <header id="suxtr-nav" class="suxtr-nav">
     <a href="#top" class="suxtr-logo" style="display:flex;align-items:center;flex:none">
       <svg viewBox="0 0 248 64" style="height:40px;width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
         <g transform="translate(2 2) scale(.0802) translate(-278 -266)">
@@ -261,10 +275,11 @@ chk()})();
         </text>
       </svg>
     </a>
-    <div style="display:flex;align-items:center;gap:8px">
-      <a href="#contacto" class="suxtr-cta" style="height:46px;padding:0 clamp(18px,2.2vw,34px);display:flex;align-items:center;background:#ffffff;color:#14171a;font-size:16px;font-weight:500;letter-spacing:-.01em;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">Hablemos</a>
-      <button onClick="{{ toggleMenu }}" aria-label="Abrir menú" style="cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#ffffff;color:#14171a;border:0;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">
-        <svg viewBox="0 0 24 24" style="width:22px;height:22px" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" fill="none"><line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" /></g></svg>
+    <div class="suxtr-nav-actions">
+      <a href="#contacto" class="suxtr-cta suxtr-nav-cta">Hablemos</a>
+      <span class="suxtr-cta suxtr-nav-sep" aria-hidden="true"></span>
+      <button onClick="{{ toggleMenu }}" aria-label="Abrir menú" class="suxtr-nav-burger">
+        <svg viewBox="0 0 24 24" style="width:24px;height:24px" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"><line x1="3" y1="9" x2="21" y2="9" /><line class="suxtr-burger-short" x1="3" y1="15" x2="21" y2="15" /></g></svg>
       </button>
     </div>
   </header>
@@ -748,7 +763,7 @@ chk()})();
 
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
     <div role="dialog" aria-label="Menú" style="position:fixed;inset:0;z-index:100;background:#171a1f;color:#ffffff;overflow-y:auto;animation:suxtr-fade .25s ease both">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;margin:24px clamp(10px,1.4vw,20px) 0;padding:0 8px 0 clamp(16px,2vw,28px)">
+      <div class="suxtr-nav-bar">
         <a href="#top" onClick="{{ closeMenu }}" class="suxtr-logo" style="display:flex;align-items:center;flex:none">
       <svg viewBox="0 0 248 64" style="height:40px;width:auto;overflow:visible" aria-label="SuxtrAI" role="img">
         <g transform="translate(2 2) scale(.0802) translate(-278 -266)">
@@ -781,10 +796,11 @@ chk()})();
         </text>
       </svg>
         </a>
-        <div style="display:flex;align-items:center;gap:8px">
-          <a href="#contacto" onClick="{{ closeMenu }}" class="suxtr-cta" style="height:46px;padding:0 clamp(18px,2.2vw,34px);display:flex;align-items:center;background:transparent;border:1px solid rgba(255,255,255,.55);color:#ffffff;font-size:16px;font-weight:500;letter-spacing:-.01em;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#ffffff;color:#14171a">Hablemos</a>
-          <button onClick="{{ toggleMenu }}" aria-label="Cerrar menú" style="cursor:pointer;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#ffffff;color:#14171a;border:0;border-radius:2px;transition:background .2s ease,color .2s ease" style-hover="background:#2f9be0;color:#ffffff">
-            <svg viewBox="0 0 24 24" style="width:22px;height:22px" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" fill="none"><line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" /></g></svg>
+        <div class="suxtr-nav-actions">
+          <a href="#contacto" onClick="{{ closeMenu }}" class="suxtr-cta suxtr-nav-cta">Hablemos</a>
+          <span class="suxtr-cta suxtr-nav-sep" aria-hidden="true"></span>
+          <button onClick="{{ toggleMenu }}" aria-label="Cerrar menú" class="suxtr-nav-burger">
+            <svg viewBox="0 0 24 24" style="width:24px;height:24px" aria-hidden="true"><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"><line x1="6" y1="6" x2="18" y2="18" /><line x1="18" y1="6" x2="6" y2="18" /></g></svg>
           </button>
         </div>
       </div>
@@ -1126,6 +1142,11 @@ class Component extends DCLogic {
           const away = window.scrollY > window.innerHeight * 1.15;
           if (away && !hv.paused) hv.pause();
           else if (!away && hv.paused) { const pr = hv.play(); if (pr && pr.catch) pr.catch(() => {}); }
+        }
+        const nav = document.getElementById("suxtr-nav");
+        if (nav) {
+          const scrolled = window.scrollY > 24 ? "1" : "0";
+          if (nav.getAttribute("data-scrolled") !== scrolled) nav.setAttribute("data-scrolled", scrolled);
         }
         const bar = document.getElementById("suxtr-progress");
         if (!bar) return;
