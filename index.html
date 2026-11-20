@@ -729,10 +729,10 @@ chk()})();
           </sc-for>
         </div>
         <button onClick="{{ submitForm }}" style="cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:18px 22px;background:#14171a;color:#ffffff;border:none;border-radius:2px;font-weight:600;font-size:16px;transition:background .2s ease,transform .2s ease" style-hover="background:#10699f;transform:translateY(-2px)">
-          <span>Enviar</span>
+          <span>{{ submitLabel }}</span>
           <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif">→</span>
         </button>
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#a0a6ae">Se abre vuestro correo con el mensaje redactado a {{ contactEmail }}. Nada se guarda en esta web.</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#737b85" aria-live="polite">{{ formStatus }}</span>
       </div>
     </div>
   </section>
@@ -1089,7 +1089,7 @@ function kbAnswer(question) {
 class Component extends DCLogic {
   state = { barOpen: true, menuOpen: false, methodStep: 0, stepFlip: false, svc: 0, svcDir: 1, svcFlip: false, openFaq: -1, logLines: [], typedLine: "",
     scrollPct: 0, people: 8, hours: 6, rate: 28,
-    formName: "", formEmail: "", formMsg: "", picked: [], heroTyped: "",
+    formName: "", formEmail: "", formMsg: "", formStatus: "", formSending: false, picked: [], heroTyped: "",
     chatOpen: false, chatInput: "", chatMsgs: [{ who: "bot", text: "Hola. Soy el asistente de SuxtrAI: puedo contarte qué hacemos, cómo trabajamos, qué pasa con vuestros datos o cómo empezar. ¿Qué quieres saber?" }] };
 
   ask = (question) => {
@@ -1236,18 +1236,39 @@ class Component extends DCLogic {
     document.body.style.overflow = "";
   }
 
-  submit = () => {
+  submit = async () => {
     const s = this.state;
-    const email = this.props.contactEmail ?? "contact@suxtrai.es";
-    const body = [
-      "Nombre y empresa: " + (s.formName || "-"),
-      "Correo: " + (s.formEmail || "-"),
-      "Interes: " + (s.picked.length ? s.picked.join(", ") : "-"),
-      "",
-      "Proceso que quita tiempo:",
-      s.formMsg || "-"
-    ].join("\n");
-    window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent("Consulta desde la web - " + (s.formName || "SuxtrAI")) + "&body=" + encodeURIComponent(body);
+    if (s.formSending) return;
+    const name = (s.formName || "").trim(), mail = (s.formEmail || "").trim(), msg = (s.formMsg || "").trim();
+    if (!name || !mail || !msg) { this.setState({ formStatus: "Rellenad nombre, correo y el proceso, por favor." }); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) { this.setState({ formStatus: "Revisad el correo, parece que no es válido." }); return; }
+    this.setState({ formSending: true, formStatus: "Enviando..." });
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          access_key: "eca78ee5-abed-4bd5-b1ea-5d81d8acef1f",
+          subject: "Consulta desde la web - " + name,
+          from_name: "Web SuxtrAI",
+          name: name,
+          email: mail,
+          interes: s.picked.length ? s.picked.join(", ") : "-",
+          message: msg,
+          botcheck: ""
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        this.setState({ formSending: false, formName: "", formEmail: "", formMsg: "", picked: [], formStatus: "¡Gracias! Hemos recibido vuestro mensaje y os respondemos en 24 h." });
+        if (window.umami) window.umami.track("formulario-enviado");
+      } else {
+        throw new Error(data.message || "error");
+      }
+    } catch (e) {
+      const email = this.props.contactEmail ?? "contact@suxtrai.es";
+      this.setState({ formSending: false, formStatus: "No se ha podido enviar. Escribidnos directamente a " + email + "." });
+    }
   };
 
   initGlow() {
@@ -1472,6 +1493,8 @@ class Component extends DCLogic {
       setFormEmail: (e) => this.setState({ formEmail: e.target.value }),
       setFormMsg: (e) => this.setState({ formMsg: e.target.value }),
       submitForm: this.submit,
+      formStatus: st.formStatus || "Os respondemos en 24 h en el correo que nos dejéis.",
+      submitLabel: st.formSending ? "Enviando..." : "Enviar",
       chatOpen: st.chatOpen,
       chatInput: st.chatInput,
       chatButtonLabel: st.chatOpen ? "Cerrar" : "¿Dudas? Pregunta",
