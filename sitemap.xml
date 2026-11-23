@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://suxtrai.es/automatizacion-back-office/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://suxtrai.es/servicios/</loc>
     <lastmod>2026-11-23</lastmod>
     <priority>0.9</priority>
@@ -37,6 +42,51 @@
   </url>
   <url>
     <loc>https://suxtrai.es/servicios/desarrollo-ia-a-medida/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/sectores/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/sectores/construccion-reformas/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/sectores/transporte-gruas/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/sectores/talleres-mantenimiento/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/sectores/distribucion-mayoristas/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/cruzar-albaranes-con-facturas/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/ocr-o-ia-para-leer-facturas/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/tareas-administrativas-automatizar-pyme/</loc>
     <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>

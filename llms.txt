@@ -1,0 +1,28 @@
+# SuxtrAI
+
+> Automatización del back office de pymes con inteligencia artificial: lectura de facturas y albaranes de proveedor, cruce con pedidos, presupuestos y facturación sin teclear, asistentes sobre documentación interna y formación. Con sede en Bizkaia (Bilbao) y clientes en toda España. Contacto: contact@suxtrai.es. Diagnóstico inicial de 30 minutos sin coste.
+
+## Páginas principales
+- [Back office con IA](https://suxtrai.es/automatizacion-back-office/): qué tareas administrativas automatizamos y cómo
+- [Servicios](https://suxtrai.es/servicios/): todos los servicios
+- [Automatización de facturas y albaranes](https://suxtrai.es/servicios/automatizacion-facturas-albaranes/): Lectura automática de facturas y albaranes de proveedor y cruce entre ambos para detectar diferencias.
+- [Presupuestos y facturas automáticos](https://suxtrai.es/servicios/presupuestos-facturas-automaticos/): Presupuestos y facturas creados a partir de los datos de vuestro trabajo, sin pasarlos a mano.
+- [Asistente de IA sobre vuestra documentación](https://suxtrai.es/servicios/asistente-ia-documentacion/): Un buscador inteligente que responde con vuestros manuales, contratos y procedimientos, citando la fuente.
+- [Formación en IA para equipos](https://suxtrai.es/servicios/formacion-ia-empresas/): Talleres prácticos con vuestros propios casos para que el equipo use la IA en su día a día.
+- [Asesoramiento en IA](https://suxtrai.es/servicios/asesoramiento-ia/): Un plan priorizado de qué automatizar, con coste y riesgos, antes de invertir.
+- [Desarrollo de IA a medida, hasta producción](https://suxtrai.es/servicios/desarrollo-ia-a-medida/): Del prototipo al sistema en producción, integrado con vuestras herramientas.
+
+## Sectores
+- [Construcción y reformas](https://suxtrai.es/sectores/construccion-reformas/): Albaranes por obra, cruce con facturas y presupuestos desde mediciones.
+- [Transporte y grúas](https://suxtrai.es/sectores/transporte-gruas/): Partes de servicio, kilómetros y esperas convertidos en facturas sin teclear.
+- [Talleres y mantenimiento](https://suxtrai.es/sectores/talleres-mantenimiento/): Órdenes de trabajo, recambios y presupuestos de reparación al día.
+- [Distribución y mayoristas](https://suxtrai.es/sectores/distribucion-mayoristas/): Pedidos por correo al ERP y facturas de proveedor cruzadas con lo recibido.
+
+## Guías
+- [Cómo comprobar albaranes contra facturas de proveedor sin hacerlo a mano](https://suxtrai.es/blog/cruzar-albaranes-con-facturas/): Por qué conviene cruzar albaranes con facturas, qué errores se detectan, cómo organizarlo en una hoja de cálculo y cuándo compensa automatizarlo.
+- [OCR o IA para leer facturas: qué diferencia hay](https://suxtrai.es/blog/ocr-o-ia-para-leer-facturas/): El OCR convierte la imagen en texto; la IA entiende qué es cada dato. Cuándo basta con uno y cuándo hace falta la otra.
+- [7 tareas administrativas que una pyme puede automatizar con IA](https://suxtrai.es/blog/tareas-administrativas-automatizar-pyme/): De la lectura de facturas a los informes semanales: dónde está el tiempo de la oficina y qué parte se puede automatizar ya.
+
+## Opcional
+- [Aviso legal](https://suxtrai.es/aviso-legal/)
+- [Privacidad](https://suxtrai.es/privacidad/)
