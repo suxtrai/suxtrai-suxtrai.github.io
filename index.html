@@ -74,7 +74,7 @@ window.__resources = {
   "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/babel.min.js"
 };
 </script>
-<script src="./support.js"></script>
+<script defer src="./support.js"></script>
 <!-- Analítica sin cookies (Umami Cloud). Solo cuenta visitas en suxtrai.es, no en local ni en github.io -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="adb6b538-9ae7-48ce-9cd4-6067065a8fb9" data-domains="suxtrai.es,www.suxtrai.es"></script>
 <script>
@@ -134,6 +134,7 @@ chk()})();
 <div id="suxtr-prerender">
 <style>
   html { scroll-behavior: smooth; }
+  .suxtr-fcol > a { min-height: 26px; display: flex; align-items: center; }
   body { margin: 0; background: #efefef; color: #14171a; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: #2f9be0; text-decoration: none; }
   a:hover { color: #10699f; }
@@ -315,7 +316,7 @@ chk()})();
               <span data-dc-tpl="83">suxtrai · pipeline</span>
             </div>
             <div data-dc-tpl="84" style="padding: 18px 16px 22px; font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; line-height: 1.85; min-height: 236px;">
-              <div data-dc-tpl="85" style="display: flex; flex-direction: column; gap: 0px;"><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Construyendo índice vectorial... listo</span></div><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Evaluando respuestas con preguntas reales</span></div><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Citando la fuente en cada respuesta</span></div><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Conectando con ERP y correo corporativo</span></div><div style="display:flex;gap:10px;color:#f4f6f8"><span style="color:#5fb6ea">›</span><span>Desplegando en infraestructura del clien<span style="display:inline-block;width:8px;height:15px;background:#5fb6ea;vertical-align:-2px;animation:suxtr-blink 1s step-end infinite"></span></span></div></div>
+              <div data-dc-tpl="85" style="display: flex; flex-direction: column; gap: 0px;"><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Construyendo índice vectorial... listo</span></div><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Evaluando respuestas con preguntas reales</span></div><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Citando la fuente en cada respuesta</span></div><div style="display:flex;gap:10px;color:#a8b0ba"><span style="color:#5fb6ea">›</span><span>Conectando con ERP y correo corporativo</span></div><div style="display:flex;gap:10px;color:#f4f6f8"><span style="color:#5fb6ea">›</span><span>Desplegando en infraestructura del cliente<span style="display:inline-block;width:8px;height:15px;background:#5fb6ea;vertical-align:-2px;animation:suxtr-blink 1s step-end infinite"></span></span></div></div>
             </div>
           </div>
         </div>
@@ -326,7 +327,7 @@ chk()})();
   <div data-dc-tpl="86" style="position: relative; z-index: 2; background: rgb(239, 239, 239);">
 
   <div data-dc-tpl="87" style="position: relative; border-top: 1px solid rgb(214, 214, 214); border-bottom: 1px solid rgb(214, 214, 214); background: rgb(232, 232, 232); overflow: hidden; padding: 18px 0px;">
-    <div data-dc-tpl="88" style="display: flex; width: max-content; animation: 30s linear 0s infinite normal none running suxtr-marquee; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(160, 166, 174);">
+    <div data-dc-tpl="88" style="display: flex; width: max-content; animation: 30s linear 0s infinite normal none running suxtr-marquee; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(95, 103, 112);">
       <div data-dc-tpl="89" style="display: flex; gap: 44px; padding-right: 44px;">
         <span data-dc-tpl="90">RAG</span><span data-dc-tpl="91" style="color: rgb(16, 105, 159);">◆</span><span data-dc-tpl="92">Automatizaciones</span><span data-dc-tpl="93" style="color: rgb(16, 105, 159);">◆</span><span data-dc-tpl="94">Formación</span><span data-dc-tpl="95" style="color: rgb(16, 105, 159);">◆</span><span data-dc-tpl="96">Asesoramiento</span><span data-dc-tpl="97" style="color: rgb(16, 105, 159);">◆</span><span data-dc-tpl="98">Desarrollo end to end</span><span data-dc-tpl="99" style="color: rgb(16, 105, 159);">◆</span>
       </div>
@@ -437,32 +438,32 @@ chk()})();
               <span data-dc-tpl="323" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(91, 99, 108);">Personas implicadas</span>
               <span data-dc-tpl="324" class="suxtr-num" style="flex: 0 0 auto; white-space: nowrap; font-size: 22px; font-weight: 700; color: rgb(16, 105, 159);"><span class="sc-interp">8</span></span>
             </div>
-            <input data-dc-tpl="325" type="range" min="1" max="60" value="8" style="width: 100%; accent-color: rgb(16, 105, 159); cursor: pointer;">
+            <input data-dc-tpl="325" aria-label="Personas implicadas" type="range" min="1" max="60" value="8" style="width: 100%; accent-color: rgb(16, 105, 159); cursor: pointer;">
           </div>
           <div data-dc-tpl="326" style="display: flex; flex-direction: column; gap: 10px;">
             <div data-dc-tpl="327" style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
               <span data-dc-tpl="328" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(91, 99, 108);">Horas a la semana en tareas repetitivas</span>
               <span data-dc-tpl="329" class="suxtr-num" style="flex: 0 0 auto; white-space: nowrap; font-size: 22px; font-weight: 700; color: rgb(16, 105, 159);"><span class="sc-interp">6</span> h</span>
             </div>
-            <input data-dc-tpl="330" type="range" min="1" max="30" value="6" style="width: 100%; accent-color: rgb(16, 105, 159); cursor: pointer;">
+            <input data-dc-tpl="330" aria-label="Horas a la semana en tareas repetitivas" type="range" min="1" max="30" value="6" style="width: 100%; accent-color: rgb(16, 105, 159); cursor: pointer;">
           </div>
           <div data-dc-tpl="331" style="display: flex; flex-direction: column; gap: 10px;">
             <div data-dc-tpl="332" style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
               <span data-dc-tpl="333" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(91, 99, 108);">Coste medio por hora</span>
               <span data-dc-tpl="334" class="suxtr-num" style="flex: 0 0 auto; white-space: nowrap; font-size: 22px; font-weight: 700; color: rgb(16, 105, 159);"><span class="sc-interp">28</span> €</span>
             </div>
-            <input data-dc-tpl="335" type="range" min="12" max="90" value="28" style="width: 100%; accent-color: rgb(16, 105, 159); cursor: pointer;">
+            <input data-dc-tpl="335" aria-label="Coste por hora en euros" type="range" min="12" max="90" value="28" style="width: 100%; accent-color: rgb(16, 105, 159); cursor: pointer;">
           </div>
         </div>
 
         <div data-dc-tpl="336" style="border: 1px solid rgb(47, 155, 224); background: rgb(255, 255, 255); padding: clamp(22px, 2.8vw, 36px); display: flex; flex-direction: column; justify-content: center; gap: clamp(18px, 2.2vw, 26px);">
           <div data-dc-tpl="337" style="display: flex; flex-direction: column; gap: 6px;">
-            <span data-dc-tpl="338" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Horas al año en esas tareas</span>
+            <span data-dc-tpl="338" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Horas al año en esas tareas</span>
             <span data-dc-tpl="339" class="suxtr-num" style="font-family: &quot;Inter Tight&quot;, sans-serif; font-size: clamp(34px, 4.6vw, 62px); font-weight: 800; letter-spacing: -0.03em; line-height: 1;"><span class="sc-interp">2208 h</span></span>
           </div>
           <span data-dc-tpl="340" style="height: 1px; background: rgb(214, 214, 214);"></span>
           <div data-dc-tpl="341" style="display: flex; flex-direction: column; gap: 6px;">
-            <span data-dc-tpl="342" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Recuperable automatizando el 60%</span>
+            <span data-dc-tpl="342" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Recuperable automatizando el 60%</span>
             <span data-dc-tpl="343" class="suxtr-num" style="font-family: &quot;Inter Tight&quot;, sans-serif; font-size: clamp(34px, 4.6vw, 62px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: rgb(16, 105, 159);"><span class="sc-interp">37.094 €</span></span>
             <span data-dc-tpl="344" class="suxtr-num" style="color: rgb(91, 99, 108); font-size: 14.5px;">equivale a <span class="sc-interp">1325</span> horas liberadas al año</span>
           </div>
@@ -490,17 +491,17 @@ chk()})();
           </button>
         
           <button data-dc-tpl="357" class="scp3" style="cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border: 1px solid rgb(200, 200, 200); background: transparent; color: rgb(20, 23, 26); border-radius: 0px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; transition: 0.25s;">
-            <span data-dc-tpl="358" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);"><span class="sc-interp">2</span> · <span class="sc-interp">Semanas 2-4</span></span>
+            <span data-dc-tpl="358" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);"><span class="sc-interp">2</span> · <span class="sc-interp">Semanas 2-4</span></span>
             <span data-dc-tpl="359" style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em;"><span class="sc-interp">Prototipo</span></span>
           </button>
         
           <button data-dc-tpl="357" class="scp3" style="cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border: 1px solid rgb(200, 200, 200); background: transparent; color: rgb(20, 23, 26); border-radius: 0px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; transition: 0.25s;">
-            <span data-dc-tpl="358" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);"><span class="sc-interp">3</span> · <span class="sc-interp">Producción</span></span>
+            <span data-dc-tpl="358" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);"><span class="sc-interp">3</span> · <span class="sc-interp">Producción</span></span>
             <span data-dc-tpl="359" style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em;"><span class="sc-interp">Despliegue</span></span>
           </button>
         
           <button data-dc-tpl="357" class="scp3" style="cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border: 1px solid rgb(200, 200, 200); background: transparent; color: rgb(20, 23, 26); border-radius: 0px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; transition: 0.25s;">
-            <span data-dc-tpl="358" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);"><span class="sc-interp">4</span> · <span class="sc-interp">Continuo</span></span>
+            <span data-dc-tpl="358" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);"><span class="sc-interp">4</span> · <span class="sc-interp">Continuo</span></span>
             <span data-dc-tpl="359" style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em;"><span class="sc-interp">Mejora</span></span>
           </button>
         
@@ -512,7 +513,7 @@ chk()})();
           <p data-dc-tpl="364" style="margin: 0px; color: rgb(91, 99, 108); font-size: 16px; line-height: 1.65; max-width: 52ch; text-wrap: pretty;"><span class="sc-interp">Una hora con vosotros para entender el proceso y los datos. Salís con una lista de casos ordenada por impacto. Si no hay nada que compense, os lo decimos.</span></p>
         </div>
         <div data-dc-tpl="365" style="display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: clamp(16px, 2vw, 26px); border: 1px solid rgb(214, 214, 214); background: rgb(232, 232, 232);">
-          <span data-dc-tpl="366" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(115, 123, 133);">Compromiso</span>
+          <span data-dc-tpl="366" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(95, 103, 112);">Compromiso</span>
           <span data-dc-tpl="367" style="font-family: &quot;Inter Tight&quot;, sans-serif; font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -0.03em;"><span class="sc-interp">Sin coste</span></span>
         </div>
       </div>
@@ -552,7 +553,7 @@ chk()})();
   </section>
 
   <div data-dc-tpl="391" style="position: relative; border-bottom: 1px solid rgb(214, 214, 214); background: rgb(255, 255, 255); overflow: hidden; padding: 16px 0px;">
-    <div data-dc-tpl="392" style="display: flex; width: max-content; animation: 34s linear 0s infinite normal none running suxtr-marquee-rev; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(160, 166, 174);">
+    <div data-dc-tpl="392" style="display: flex; width: max-content; animation: 34s linear 0s infinite normal none running suxtr-marquee-rev; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(95, 103, 112);">
       <div data-dc-tpl="393" style="display: flex; gap: 36px; padding-right: 36px;">
         <span data-dc-tpl="394">Python</span><span data-dc-tpl="395">·</span><span data-dc-tpl="396">LLMs</span><span data-dc-tpl="397">·</span><span data-dc-tpl="398">Bases de datos vectoriales</span><span data-dc-tpl="399">·</span><span data-dc-tpl="400">Orquestación de agentes</span><span data-dc-tpl="401">·</span><span data-dc-tpl="402">Evaluación</span><span data-dc-tpl="403">·</span><span data-dc-tpl="404">Cloud y on-premise</span><span data-dc-tpl="405">·</span><span data-dc-tpl="406">APIs</span><span data-dc-tpl="407">·</span><span data-dc-tpl="408">Integraciones ERP/CRM</span><span data-dc-tpl="409">·</span>
       </div>
@@ -576,31 +577,31 @@ chk()})();
       <div data-dc-tpl="434" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 300px)); justify-content: center; gap: clamp(28px, 3vw, 48px) clamp(18px, 2.4vw, 40px); padding-top: clamp(8px, 1.6vw, 20px);">
         <div data-dc-tpl="435" class="suxtr-rise" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;">
           <div data-dc-tpl="436" class="scp5" style="width: min(100%, clamp(200px, 13vw, 260px)); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; background: rgb(217, 217, 217); margin-bottom: 14px; box-shadow: rgb(214, 214, 214) 0px 0px 0px 1px; transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.28, 1), box-shadow 0.35s;">
-            <img data-dc-tpl="437" src="assets/equipo-jon.jpg?v=3" alt="Retrato de Jon Medina" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+            <img data-dc-tpl="437" src="assets/equipo-jon.webp" alt="Retrato de Jon Medina" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
           </div>
           <h3 data-dc-tpl="438" style="margin: 0px; font-size: clamp(20px, 1.5vw, 26px); font-weight: 600; letter-spacing: -0.02em;">Jon Medina</h3>
-          <span data-dc-tpl="439" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Cofundador</span>
+          <span data-dc-tpl="439" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Cofundador</span>
         </div>
         <div data-dc-tpl="440" class="suxtr-rise" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;">
           <div data-dc-tpl="441" class="scp5" style="width: min(100%, clamp(200px, 13vw, 260px)); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; background: rgb(217, 217, 217); margin-bottom: 14px; box-shadow: rgb(214, 214, 214) 0px 0px 0px 1px; transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.28, 1), box-shadow 0.35s;">
-            <img data-dc-tpl="442" src="assets/equipo-ibai.jpg?v=2" alt="Retrato de Ibai García" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+            <img data-dc-tpl="442" src="assets/equipo-ibai.webp" alt="Retrato de Ibai García" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
           </div>
           <h3 data-dc-tpl="443" style="margin: 0px; font-size: clamp(20px, 1.5vw, 26px); font-weight: 600; letter-spacing: -0.02em;">Ibai García</h3>
-          <span data-dc-tpl="444" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Cofundador</span>
+          <span data-dc-tpl="444" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Cofundador</span>
         </div>
         <div data-dc-tpl="445" class="suxtr-rise" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;">
           <div data-dc-tpl="446" class="scp5" style="width: min(100%, clamp(200px, 13vw, 260px)); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; background: rgb(217, 217, 217); margin-bottom: 14px; box-shadow: rgb(214, 214, 214) 0px 0px 0px 1px; transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.28, 1), box-shadow 0.35s;">
-            <img data-dc-tpl="447" src="assets/equipo-asier.jpg?v=3" alt="Retrato de Asier Merino" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+            <img data-dc-tpl="447" src="assets/equipo-asier.webp" alt="Retrato de Asier Merino" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
           </div>
           <h3 data-dc-tpl="448" style="margin: 0px; font-size: clamp(20px, 1.5vw, 26px); font-weight: 600; letter-spacing: -0.02em;">Asier Merino</h3>
-          <span data-dc-tpl="449" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Cofundador</span>
+          <span data-dc-tpl="449" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Cofundador</span>
         </div>
         <div data-dc-tpl="450" class="suxtr-rise" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;">
           <div data-dc-tpl="451" class="scp5" style="width: min(100%, clamp(200px, 13vw, 260px)); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; background: rgb(217, 217, 217); margin-bottom: 14px; box-shadow: rgb(214, 214, 214) 0px 0px 0px 1px; transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.28, 1), box-shadow 0.35s;">
-            <img data-dc-tpl="452" src="assets/equipo-javier.jpg" alt="Retrato de Javier García" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+            <img data-dc-tpl="452" src="assets/equipo-javier.webp" alt="Retrato de Javier García" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
           </div>
           <h3 data-dc-tpl="453" style="margin: 0px; font-size: clamp(20px, 1.5vw, 26px); font-weight: 600; letter-spacing: -0.02em;">Javier García</h3>
-          <span data-dc-tpl="454" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Cofundador</span>
+          <span data-dc-tpl="454" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: clamp(11.5px, 0.85vw, 14px); letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Cofundador</span>
         </div>
       </div>
     </div>
@@ -674,7 +675,7 @@ chk()})();
       <div data-dc-tpl="473">
         <h2 data-dc-tpl="474" style="margin: 0px; font-size: clamp(34px, 6.4vw, 86px); line-height: 0.95; letter-spacing: -0.035em; font-weight: 800; text-wrap: balance;">Contadnos<br data-dc-tpl="475">vuestro caso.</h2>
         <p data-dc-tpl="476" style="margin: 22px 0px 0px; max-width: 46ch; color: rgb(61, 68, 76); font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; text-wrap: pretty;">Treinta minutos bastan para saber si hay algo que merezca la pena automatizar. Si no lo hay, os lo diremos.</p>
-        <div data-dc-tpl="477" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(115, 123, 133);">
+        <div data-dc-tpl="477" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(95, 103, 112);">
           <span data-dc-tpl="478" style="padding: 8px 14px; border: 1px solid rgb(214, 214, 214);">Respuesta en 24 h</span>
           <span data-dc-tpl="479" style="padding: 8px 14px; border: 1px solid rgb(214, 214, 214);">Primera sesión sin coste</span>
           <span data-dc-tpl="480" style="padding: 8px 14px; border: 1px solid rgb(214, 214, 214);">Proyectos en España</span>
@@ -684,15 +685,15 @@ chk()})();
       </div>
       <div data-dc-tpl="499" style="border: 1px solid rgb(214, 214, 214); background: rgb(232, 232, 232); padding: clamp(22px, 2.8vw, 34px); display: flex; flex-direction: column; gap: 16px;">
         <div data-dc-tpl="500" style="display: flex; flex-direction: column; gap: 8px;">
-          <label data-dc-tpl="501" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Nombre y empresa</label>
+          <label data-dc-tpl="501" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Nombre y empresa</label>
           <input data-dc-tpl="502" type="text" placeholder="Ane Uriarte · Talleres Bilbao" class="scp8" value="" style="width: 100%; padding: 13px 14px; background: rgb(255, 255, 255); border: 1px solid rgb(200, 200, 200); color: rgb(20, 23, 26); font-size: 15px; border-radius: 2px; outline: none;">
         </div>
         <div data-dc-tpl="503" style="display: flex; flex-direction: column; gap: 8px;">
-          <label data-dc-tpl="504" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Correo</label>
+          <label data-dc-tpl="504" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Correo</label>
           <input data-dc-tpl="505" type="email" placeholder="ane@empresa.com" class="scp8" value="" style="width: 100%; padding: 13px 14px; background: rgb(255, 255, 255); border: 1px solid rgb(200, 200, 200); color: rgb(20, 23, 26); font-size: 15px; border-radius: 2px; outline: none;">
         </div>
         <div data-dc-tpl="506" style="display: flex; flex-direction: column; gap: 8px;">
-          <label data-dc-tpl="507" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(115, 123, 133);">Qué proceso os quita tiempo</label>
+          <label data-dc-tpl="507" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(95, 103, 112);">Qué proceso os quita tiempo</label>
           <textarea data-dc-tpl="508" rows="4" placeholder="Cada semana revisamos a mano unas 300 facturas de proveedor..." class="scp8" style="width: 100%; padding: 13px 14px; background: rgb(255, 255, 255); border: 1px solid rgb(200, 200, 200); color: rgb(20, 23, 26); font-size: 15px; border-radius: 2px; outline: none; resize: vertical; line-height: 1.55;"></textarea>
         </div>
         <div data-dc-tpl="509" style="display: flex; flex-wrap: wrap; gap: 8px;">
@@ -716,7 +717,7 @@ chk()})();
           <span data-dc-tpl="517"><span class="sc-interp">Enviar</span></span>
           <span data-dc-tpl="518" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif;">→</span>
         </button>
-        <span data-dc-tpl="519" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; line-height: 1.6; color: rgb(115, 123, 133);"><span class="sc-interp">Os respondemos en 24 h en el correo que nos dejéis.</span></span>
+        <span data-dc-tpl="519" style="font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; line-height: 1.6; color: rgb(95, 103, 112);"><span class="sc-interp">Os respondemos en 24 h en el correo que nos dejéis.</span></span>
       </div>
     </div>
   </section>
@@ -727,14 +728,14 @@ chk()})();
         <span data-dc-tpl="523" style="display: flex; align-items: center; gap: 12px; font-family: &quot;Inter Tight&quot;, sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.03em; color: rgb(255, 255, 255);"><svg data-dc-tpl="524" viewBox="278 266 699 748" aria-hidden="true" style="height: 38px; width: auto; flex: 0 0 auto;"><g data-dc-tpl="525" fill="none" stroke="#1d99df" stroke-width="24" stroke-linejoin="round" stroke-linecap="butt"><path data-dc-tpl="526" d="M629 330 L629 600"></path><path data-dc-tpl="527" d="M441 413 L600 596"></path><path data-dc-tpl="528" d="M337 573 L580 630"></path><path data-dc-tpl="529" d="M776 411 L695 600"></path><path data-dc-tpl="530" d="M901 461 L700 596"></path><path data-dc-tpl="531" d="M633 634 L746 742"></path><path data-dc-tpl="532" d="M927 643 L746 742"></path><path data-dc-tpl="533" d="M895 852 L746 741"></path><path data-dc-tpl="534" d="M752 923 L738 742"></path><path data-dc-tpl="535" d="M593 953 L638 781 L746 742"></path></g><circle data-dc-tpl="536" cx="629" cy="328" r="50" fill="#1d99df"></circle><circle data-dc-tpl="537" cx="441" cy="413" r="36" fill="#1d99df"></circle><circle data-dc-tpl="538" cx="773" cy="411" r="39" fill="#ffffff"></circle><circle data-dc-tpl="539" cx="901" cy="461" r="41" fill="#1d99df"></circle><circle data-dc-tpl="540" cx="337" cy="575" r="47" fill="#ffffff"></circle><circle data-dc-tpl="541" cx="633" cy="634" r="83" fill="#1d99df"></circle><circle data-dc-tpl="542" cx="746" cy="742" r="58" fill="#1d99df"></circle><circle data-dc-tpl="543" cx="927" cy="643" r="38" fill="#1d99df"></circle><circle data-dc-tpl="544" cx="895" cy="845" r="48" fill="#1d99df"></circle><circle data-dc-tpl="545" cx="760" cy="923" r="38" fill="#ffffff"></circle><circle data-dc-tpl="546" cx="590" cy="953" r="49" fill="#1d99df"></circle></svg><span data-dc-tpl="547">suxtr<span data-dc-tpl="548" style="color: rgb(95, 182, 234);">AI</span></span></span>
         <p data-dc-tpl="549" style="margin: 0px; max-width: 34ch; color: rgb(154, 163, 173); font-size: 14px; line-height: 1.6;">Soluciones de IA a medida para empresas. RAG, automatizaciones, formación y desarrollo end to end.</p>
       </div>
-      <div data-dc-tpl="550" style="display: flex; flex-direction: column; gap: 10px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;">
-        <span data-dc-tpl="551" style="color: rgb(111, 120, 130);">Secciones</span>
+      <div data-dc-tpl="550" class="suxtr-fcol" style="display: flex; flex-direction: column; gap: 2px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;">
+        <span data-dc-tpl="551" style="color: rgb(138, 147, 156);">Secciones</span>
         <a data-dc-tpl="552" href="#servicios" class="scp0" style="color: rgb(195, 201, 208);">Servicios</a>
         <a data-dc-tpl="553" href="#metodo" class="scp0" style="color: rgb(195, 201, 208);">Cómo empezamos</a>
         <a data-dc-tpl="554" href="#faq" class="scp0" style="color: rgb(195, 201, 208);">FAQ</a>
       </div>
-      <div data-dc-tpl="555" style="display: flex; flex-direction: column; gap: 10px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;">
-        <span data-dc-tpl="556" style="color: rgb(111, 120, 130);">Servicios</span>
+      <div data-dc-tpl="555" class="suxtr-fcol" style="display: flex; flex-direction: column; gap: 2px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;">
+        <span data-dc-tpl="556" style="color: rgb(138, 147, 156);">Servicios</span>
         <a data-dc-tpl="557" href="/servicios/automatizacion-facturas-albaranes/" class="scp0" style="color: rgb(195, 201, 208);">Facturas y albaranes</a>
         <a data-dc-tpl="558" href="/servicios/presupuestos-facturas-automaticos/" class="scp0" style="color: rgb(195, 201, 208);">Presupuestos y facturación</a>
         <a data-dc-tpl="559" href="/servicios/asistente-ia-documentacion/" class="scp0" style="color: rgb(195, 201, 208);">Asistente sobre documentación</a>
@@ -742,17 +743,17 @@ chk()})();
         <a data-dc-tpl="561" href="/servicios/asesoramiento-ia/" class="scp0" style="color: rgb(195, 201, 208);">Asesoramiento</a>
         <a data-dc-tpl="562" href="/servicios/desarrollo-ia-a-medida/" class="scp0" style="color: rgb(195, 201, 208);">Desarrollo a medida</a>
       </div>
-      <div data-dc-tpl="563" style="display: flex; flex-direction: column; gap: 10px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;">
-        <span data-dc-tpl="564" style="color: rgb(111, 120, 130);">Contacto</span>
+      <div data-dc-tpl="563" class="suxtr-fcol" style="display: flex; flex-direction: column; gap: 2px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;">
+        <span data-dc-tpl="564" style="color: rgb(138, 147, 156);">Contacto</span>
         <a data-dc-tpl="565" href="mailto:contact@suxtrai.es" class="scp0" style="color: rgb(195, 201, 208); text-transform: none; letter-spacing: 0.04em;"><span class="sc-interp">contact@suxtrai.es</span></a>
         <span data-dc-tpl="566" style="color: rgb(195, 201, 208);">Vizcaya · España</span>
       </div>
       <div data-dc-tpl="567" style="display: flex; flex-direction: column; gap: 14px; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;">
-        <span data-dc-tpl="568" style="color: rgb(111, 120, 130);">Síguenos</span>
+        <span data-dc-tpl="568" style="color: rgb(138, 147, 156);">Síguenos</span>
         <div data-dc-tpl="569" style="display: flex; flex-wrap: wrap; gap: 10px;"><a data-dc-tpl="570" href="https://www.instagram.com/suxtrai" target="_blank" rel="noopener noreferrer" aria-label="Instagram de SuxtrAI" title="Instagram" class="scpa" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgb(42, 48, 55); color: rgb(195, 201, 208);"><svg data-dc-tpl="571" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect data-dc-tpl="572" x="3" y="3" width="18" height="18" rx="5"></rect><circle data-dc-tpl="573" cx="12" cy="12" r="4"></circle><circle data-dc-tpl="574" cx="17.2" cy="6.8" r=".6" fill="currentColor"></circle></svg></a><a data-dc-tpl="575" href="https://www.linkedin.com/company/suxtrai/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de SuxtrAI" title="LinkedIn" class="scpa" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgb(42, 48, 55); color: rgb(195, 201, 208);"><svg data-dc-tpl="576" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect data-dc-tpl="577" x="3" y="3" width="18" height="18" rx="2"></rect><path data-dc-tpl="578" d="M8 10.5V16M8 7.8v.1M12 16v-5.5M12 13c0-1.5 1-2.5 2.3-2.5S16.5 11.4 16.5 13V16"></path></svg></a><a data-dc-tpl="579" href="https://www.tiktok.com/@suxtrai" target="_blank" rel="noopener noreferrer" aria-label="TikTok de SuxtrAI" title="TikTok" class="scpa" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgb(42, 48, 55); color: rgb(195, 201, 208);"><svg data-dc-tpl="580" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path data-dc-tpl="581" d="M14 3v11.2a3.6 3.6 0 1 1-3.6-3.6M14 3c.3 2.4 1.9 4 4.5 4.2"></path></svg></a><a data-dc-tpl="582" href="https://x.com/suxtrai_ai" target="_blank" rel="noopener noreferrer" aria-label="X de SuxtrAI" title="X" class="scpa" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgb(42, 48, 55); color: rgb(195, 201, 208);"><svg data-dc-tpl="583" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path data-dc-tpl="584" d="M4 4l16 16M20 4L4 20"></path></svg></a></div>
       </div>
     </div>
-    <div data-dc-tpl="585" style="max-width: none; margin: clamp(28px, 3vw, 44px) auto 0px; padding-top: 20px; border-top: 1px solid rgb(42, 48, 55); display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(111, 120, 130);">
+    <div data-dc-tpl="585" style="max-width: none; margin: clamp(28px, 3vw, 44px) auto 0px; padding-top: 20px; border-top: 1px solid rgb(42, 48, 55); display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; font-family: &quot;Inter Tight&quot;, Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(138, 147, 156);">
       <span data-dc-tpl="586">© 2026 SuxtrAI · <a data-dc-tpl="587" href="/aviso-legal/" class="scp0" style="color: inherit;">Aviso legal</a> · <a data-dc-tpl="588" href="/privacidad/" class="scp0" style="color: inherit;">Privacidad</a></span>
       <span data-dc-tpl="589">Asier Merino · Jon Medina · Ibai García · Javier García</span>
     </div>
@@ -772,13 +773,14 @@ chk()})();
     </button>
   </div></div></div>
 </div>
-<script>(function(){var p=document.getElementById('suxtr-prerender');function q(){var r=document.getElementById('dc-root');if(r&&r.firstElementChild){if(p)p.remove();}else setTimeout(q,40)}q()})();</script>
+<script>(function(){var p=document.getElementById('suxtr-prerender');if(!p)return;var o=new MutationObserver(function(){if(document.getElementById('dc-root')){o.disconnect();p.remove();}});o.observe(document.body,{childList:true,subtree:true})})();</script>
 <!-- PRERENDER:FIN -->
 <x-dc>
 <helmet>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Space+Grotesk:wght@600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   html { scroll-behavior: smooth; }
+  .suxtr-fcol > a { min-height: 26px; display: flex; align-items: center; }
   body { margin: 0; background: #efefef; color: #14171a; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: #2f9be0; text-decoration: none; }
   a:hover { color: #10699f; }
@@ -950,7 +952,7 @@ chk()})();
 
   <section id="top" class="suxtr-curtain" style="position:relative;min-height:100svh;background:#07090c">
     <div style="position:fixed;inset:0;z-index:0;background:radial-gradient(110% 80% at 72% 18%, #15324b 0%, #0b1219 46%, #06080b 100%)">
-      <video class="suxtr-herovideo" poster="assets/hero-poster.jpg" preload="none" loop aria-hidden="true" tabindex="-1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video>
+      <video class="suxtr-herovideo" poster="assets/hero-poster.webp" preload="none" loop aria-hidden="true" tabindex="-1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none"></video>
       <canvas class="suxtr-herocanvas" data-suxtr-net="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,11,.45) 0%,rgba(6,8,11,0) 26%,rgba(6,8,11,.2) 55%,rgba(6,8,11,.82) 100%);pointer-events:none"></div>
     </div>
@@ -995,7 +997,7 @@ chk()})();
   <div style="position:relative;z-index:2;background:#efefef">
 
   <div style="position:relative;border-top:1px solid #d6d6d6;border-bottom:1px solid #d6d6d6;background:#e8e8e8;overflow:hidden;padding:18px 0">
-    <div style="display:flex;width:max-content;animation:suxtr-marquee 30s linear infinite;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a0a6ae">
+    <div style="display:flex;width:max-content;animation:suxtr-marquee 30s linear infinite;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#5f6770">
       <div style="display:flex;gap:44px;padding-right:44px">
         <span>RAG</span><span style="color:#10699f">◆</span><span>Automatizaciones</span><span style="color:#10699f">◆</span><span>Formación</span><span style="color:#10699f">◆</span><span>Asesoramiento</span><span style="color:#10699f">◆</span><span>Desarrollo end to end</span><span style="color:#10699f">◆</span>
       </div>
@@ -1159,32 +1161,32 @@ chk()})();
               <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Personas implicadas</span>
               <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcPeople }}</span>
             </div>
-            <input type="range" min="1" max="60" value="{{ calcPeople }}" onChange="{{ setPeople }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
+            <input aria-label="Personas implicadas" type="range" min="1" max="60" value="{{ calcPeople }}" onChange="{{ setPeople }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
               <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Horas a la semana en tareas repetitivas</span>
               <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcHours }} h</span>
             </div>
-            <input type="range" min="1" max="30" value="{{ calcHours }}" onChange="{{ setHours }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
+            <input aria-label="Horas a la semana en tareas repetitivas" type="range" min="1" max="30" value="{{ calcHours }}" onChange="{{ setHours }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
               <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#5b636c">Coste medio por hora</span>
               <span class="suxtr-num" style="flex:none;white-space:nowrap;font-size:22px;font-weight:700;color:#10699f">{{ calcRate }} €</span>
             </div>
-            <input type="range" min="12" max="90" value="{{ calcRate }}" onChange="{{ setRate }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
+            <input aria-label="Coste por hora en euros" type="range" min="12" max="90" value="{{ calcRate }}" onChange="{{ setRate }}" style="width:100%;accent-color:#10699f;cursor:pointer" />
           </div>
         </div>
 
         <div style="border:1px solid #2f9be0;background:#ffffff;padding:clamp(22px,2.8vw,36px);display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.2vw,26px)">
           <div style="display:flex;flex-direction:column;gap:6px">
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Horas al año en esas tareas</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Horas al año en esas tareas</span>
             <span class="suxtr-num" style="font-family:'Inter Tight',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1">{{ calcTotalHours }}</span>
           </div>
           <span style="height:1px;background:#d6d6d6"></span>
           <div style="display:flex;flex-direction:column;gap:6px">
-            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Recuperable automatizando el 60%</span>
+            <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Recuperable automatizando el 60%</span>
             <span class="suxtr-num" style="font-family:'Inter Tight',sans-serif;font-size:clamp(34px,4.6vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1;color:#10699f">{{ calcSaving }}</span>
             <span class="suxtr-num" style="color:#5b636c;font-size:14.5px">equivale a {{ calcSavedHours }} horas liberadas al año</span>
           </div>
@@ -1219,7 +1221,7 @@ chk()})();
           <p style="margin:0;color:#5b636c;font-size:16px;line-height:1.65;max-width:52ch;text-wrap:pretty">{{ activeStepText }}</p>
         </div>
         <div style="display:flex;flex-direction:column;justify-content:center;gap:6px;padding:clamp(16px,2vw,26px);border:1px solid #d6d6d6;background:#e8e8e8">
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#737b85">Compromiso</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5f6770">Compromiso</span>
           <span style="font-family:'Inter Tight',sans-serif;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.03em">{{ activeStepCost }}</span>
         </div>
       </div>
@@ -1259,7 +1261,7 @@ chk()})();
   </section>
 
   <div style="position:relative;border-bottom:1px solid #d6d6d6;background:#ffffff;overflow:hidden;padding:16px 0">
-    <div style="display:flex;width:max-content;animation:suxtr-marquee-rev 34s linear infinite;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#a0a6ae">
+    <div style="display:flex;width:max-content;animation:suxtr-marquee-rev 34s linear infinite;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#5f6770">
       <div style="display:flex;gap:36px;padding-right:36px">
         <span>Python</span><span>·</span><span>LLMs</span><span>·</span><span>Bases de datos vectoriales</span><span>·</span><span>Orquestación de agentes</span><span>·</span><span>Evaluación</span><span>·</span><span>Cloud y on-premise</span><span>·</span><span>APIs</span><span>·</span><span>Integraciones ERP/CRM</span><span>·</span>
       </div>
@@ -1283,31 +1285,31 @@ chk()})();
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),300px));justify-content:center;gap:clamp(28px,3vw,48px) clamp(18px,2.4vw,40px);padding-top:clamp(8px,1.6vw,20px)">
         <div class="suxtr-rise" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
           <div style="width:min(100%,clamp(200px,13vw,260px));aspect-ratio:1/1;border-radius:50%;overflow:hidden;background:#d9d9d9;margin-bottom:14px;box-shadow:0 0 0 1px #d6d6d6;transition:transform .35s cubic-bezier(.16,.84,.28,1),box-shadow .35s ease" style-hover="transform:scale(1.04);box-shadow:0 0 0 3px #2f9be0">
-            <img src="assets/equipo-jon.jpg?v=3" alt="Retrato de Jon Medina" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
+            <img src="assets/equipo-jon.webp" alt="Retrato de Jon Medina" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
           </div>
           <h3 style="margin:0;font-size:clamp(20px,1.5vw,26px);font-weight:600;letter-spacing:-.02em">Jon Medina</h3>
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#737b85">Cofundador</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Cofundador</span>
         </div>
         <div class="suxtr-rise" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
           <div style="width:min(100%,clamp(200px,13vw,260px));aspect-ratio:1/1;border-radius:50%;overflow:hidden;background:#d9d9d9;margin-bottom:14px;box-shadow:0 0 0 1px #d6d6d6;transition:transform .35s cubic-bezier(.16,.84,.28,1),box-shadow .35s ease" style-hover="transform:scale(1.04);box-shadow:0 0 0 3px #2f9be0">
-            <img src="assets/equipo-ibai.jpg?v=2" alt="Retrato de Ibai García" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
+            <img src="assets/equipo-ibai.webp" alt="Retrato de Ibai García" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
           </div>
           <h3 style="margin:0;font-size:clamp(20px,1.5vw,26px);font-weight:600;letter-spacing:-.02em">Ibai García</h3>
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#737b85">Cofundador</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Cofundador</span>
         </div>
         <div class="suxtr-rise" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
           <div style="width:min(100%,clamp(200px,13vw,260px));aspect-ratio:1/1;border-radius:50%;overflow:hidden;background:#d9d9d9;margin-bottom:14px;box-shadow:0 0 0 1px #d6d6d6;transition:transform .35s cubic-bezier(.16,.84,.28,1),box-shadow .35s ease" style-hover="transform:scale(1.04);box-shadow:0 0 0 3px #2f9be0">
-            <img src="assets/equipo-asier.jpg?v=3" alt="Retrato de Asier Merino" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
+            <img src="assets/equipo-asier.webp" alt="Retrato de Asier Merino" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
           </div>
           <h3 style="margin:0;font-size:clamp(20px,1.5vw,26px);font-weight:600;letter-spacing:-.02em">Asier Merino</h3>
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#737b85">Cofundador</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Cofundador</span>
         </div>
         <div class="suxtr-rise" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
           <div style="width:min(100%,clamp(200px,13vw,260px));aspect-ratio:1/1;border-radius:50%;overflow:hidden;background:#d9d9d9;margin-bottom:14px;box-shadow:0 0 0 1px #d6d6d6;transition:transform .35s cubic-bezier(.16,.84,.28,1),box-shadow .35s ease" style-hover="transform:scale(1.04);box-shadow:0 0 0 3px #2f9be0">
-            <img src="assets/equipo-javier.jpg" alt="Retrato de Javier García" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
+            <img src="assets/equipo-javier.webp" alt="Retrato de Javier García" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)" />
           </div>
           <h3 style="margin:0;font-size:clamp(20px,1.5vw,26px);font-weight:600;letter-spacing:-.02em">Javier García</h3>
-          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#737b85">Cofundador</span>
+          <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:clamp(11.5px,.85vw,14px);letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Cofundador</span>
         </div>
       </div>
     </div>
@@ -1343,7 +1345,7 @@ chk()})();
       <div>
         <h2 style="margin:0;font-size:clamp(34px,6.4vw,86px);line-height:.95;letter-spacing:-.035em;font-weight:800;text-wrap:balance">Contadnos<br />vuestro caso.</h2>
         <p style="margin:22px 0 0;max-width:46ch;color:#3d444c;font-size:clamp(15px,1.3vw,18px);line-height:1.6;text-wrap:pretty">Treinta minutos bastan para saber si hay algo que merezca la pena automatizar. Si no lo hay, os lo diremos.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#737b85">
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5f6770">
           <span style="padding:8px 14px;border:1px solid #d6d6d6">Respuesta en 24 h</span>
           <span style="padding:8px 14px;border:1px solid #d6d6d6">Primera sesión sin coste</span>
           <span style="padding:8px 14px;border:1px solid #d6d6d6">Proyectos en España</span>
@@ -1353,15 +1355,15 @@ chk()})();
       </div>
       <div style="border:1px solid #d6d6d6;background:#e8e8e8;padding:clamp(22px,2.8vw,34px);display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;flex-direction:column;gap:8px">
-          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Nombre y empresa</label>
+          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Nombre y empresa</label>
           <input type="text" value="{{ formName }}" onChange="{{ setFormName }}" placeholder="Ane Uriarte · Talleres Bilbao" style="width:100%;padding:13px 14px;background:#ffffff;border:1px solid #c8c8c8;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
         </div>
         <div style="display:flex;flex-direction:column;gap:8px">
-          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Correo</label>
+          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Correo</label>
           <input type="email" value="{{ formEmail }}" onChange="{{ setFormEmail }}" placeholder="ane@empresa.com" style="width:100%;padding:13px 14px;background:#ffffff;border:1px solid #c8c8c8;color:#14171a;font-size:15px;border-radius:2px;outline:none" style-focus="border-color:#10699f" />
         </div>
         <div style="display:flex;flex-direction:column;gap:8px">
-          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737b85">Qué proceso os quita tiempo</label>
+          <label style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5f6770">Qué proceso os quita tiempo</label>
           <textarea rows="4" value="{{ formMsg }}" onChange="{{ setFormMsg }}" placeholder="Cada semana revisamos a mano unas 300 facturas de proveedor..." style="width:100%;padding:13px 14px;background:#ffffff;border:1px solid #c8c8c8;color:#14171a;font-size:15px;border-radius:2px;outline:none;resize:vertical;line-height:1.55" style-focus="border-color:#10699f"></textarea>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
@@ -1377,7 +1379,7 @@ chk()})();
           <span>{{ submitLabel }}</span>
           <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif">→</span>
         </button>
-        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#737b85" aria-live="polite">{{ formStatus }}</span>
+        <span style="font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#5f6770" aria-live="polite">{{ formStatus }}</span>
       </div>
     </div>
   </section>
@@ -1410,14 +1412,14 @@ chk()})();
 <circle cx="590" cy="953" r="49" fill="#1d99df"/></svg><span>suxtr<span style="color:#5fb6ea">AI</span></span></span>
         <p style="margin:0;max-width:34ch;color:#9aa3ad;font-size:14px;line-height:1.6">Soluciones de IA a medida para empresas. RAG, automatizaciones, formación y desarrollo end to end.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
-        <span style="color:#6f7882">Secciones</span>
+      <div style="display:flex;flex-direction:column;gap:2px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase" class="suxtr-fcol">
+        <span style="color:#8a939c">Secciones</span>
         <a href="#servicios" style="color:#c3c9d0" style-hover="color:#5fb6ea">Servicios</a>
         <a href="#metodo" style="color:#c3c9d0" style-hover="color:#5fb6ea">Cómo empezamos</a>
         <a href="#faq" style="color:#c3c9d0" style-hover="color:#5fb6ea">FAQ</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
-        <span style="color:#6f7882">Servicios</span>
+      <div style="display:flex;flex-direction:column;gap:2px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase" class="suxtr-fcol">
+        <span style="color:#8a939c">Servicios</span>
         <a href="/servicios/automatizacion-facturas-albaranes/" style="color:#c3c9d0" style-hover="color:#5fb6ea">Facturas y albaranes</a>
         <a href="/servicios/presupuestos-facturas-automaticos/" style="color:#c3c9d0" style-hover="color:#5fb6ea">Presupuestos y facturación</a>
         <a href="/servicios/asistente-ia-documentacion/" style="color:#c3c9d0" style-hover="color:#5fb6ea">Asistente sobre documentación</a>
@@ -1425,17 +1427,17 @@ chk()})();
         <a href="/servicios/asesoramiento-ia/" style="color:#c3c9d0" style-hover="color:#5fb6ea">Asesoramiento</a>
         <a href="/servicios/desarrollo-ia-a-medida/" style="color:#c3c9d0" style-hover="color:#5fb6ea">Desarrollo a medida</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
-        <span style="color:#6f7882">Contacto</span>
+      <div style="display:flex;flex-direction:column;gap:2px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase" class="suxtr-fcol">
+        <span style="color:#8a939c">Contacto</span>
         <a href="{{ mailtoHref }}" style="color:#c3c9d0;text-transform:none;letter-spacing:.04em" style-hover="color:#5fb6ea">{{ contactEmail }}</a>
         <span style="color:#c3c9d0">Vizcaya · España</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase">
-        <span style="color:#6f7882">Síguenos</span>
+        <span style="color:#8a939c">Síguenos</span>
         <div style="display:flex;flex-wrap:wrap;gap:10px"><a href="https://www.instagram.com/suxtrai" target="_blank" rel="noopener noreferrer" aria-label="Instagram de SuxtrAI" title="Instagram" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #2a3037;color:#c3c9d0" style-hover="color:#5fb6ea;border-color:#5fb6ea"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/suxtrai/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de SuxtrAI" title="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #2a3037;color:#c3c9d0" style-hover="color:#5fb6ea;border-color:#5fb6ea"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10.5V16M8 7.8v.1M12 16v-5.5M12 13c0-1.5 1-2.5 2.3-2.5S16.5 11.4 16.5 13V16"/></svg></a><a href="https://www.tiktok.com/@suxtrai" target="_blank" rel="noopener noreferrer" aria-label="TikTok de SuxtrAI" title="TikTok" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #2a3037;color:#c3c9d0" style-hover="color:#5fb6ea;border-color:#5fb6ea"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.2a3.6 3.6 0 1 1-3.6-3.6M14 3c.3 2.4 1.9 4 4.5 4.2"/></svg></a><a href="https://x.com/suxtrai_ai" target="_blank" rel="noopener noreferrer" aria-label="X de SuxtrAI" title="X" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #2a3037;color:#c3c9d0" style-hover="color:#5fb6ea;border-color:#5fb6ea"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg></a></div>
       </div>
     </div>
-    <div style="max-width:none;margin:clamp(28px,3vw,44px) auto 0;padding-top:20px;border-top:1px solid #2a3037;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f7882">
+    <div style="max-width:none;margin:clamp(28px,3vw,44px) auto 0;padding-top:20px;border-top:1px solid #2a3037;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:'Inter Tight',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a939c">
       <span>© 2026 SuxtrAI · <a href="/aviso-legal/" style="color:inherit" style-hover="color:#5fb6ea">Aviso legal</a> · <a href="/privacidad/" style="color:inherit" style-hover="color:#5fb6ea">Privacidad</a></span>
       <span>Asier Merino · Jon Medina · Ibai García · Javier García</span>
     </div>
@@ -2099,7 +2101,7 @@ class Component extends DCLogic {
         num: String(i + 1),
         bg: st.methodStep === i ? "#ffffff" : "transparent",
         border: st.methodStep === i ? "#2f9be0" : "#c8c8c8",
-        whenColor: st.methodStep === i ? "#10699f" : "#737b85",
+        whenColor: st.methodStep === i ? "#10699f" : "#5f6770",
         select: () => this.setState(q => q.methodStep === i ? null : { methodStep: i, stepFlip: !q.stepFlip })
       })),
       stepProgress: ((st.methodStep + 1) / STEPS.length * 100) + "%",

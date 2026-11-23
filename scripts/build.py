@@ -36,9 +36,9 @@ UMAMI_ID = "adb6b538-9ae7-48ce-9cd4-6067065a8fb9"
 # Cuando se constituya, cambiad estos datos por los de la sociedad.
 # ---------------------------------------------------------------------------
 TITULAR = {
-    "nombre": "[NOMBRE Y APELLIDOS DEL TITULAR]",
-    "nif": "[NIF]",
-    "domicilio": "[DOMICILIO]",
+    "nombre": "Jon Medina",
+    "nif": "",        # pendiente: CIF de la SL cuando se constituya
+    "domicilio": "",  # pendiente: domicilio social de la SL
     "email": "contact@suxtrai.es",
 }
 
@@ -420,7 +420,8 @@ def pagina_servicios():
 
 
 def fila(k, v):
-    return f"<tr><th>{E(k)}</th><td>{v}</td></tr>"
+    # las filas sin dato no se muestran
+    return f"<tr><th>{E(k)}</th><td>{v}</td></tr>" if v else ""
 
 
 def pagina_aviso_legal():
@@ -589,9 +590,10 @@ def prerender():
         f"{INICIO}\n"
         f'<style>x-dc{{display:none!important}}</style>\n'
         f'<div id="suxtr-prerender">\n<style>{datos["css"]}</style>\n{contenido}\n</div>\n'
-        "<script>(function(){var p=document.getElementById('suxtr-prerender');"
-        "function q(){var r=document.getElementById('dc-root');if(r&&r.firstElementChild){if(p)p.remove();}"
-        "else setTimeout(q,40)}q()})();</script>\n"
+        # en cuanto la web real crea #dc-root se quita la copia, antes de que se pinte nada (sin saltos de diseño)
+        "<script>(function(){var p=document.getElementById('suxtr-prerender');if(!p)return;"
+        "var o=new MutationObserver(function(){if(document.getElementById('dc-root')){o.disconnect();p.remove();}});"
+        "o.observe(document.body,{childList:true,subtree:true})})();</script>\n"
         f"{FIN}\n"
     )
     src = src.replace("<x-dc>", bloque + "<x-dc>", 1)
@@ -610,9 +612,9 @@ def main():
     if "--sin-prerender" not in sys.argv:
         print("Pre-renderizando la portada…")
         prerender()
-    pendientes = [k for k, v in TITULAR.items() if v.startswith("[")]
+    pendientes = [k for k, v in TITULAR.items() if not v]
     if pendientes:
-        print("\n⚠ Faltan datos del titular en scripts/build.py:", ", ".join(pendientes))
+        print("\nAviso: faltan datos del titular en scripts/build.py:", ", ".join(pendientes))
 
 
 if __name__ == "__main__":
