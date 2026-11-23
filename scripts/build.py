@@ -26,6 +26,8 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from contenido import ARTICULOS, BACKOFFICE, SECTORES  # noqa: E402
 SITE = "https://suxtrai.es"
 HOY = datetime.date.today().isoformat()
 UMAMI_ID = "adb6b538-9ae7-48ce-9cd4-6067065a8fb9"
@@ -250,12 +252,13 @@ LOGO = ('<a class="logo" href="/" aria-label="SuxtrAI, inicio">'
         '<span>suxtr<span>AI</span></span></a>')
 
 
-def pagina(path, title, meta, cuerpo, schema=None, indexar=True):
+def pagina(path, title, meta, cuerpo, schema=None, indexar=True, og_type="website"):
     canonical = SITE + path
     ld = ""
     for s in (schema or []):
         ld += '<script type="application/ld+json">' + json.dumps(s, ensure_ascii=False) + "</script>\n"
     footer_svc = "".join(f'<a href="/servicios/{s["slug"]}/">{E(s["nav"])}</a>' for s in SERVICIOS)
+    footer_sec = "".join(f'<a href="/sectores/{s["slug"]}/">{E(s["nav"])}</a>' for s in SECTORES)
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -269,7 +272,7 @@ def pagina(path, title, meta, cuerpo, schema=None, indexar=True):
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="SuxtrAI">
 <meta property="og:locale" content="es_ES">
 <meta property="og:url" content="{canonical}">
@@ -280,7 +283,7 @@ def pagina(path, title, meta, cuerpo, schema=None, indexar=True):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="stylesheet" href="/assets/site.css?v=2">
 {ld}<script defer src="https://cloud.umami.is/script.js" data-website-id="{UMAMI_ID}" data-domains="suxtrai.es,www.suxtrai.es"></script>
 </head>
 <body>
@@ -288,9 +291,10 @@ def pagina(path, title, meta, cuerpo, schema=None, indexar=True):
 <header class="site-header"><div class="bar">
 {LOGO}
 <nav class="site-nav" aria-label="Principal">
+<a href="/automatizacion-back-office/" class="hide-sm">Back office con IA</a>
 <a href="/servicios/" class="hide-sm">Servicios</a>
-<a href="/#metodo" class="hide-sm">Cómo trabajamos</a>
-<a href="/#equipo" class="hide-sm">Equipo</a>
+<a href="/sectores/" class="hide-sm">Sectores</a>
+<a href="/blog/" class="hide-sm">Blog</a>
 <a href="/#contacto" class="cta" data-umami-event="cta-hablemos">Hablemos</a>
 </nav>
 </div></header>
@@ -299,10 +303,11 @@ def pagina(path, title, meta, cuerpo, schema=None, indexar=True):
 </main>
 <footer class="site-footer">
 <div class="cols">
-<div>{LOGO}<p style="margin:14px 0 0;max-width:34ch">Soluciones de IA a medida para empresas. Automatización de facturas, albaranes y presupuestos, RAG, formación y desarrollo.</p></div>
-<div><h4>Servicios</h4>{footer_svc}</div>
-<div><h4>Empresa</h4><a href="/#metodo">Cómo trabajamos</a><a href="/#equipo">Equipo</a><a href="/#faq">Preguntas frecuentes</a></div>
-<div><h4>Contacto</h4><a href="mailto:contact@suxtrai.es">contact@suxtrai.es</a><a href="/#contacto">Formulario</a><a href="https://www.linkedin.com/company/suxtrai/" rel="noopener" target="_blank">LinkedIn</a><span>Bizkaia · España</span></div>
+<div>{LOGO}<p style="margin:14px 0 0;max-width:34ch">Automatización del back office con IA: facturas, albaranes y presupuestos sin teclear. Desde Bilbao para toda España.</p></div>
+<div><p class="fh">Servicios</p>{footer_svc}</div>
+<div><p class="fh">Back office</p><a href="/automatizacion-back-office/">Back office con IA</a>{footer_sec}<a href="/blog/">Blog</a></div>
+<div><p class="fh">Empresa</p><a href="/#metodo">Cómo trabajamos</a><a href="/#equipo">Equipo</a><a href="/#faq">Preguntas frecuentes</a></div>
+<div><p class="fh">Contacto</p><a href="mailto:contact@suxtrai.es">contact@suxtrai.es</a><a href="/#contacto">Formulario</a><a href="https://www.linkedin.com/company/suxtrai/" rel="noopener" target="_blank">LinkedIn</a><span>Bizkaia · España</span></div>
 </div>
 <div class="legal-bar"><span>© {datetime.date.today().year} SuxtrAI</span><span><a href="/aviso-legal/">Aviso legal</a> · <a href="/privacidad/">Privacidad</a></span></div>
 </footer>
@@ -503,6 +508,146 @@ def pagina_privacidad():
     return path, pagina(path, "Política de privacidad | SuxtrAI", "Cómo trata SuxtrAI los datos personales de quienes visitan suxtrai.es o nos escriben.", cuerpo)
 
 
+ORG = {"@type": "Organization", "name": "SuxtrAI", "url": SITE + "/", "@id": SITE + "/#org"}
+
+
+def hero(crumbs, h1, lead, acciones=True):
+    migas = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in crumbs)
+    botones = ('<div class="actions"><a class="btn btn-light" href="/#contacto" data-umami-event="cta-servicio">Diagnóstico gratuito</a></div>' if acciones else "")
+    return f"""<div class="page-hero"><div class="inner">
+<div class="crumbs">{migas}</div>
+<h1>{E(h1)}</h1>
+<p class="lead">{E(lead)}</p>
+{botones}
+</div></div>"""
+
+
+def bloque_faq(faq):
+    items = "".join(f"<details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in faq)
+    return f"""<section><div class="inner">
+<p class="eyebrow">Preguntas frecuentes</p>
+<h2>Dudas habituales</h2>
+{items}
+</div></section>"""
+
+
+def schema_faq(faq):
+    return {"@context": "https://schema.org", "@type": "FAQPage",
+            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
+
+
+def pagina_backoffice():
+    b = BACKOFFICE
+    cuerpo = hero([("Inicio", "/"), ("Back office con IA", None)], b["h1"], b["lead"]) + b["cuerpo"] + bloque_faq(b["faq"]) + cta()
+    schema = [
+        {"@context": "https://schema.org", "@type": "Service", "name": b["title"], "description": b["meta"],
+         "url": SITE + b["path"], "serviceType": "Automatización del back office", "provider": ORG,
+         "areaServed": [{"@type": "AdministrativeArea", "name": "Bizkaia"}, {"@type": "Country", "name": "España"}]},
+        breadcrumbs([("Inicio", "/"), ("Back office con IA", b["path"])]),
+        schema_faq(b["faq"]),
+    ]
+    return b["path"], pagina(b["path"], f'{b["title"]} | SuxtrAI', b["meta"], cuerpo, schema)
+
+
+def pagina_sectores():
+    path = "/sectores/"
+    cards = "".join(
+        f'<a class="card" href="/sectores/{s["slug"]}/"><h3>{E(s["nav"])}</h3><p>{E(s["card"])}</p><span class="more">Ver sector →</span></a>'
+        for s in SECTORES)
+    cuerpo = hero([("Inicio", "/"), ("Sectores", None)], "Automatización del back office por sectores",
+                  "El papeleo cambia según el sector, pero el problema es el mismo: horas pasando datos a mano. Así lo aplicamos en cada uno.") + f"""
+<section><div class="inner">
+<p class="eyebrow">Sectores</p>
+<h2>Elige el tuyo</h2>
+<div class="grid">{cards}</div>
+<p style="margin-top:24px">¿No está tu sector? El método es el mismo para cualquier empresa con mucho papeleo. <a href="/automatizacion-back-office/">Ver cómo automatizamos el back office</a>.</p>
+</div></section>""" + cta()
+    return path, pagina(path, "IA para el back office por sectores: construcción, transporte, talleres y distribución | SuxtrAI",
+                        "Cómo automatizamos facturas, albaranes, pedidos y presupuestos en construcción y reformas, transporte y grúas, talleres y distribución.",
+                        cuerpo, [breadcrumbs([("Inicio", "/"), ("Sectores", path)])])
+
+
+def pagina_sector(s):
+    path = f"/sectores/{s['slug']}/"
+    otros = "".join(
+        f'<a class="card" href="/sectores/{x["slug"]}/"><h3>{E(x["nav"])}</h3><p>{E(x["card"])}</p><span class="more">Ver sector →</span></a>'
+        for x in SECTORES if x["slug"] != s["slug"])
+    cuerpo = (hero([("Inicio", "/"), ("Sectores", "/sectores/"), (s["nav"], None)], s["h1"], s["lead"])
+              + s["cuerpo"] + bloque_faq(s["faq"]) + cta()
+              + f'<section><div class="inner"><p class="eyebrow">Otros sectores</p><div class="grid">{otros}</div></div></section>')
+    schema = [
+        {"@context": "https://schema.org", "@type": "Service", "name": s["title"], "description": s["meta"], "url": SITE + path,
+         "serviceType": "Automatización del back office", "provider": ORG, "audience": {"@type": "BusinessAudience", "name": s["nav"]},
+         "areaServed": [{"@type": "AdministrativeArea", "name": "Bizkaia"}, {"@type": "Country", "name": "España"}]},
+        breadcrumbs([("Inicio", "/"), ("Sectores", "/sectores/"), (s["nav"], path)]),
+        schema_faq(s["faq"]),
+    ]
+    return path, pagina(path, f"{s['title']} | SuxtrAI", s["meta"], cuerpo, schema)
+
+
+def fecha_es(iso):
+    meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    a, m, d = iso.split("-")
+    return f"{int(d)} de {meses[int(m) - 1]} de {a}"
+
+
+def pagina_blog():
+    path = "/blog/"
+    items = "".join(
+        f'<a class="card" href="/blog/{a["slug"]}/"><span class="num">{fecha_es(a["fecha"])}</span><h3>{E(a["h1"])}</h3><p>{E(a["resumen"])}</p><span class="more">Leer →</span></a>'
+        for a in sorted(ARTICULOS, key=lambda x: x["fecha"], reverse=True))
+    cuerpo = hero([("Inicio", "/"), ("Blog", None)], "Blog: automatización del back office",
+                  "Guías prácticas para quitar papeleo en la oficina: facturas, albaranes, presupuestos y cómo aplicar la IA sin complicaciones.", acciones=False) + f"""
+<section><div class="inner"><div class="grid">{items}</div></div></section>""" + cta()
+    return path, pagina(path, "Blog de automatización del back office con IA | SuxtrAI",
+                        "Guías prácticas sobre facturas, albaranes, presupuestos y automatización administrativa con IA para pymes.",
+                        cuerpo, [breadcrumbs([("Inicio", "/"), ("Blog", path)])])
+
+
+def pagina_articulo(a):
+    path = f"/blog/{a['slug']}/"
+    otros = "".join(
+        f'<a class="card" href="/blog/{x["slug"]}/"><h3>{E(x["h1"])}</h3><p>{E(x["resumen"])}</p><span class="more">Leer →</span></a>'
+        for x in ARTICULOS if x["slug"] != a["slug"])
+    cuerpo = f"""<div class="page-hero"><div class="inner">
+<div class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></div>
+<h1>{E(a['h1'])}</h1>
+<p class="lead">{E(a['resumen'])}</p>
+<p class="updated" style="color:#9aa3ad;margin-top:18px">SuxtrAI · {fecha_es(a['fecha'])}</p>
+</div></div>
+<section class="article"><div class="inner">
+{a['cuerpo']}
+</div></section>
+{cta("¿Queréis automatizarlo?", "Os enseñamos cómo funcionaría con vuestros propios documentos. La primera sesión, de 30 minutos, no tiene coste.")}
+<section><div class="inner"><p class="eyebrow">Sigue leyendo</p><div class="grid">{otros}</div></div></section>"""
+    schema = [
+        {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["h1"], "description": a["meta"],
+         "datePublished": a["fecha"], "dateModified": a["fecha"], "inLanguage": "es",
+         "mainEntityOfPage": SITE + path, "image": SITE + "/assets/og-suxtrai.jpg",
+         "author": ORG, "publisher": {**ORG, "logo": {"@type": "ImageObject", "url": SITE + "/assets/suxtrai-logo.jpg"}}},
+        breadcrumbs([("Inicio", "/"), ("Blog", "/blog/"), (a["h1"], path)]),
+    ]
+    return path, pagina(path, f"{a['title']} | SuxtrAI", a["meta"], cuerpo, schema, og_type="article")
+
+
+def llms_txt():
+    lineas = [
+        "# SuxtrAI",
+        "",
+        "> Automatización del back office de pymes con inteligencia artificial: lectura de facturas y albaranes de proveedor, cruce con pedidos, presupuestos y facturación sin teclear, asistentes sobre documentación interna y formación. Con sede en Bizkaia (Bilbao) y clientes en toda España. Contacto: contact@suxtrai.es. Diagnóstico inicial de 30 minutos sin coste.",
+        "",
+        "## Páginas principales",
+        f"- [Back office con IA]({SITE}{BACKOFFICE['path']}): qué tareas administrativas automatizamos y cómo",
+        f"- [Servicios]({SITE}/servicios/): todos los servicios",
+    ]
+    lineas += [f"- [{s['h1']}]({SITE}/servicios/{s['slug']}/): {s['card']}" for s in SERVICIOS]
+    lineas += ["", "## Sectores"] + [f"- [{s['nav']}]({SITE}/sectores/{s['slug']}/): {s['card']}" for s in SECTORES]
+    lineas += ["", "## Guías"] + [f"- [{a['h1']}]({SITE}/blog/{a['slug']}/): {a['resumen']}" for a in ARTICULOS]
+    lineas += ["", "## Opcional", f"- [Aviso legal]({SITE}/aviso-legal/)", f"- [Privacidad]({SITE}/privacidad/)", ""]
+    (ROOT / "llms.txt").write_text("\n".join(lineas), encoding="utf-8")
+    print("  ✓ llms.txt")
+
+
 def escribir(path, contenido):
     destino = ROOT / path.strip("/") / "index.html"
     destino.parent.mkdir(parents=True, exist_ok=True)
@@ -511,7 +656,7 @@ def escribir(path, contenido):
 
 
 def sitemap(paths):
-    prio = {"/": "1.0", "/servicios/": "0.9"}
+    prio = {"/": "1.0", "/automatizacion-back-office/": "0.9", "/servicios/": "0.9", "/sectores/": "0.8", "/blog/": "0.7"}
     urls = []
     for p in paths:
         pr = prio.get(p, "0.3" if p in ("/aviso-legal/", "/privacidad/") else "0.8")
@@ -604,11 +749,16 @@ def prerender():
 def main():
     print("Generando páginas…")
     paths = ["/"]
-    for fn in [pagina_servicios] + [partial(pagina_servicio, s) for s in SERVICIOS] + [pagina_aviso_legal, pagina_privacidad]:
+    generadores = ([pagina_backoffice, pagina_servicios] + [partial(pagina_servicio, s) for s in SERVICIOS]
+                   + [pagina_sectores] + [partial(pagina_sector, s) for s in SECTORES]
+                   + [pagina_blog] + [partial(pagina_articulo, a) for a in ARTICULOS]
+                   + [pagina_aviso_legal, pagina_privacidad])
+    for fn in generadores:
         path, contenido = fn()
         escribir(path, contenido)
         paths.append(path)
     sitemap(paths)
+    llms_txt()
     if "--sin-prerender" not in sys.argv:
         print("Pre-renderizando la portada…")
         prerender()
