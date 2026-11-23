@@ -69,7 +69,7 @@ SECTORES = [
     {
         "slug": "construccion-reformas",
         "nav": "Construcción y reformas",
-        "title": "IA para empresas de construcción y reformas: albaranes, facturas y presupuestos",
+        "title": "IA para constructoras y reformas: albaranes y facturas",
         "meta": "Automatizamos el back office de constructoras y empresas de reformas: albaranes de materiales por obra, cruce con facturas y presupuestos desde mediciones.",
         "h1": "IA para empresas de construcción y reformas",
         "lead": "Albaranes de almacén que se pierden entre obras, facturas de proveedor que nadie cruza y presupuestos que salen tarde. Automatizamos esa parte para que la oficina vaya al ritmo de las obras.",
@@ -102,8 +102,8 @@ SECTORES = [
     {
         "slug": "transporte-gruas",
         "nav": "Transporte y grúas",
-        "title": "IA para empresas de transporte y grúas: partes de servicio y facturación automática",
-        "meta": "Automatizamos la facturación de empresas de transporte y grúas de asistencia: partes de servicio, kilómetros, esperas y peajes convertidos en facturas sin teclear.",
+        "title": "IA para transporte y grúas: facturación automática",
+        "meta": "Facturación automática para transporte y grúas de asistencia: partes, kilómetros, esperas y peajes convertidos en facturas sin teclear.",
         "h1": "IA para empresas de transporte y grúas",
         "lead": "Cada servicio genera un parte con kilómetros, horas de espera, peajes y suplementos. Pasarlo a factura a mano lleva horas y siempre se escapa algo. Lo automatizamos.",
         "card": "Partes de servicio, kilómetros y esperas convertidos en facturas sin teclear.",
@@ -135,7 +135,7 @@ SECTORES = [
     {
         "slug": "talleres-mantenimiento",
         "nav": "Talleres y mantenimiento",
-        "title": "IA para talleres y empresas de mantenimiento: órdenes de trabajo, recambios y facturas",
+        "title": "IA para talleres: órdenes de trabajo y facturas",
         "meta": "Automatizamos el back office de talleres y empresas de mantenimiento: órdenes de trabajo, facturas de recambios y presupuestos de reparación sin teclear.",
         "h1": "IA para talleres y empresas de mantenimiento",
         "lead": "Órdenes de trabajo, recambios que llegan con su albarán, presupuestos de reparación y facturas al cliente. Automatizamos la parte administrativa para que el taller no dependa de la oficina.",
@@ -167,8 +167,8 @@ SECTORES = [
     {
         "slug": "distribucion-mayoristas",
         "nav": "Distribución y mayoristas",
-        "title": "IA para distribuidores y mayoristas: pedidos por correo al ERP y facturas de proveedor",
-        "meta": "Automatizamos el back office de distribuidores y mayoristas: pedidos de clientes que llegan por correo pasan solos al ERP y las facturas de proveedor se cruzan con lo recibido.",
+        "title": "IA para distribuidores: pedidos y facturas automáticos",
+        "meta": "Para distribuidores y mayoristas: pedidos que llegan por correo pasan solos al ERP y las facturas de proveedor se cruzan con lo recibido.",
         "h1": "IA para distribuidores y mayoristas",
         "lead": "Pedidos de clientes en PDF, Excel o en el cuerpo del correo, y facturas de proveedores que hay que cruzar con lo recibido. Automatizamos las dos puntas para que el almacén no espere a la oficina.",
         "card": "Pedidos por correo al ERP y facturas de proveedor cruzadas con lo recibido.",
@@ -205,7 +205,7 @@ ARTICULOS = [
     {
         "slug": "cruzar-albaranes-con-facturas",
         "fecha": "2026-11-23",
-        "title": "Cómo comprobar albaranes contra facturas de proveedor sin hacerlo a mano",
+        "title": "Cómo cruzar albaranes con facturas sin hacerlo a mano",
         "meta": "Guía práctica para cruzar albaranes con facturas de proveedor: errores habituales, cómo hacerlo bien en Excel y cuándo compensa automatizarlo con IA.",
         "h1": "Cómo comprobar albaranes contra facturas de proveedor sin hacerlo a mano",
         "resumen": "Por qué conviene cruzar albaranes con facturas, qué errores se detectan, cómo organizarlo en una hoja de cálculo y cuándo compensa automatizarlo.",
@@ -239,8 +239,8 @@ ARTICULOS = [
     {
         "slug": "ocr-o-ia-para-leer-facturas",
         "fecha": "2026-11-23",
-        "title": "OCR o IA para leer facturas: qué diferencia hay y cuál necesita tu empresa",
-        "meta": "Diferencias entre el OCR tradicional y la lectura de facturas con inteligencia artificial: plantillas, formatos distintos, errores y cuándo conviene cada uno.",
+        "title": "OCR o IA para leer facturas: diferencias",
+        "meta": "Diferencias entre el OCR tradicional y la lectura de facturas con IA: plantillas, formatos distintos, errores y cuándo conviene cada uno.",
         "h1": "OCR o IA para leer facturas: qué diferencia hay",
         "resumen": "El OCR convierte la imagen en texto; la IA entiende qué es cada dato. Cuándo basta con uno y cuándo hace falta la otra.",
         "cuerpo": """
@@ -265,8 +265,8 @@ ARTICULOS = [
     {
         "slug": "tareas-administrativas-automatizar-pyme",
         "fecha": "2026-11-23",
-        "title": "7 tareas administrativas que una pyme puede automatizar con IA",
-        "meta": "Las tareas de back office que más tiempo quitan en una pyme y que hoy se pueden automatizar con IA: facturas, albaranes, presupuestos, pedidos, correos e informes.",
+        "title": "7 tareas administrativas que una pyme puede automatizar",
+        "meta": "Las tareas de back office que más tiempo quitan en una pyme y que ya se pueden automatizar con IA: facturas, albaranes, presupuestos y pedidos.",
         "h1": "7 tareas administrativas que una pyme puede automatizar con IA",
         "resumen": "De la lectura de facturas a los informes semanales: dónde está el tiempo de la oficina y qué parte se puede automatizar ya.",
         "cuerpo": """

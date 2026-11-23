@@ -254,6 +254,8 @@ LOGO = ('<a class="logo" href="/" aria-label="SuxtrAI, inicio">'
 
 def pagina(path, title, meta, cuerpo, schema=None, indexar=True, og_type="website"):
     canonical = SITE + path
+    if len(title) > 60 and title.endswith(" | SuxtrAI"):
+        title = title[: -len(" | SuxtrAI")]
     ld = ""
     for s in (schema or []):
         ld += '<script type="application/ld+json">' + json.dumps(s, ensure_ascii=False) + "</script>\n"
@@ -419,7 +421,7 @@ def pagina_servicios():
 </div></section>
 {cta()}"""
     schema = [breadcrumbs([("Inicio", "/"), ("Servicios", path)])]
-    return path, pagina(path, "Servicios de IA para empresas: facturas, albaranes, presupuestos | SuxtrAI",
+    return path, pagina(path, "Servicios de IA para el back office de pymes | SuxtrAI",
                         "Automatización de facturas, albaranes y presupuestos, asistentes de IA sobre vuestra documentación, formación, asesoramiento y desarrollo a medida.",
                         cuerpo, schema)
 
@@ -562,7 +564,7 @@ def pagina_sectores():
 <div class="grid">{cards}</div>
 <p style="margin-top:24px">¿No está tu sector? El método es el mismo para cualquier empresa con mucho papeleo. <a href="/automatizacion-back-office/">Ver cómo automatizamos el back office</a>.</p>
 </div></section>""" + cta()
-    return path, pagina(path, "IA para el back office por sectores: construcción, transporte, talleres y distribución | SuxtrAI",
+    return path, pagina(path, "IA para el back office por sectores | SuxtrAI",
                         "Cómo automatizamos facturas, albaranes, pedidos y presupuestos en construcción y reformas, transporte y grúas, talleres y distribución.",
                         cuerpo, [breadcrumbs([("Inicio", "/"), ("Sectores", path)])])
 
@@ -689,6 +691,24 @@ JS_EXTRAER = """() => {
 }"""
 
 
+TPL_ABRE = '<script type="text/x-dc-template" id="suxtr-tpl">'
+TPL_CARGA = ("<script>(function(){var t=document.getElementById('suxtr-tpl');if(!t)return;"
+             "var d=document.createElement('div');d.innerHTML=t.textContent;t.replaceWith(d.firstElementChild)})();</script>")
+
+
+def envolver_plantilla(src):
+    """Mete la plantilla <x-dc> dentro de un <script> para que los buscadores no la lean
+    como texto duplicado (ya tienen la copia pre-renderizada). Un script la restaura
+    antes de que arranque support.js (que va con defer)."""
+    if TPL_ABRE in src:
+        return src
+    i = src.index("<x-dc>")
+    j = src.index("</x-dc>") + len("</x-dc>")
+    plantilla = src[i:j]
+    assert "</script" not in plantilla.lower() and "<!--" not in plantilla
+    return src[:i] + TPL_ABRE + plantilla + "</script>\n" + TPL_CARGA + src[j:]
+
+
 def servidor():
     class Silencioso(SimpleHTTPRequestHandler):
         def log_message(self, *a):
@@ -705,6 +725,7 @@ def prerender():
     src = idx.read_text(encoding="utf-8")
     # quitar el pre-renderizado anterior antes de volver a generarlo
     src = re.sub(re.escape(INICIO) + r".*?" + re.escape(FIN) + r"\n?", "", src, flags=re.S)
+    src = envolver_plantilla(src)
     idx.write_text(src, encoding="utf-8")
 
     srv = servidor()
@@ -741,7 +762,8 @@ def prerender():
         "o.observe(document.body,{childList:true,subtree:true})})();</script>\n"
         f"{FIN}\n"
     )
-    src = src.replace("<x-dc>", bloque + "<x-dc>", 1)
+    src = envolver_plantilla(src)
+    src = src.replace(TPL_ABRE, bloque + TPL_ABRE, 1)
     idx.write_text(src, encoding="utf-8")
     print(f"  ✓ portada pre-renderizada ({len(contenido) // 1024} KB de HTML)")
 
