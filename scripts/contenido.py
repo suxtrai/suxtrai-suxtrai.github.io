@@ -69,21 +69,40 @@ SECTORES = [
     {
         "slug": "construccion-reformas",
         "nav": "Construcción y reformas",
-        "title": "IA para constructoras y reformas: albaranes y facturas",
-        "meta": "Automatizamos el back office de constructoras y empresas de reformas: albaranes de materiales por obra, cruce con facturas y presupuestos desde mediciones.",
-        "h1": "IA para empresas de construcción y reformas",
-        "lead": "Albaranes de almacén que se pierden entre obras, facturas de proveedor que nadie cruza y presupuestos que salen tarde. Automatizamos esa parte para que la oficina vaya al ritmo de las obras.",
+        "title": "Albaranes y facturas con IA para constructoras y reformas",
+        "meta": "Automatizamos albaranes y facturas de proveedor en constructoras y empresas de reformas: coste real por obra, cruce con lo pactado y presupuestos desde la visita.",
+        "h1": "Automatización de albaranes y facturas para constructoras y reformas",
+        "lead": "Albaranes que se pierden entre obras, facturas de proveedor que nadie cruza y presupuestos que salen tarde. Automatizamos esa parte para que la oficina vaya al ritmo de las obras y sepáis cuánto cuesta cada una mientras se hace.",
         "card": "Albaranes por obra, cruce con facturas y presupuestos desde mediciones.",
         "faq": [
-            ("¿Se pueden imputar los albaranes a cada obra?", "Sí. Al leer el albarán se identifica la obra (por referencia, dirección o pedido) y el coste queda asignado, así podéis ver el gasto real de cada obra sin esperar al cierre."),
+            ("¿Se pueden imputar los albaranes a cada obra?", "Sí. Al leer el albarán se identifica la obra (por referencia, dirección de entrega o pedido) y el coste queda asignado. Si el albarán no trae datos suficientes, el sistema no adivina: lo deja en una bandeja para que alguien lo asigne."),
             ("¿Sirve para presupuestos de reforma muy distintos entre sí?", "Sí. Se parte de las notas de la visita o de una medición y se generan las partidas con vuestras tarifas. Siempre lo revisa alguien antes de enviarlo."),
+            ("¿Los encargados tienen que aprender una herramienta nueva?", "No necesariamente. Los albaranes pueden seguir llegando como hoy: una foto desde el móvil, un PDF por correo o papel escaneado en la oficina."),
+            ("¿Funciona con facturas de subcontratas y de alquiler de maquinaria?", "Sí. Son documentos con otro formato, pero el planteamiento es el mismo: se leen, se asignan a la obra y se comparan con lo pactado."),
+            ("¿Tenemos que cambiar de programa de gestión o de contabilidad?", "No. Nos adaptamos al que uséis. Los datos revisados se pasan por integración, por importación o en una hoja de cálculo."),
+            ("¿Cuánto cuesta?", "No publicamos tarifas porque cada solución se construye a medida. Trabajamos por fases cerradas: el alcance y la propuesta de cada fase se definen con vosotros antes de empezar. El diagnóstico inicial sirve para concretarlo."),
+            ("¿Cuánto tarda en verse algo funcionando?", "Normalmente entre dos y cuatro semanas hay un prototipo con vuestros documentos reales. La puesta en producción depende de las integraciones que haga falta."),
+            ("¿Qué pasa con los precios pactados con cada proveedor?", "Son información confidencial y se tratan como tal: firmamos acuerdo de confidencialidad, trabajamos con proveedores que no usan vuestros datos para entrenar modelos y, si hace falta, se despliega en vuestra infraestructura."),
         ],
         "cuerpo": """
 <section><div class="inner">
 <p class="eyebrow">Lo que pasa hoy</p>
 <h2>Muchas obras, muchos proveedores, mucho papel</h2>
-<p>En una empresa de construcción o reformas llegan cada semana decenas de albaranes de almacenes de materiales, alquiler de maquinaria y subcontratas. A menudo viajan en la furgoneta, se fotografían con el móvil o se quedan en la obra.</p>
+<p>En una empresa de construcción, reformas o rehabilitación llegan cada semana decenas de albaranes de almacenes de materiales, alquiler de maquinaria y subcontratas. A menudo viajan en la furgoneta, se fotografían con el móvil o se quedan en la obra.</p>
 <p>A fin de mes llegan las facturas y toca comprobar, una a una, que lo facturado coincide con lo entregado y con el precio pactado. Como es tan pesado, se hace por encima, y así se pagan materiales que no llegaron o precios que no eran los acordados. Y saber cuánto lleva gastado cada obra se convierte en un trabajo de días.</p>
+<p>El resultado es que el margen de una obra se conoce cuando ya está terminada, justo cuando ya no se puede corregir nada.</p>
+</div></section>
+<section><div class="inner">
+<p class="eyebrow">Dónde se escapa el dinero</p>
+<h2>Los descuadres de siempre</h2>
+<div class="grid">
+<div class="card"><h3>Precios que no son los pactados</h3><p>La factura aplica la tarifa general en lugar del precio acordado o de un descuento. Con decenas de líneas por factura, nadie lo ve.</p></div>
+<div class="card"><h3>Material que no llegó o llegó a medias</h3><p>Se factura el pedido completo y a la obra llegó una parte. Sin el albarán delante, se paga igual.</p></div>
+<div class="card"><h3>Albaranes que nunca se facturan</h3><p>No es dinero perdido, pero el coste de la obra queda incompleto y el margen que creéis tener no es el real.</p></div>
+<div class="card"><h3>Portes y recargos no acordados</h3><p>Aparecen en la factura sin que nadie los pactara. Son pequeños, pero se repiten en cada pedido.</p></div>
+<div class="card"><h3>Facturas duplicadas</h3><p>El mismo albarán en dos facturas, o la misma factura recibida dos veces por correo.</p></div>
+<div class="card"><h3>Gasto sin obra asignada</h3><p>Cuando el albarán no dice a qué obra va, el gasto acaba en «varios» y el coste real de cada obra se conoce tarde.</p></div>
+</div>
 </div></section>
 <section><div class="inner">
 <p class="eyebrow">Qué automatizamos</p>
@@ -96,6 +115,32 @@ SECTORES = [
 <li>Presupuestos de reforma a partir de las notas de la visita o de una medición, con vuestras partidas y tarifas.</li>
 </ul>
 <p>Más detalle en <a href="/servicios/automatizacion-facturas-albaranes/">automatización de facturas y albaranes</a> y <a href="/servicios/presupuestos-facturas-automaticos/">presupuestos y facturas automáticos</a>.</p>
+</div></section>
+<section><div class="inner">
+<p class="eyebrow">Cómo funciona</p>
+<h2>Así queda el día a día en la oficina</h2>
+<div class="grid">
+<div class="card"><span class="num">01</span><h3>Llega el albarán</h3><p>El encargado hace una foto, el almacén lo manda por correo o llega en PDF. Cada uno sigue trabajando como hasta ahora.</p></div>
+<div class="card"><span class="num">02</span><h3>Se lee y se asigna</h3><p>La IA extrae proveedor, líneas, cantidades y precios, e identifica la obra por referencia, dirección o pedido. Si duda, lo marca.</p></div>
+<div class="card"><span class="num">03</span><h3>Se cruza con la factura</h3><p>Cuando llega la factura se compara con sus albaranes y con los precios pactados. Solo se señalan las diferencias.</p></div>
+<div class="card"><span class="num">04</span><h3>Veis el coste de cada obra</h3><p>El gasto por obra se actualiza según llegan los documentos. Lo correcto pasa a contabilidad; lo dudoso lo revisa una persona.</p></div>
+</div>
+</div></section>
+<section><div class="inner">
+<p class="eyebrow">Documentos</p>
+<h2>Qué documentos leemos</h2>
+<ul class="checks">
+<li><strong>Albaranes de materiales</strong> en foto del móvil, PDF o papel escaneado, con o sin anotaciones a mano.</li>
+<li><strong>Facturas de proveedores</strong>, de subcontratas y de alquiler de maquinaria.</li>
+<li><strong>Tarifas o precios pactados</strong> con cada proveedor, para compararlos con lo facturado.</li>
+<li><strong>Notas de visita y mediciones</strong>, para preparar presupuestos de reforma.</li>
+</ul>
+</div></section>
+<section><div class="inner">
+<p class="eyebrow">Por dónde empezar</p>
+<h2>Un proveedor, unas cuantas obras</h2>
+<p>No hace falta cambiarlo todo. Lo habitual es empezar por uno o dos proveedores con mucho volumen y varias obras en marcha: en dos a cuatro semanas hay un prototipo funcionando con vuestros documentos reales, y se mide frente a cómo lo hacéis hoy.</p>
+<p>Si compensa, se amplía a más proveedores y obras. Si no, lo sabéis pronto y con poco gasto. Podéis ver cómo encaja en el conjunto del <a href="/automatizacion-back-office/">back office con IA</a>.</p>
 </div></section>
 """,
     },
@@ -205,9 +250,11 @@ ARTICULOS = [
     {
         "slug": "cruzar-albaranes-con-facturas",
         "fecha": "2026-11-23",
+        "modificado": "2026-11-27",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes"], "sectores": ["construccion-reformas", "distribucion-mayoristas", "talleres-mantenimiento"]},
         "title": "Cómo cruzar albaranes con facturas sin hacerlo a mano",
         "meta": "Guía práctica para cruzar albaranes con facturas de proveedor: errores habituales, cómo hacerlo bien en Excel y cuándo compensa automatizarlo con IA.",
-        "h1": "Cómo comprobar albaranes contra facturas de proveedor sin hacerlo a mano",
+        "h1": "Cómo cruzar albaranes con facturas de proveedor sin hacerlo a mano",
         "resumen": "Por qué conviene cruzar albaranes con facturas, qué errores se detectan, cómo organizarlo en una hoja de cálculo y cuándo compensa automatizarlo.",
         "cuerpo": """
 <p>Comprobar que lo que factura cada proveedor coincide con lo que realmente se recibió es una de esas tareas que todas las empresas saben que deberían hacer y casi ninguna hace bien. No por descuido, sino porque hacerlo a mano lleva muchísimo tiempo.</p>
@@ -229,16 +276,19 @@ ARTICULOS = [
 <li>Dejad una columna de estado (cuadra, diferencia, pendiente) y otra de comentario para reclamar.</li>
 <li>Una vez al mes, filtrad los albaranes sin facturar y los facturados dos veces.</li>
 </ol>
+<p>Para empezar rápido, tenéis una <a href="/blog/plantilla-excel-cruce-albaranes-facturas/">plantilla de Excel para cruzar albaranes con facturas</a> que hace las comparaciones y marca las diferencias. Y si queréis un repaso más amplio antes de pagar, la <a href="/blog/comprobar-factura-proveedor-antes-de-pagar/">lista de comprobaciones para una factura de proveedor</a>.</p>
 <p>El problema es el tiempo: con muchos proveedores, registrar y comparar se convierte en horas cada semana, y es justo lo primero que se deja de hacer cuando hay prisa.</p>
 <h2>Cuándo compensa automatizarlo</h2>
 <p>Compensa cuando recibís muchos albaranes al mes, de varios proveedores y en formatos distintos (PDF, papel, foto), o cuando necesitáis saber el coste real de cada obra o trabajo sin esperar al cierre.</p>
 <p>Con IA el proceso es el mismo de la lista anterior, pero sin teclear: los albaranes y las facturas se leen al llegar, sea cual sea el formato; se cruzan entre sí y con los precios pactados, y solo se os enseñan las diferencias, con el documento original al lado para decidir. Lo que cuadra pasa directamente a contabilidad.</p>
-<p>Si queréis ver cómo funcionaría con vuestros documentos, lo explicamos en <a href="/servicios/automatizacion-facturas-albaranes/">automatización de facturas y albaranes</a>.</p>
+<p>Si trabajáis en obra o reformas, el siguiente paso es <a href="/blog/imputar-albaranes-a-obra/">imputar cada albarán a su obra</a> y <a href="/blog/control-costes-por-obra/">controlar el coste de cada obra</a>. Y si queréis ver cómo funcionaría con vuestros documentos, lo explicamos en <a href="/servicios/automatizacion-facturas-albaranes/">automatización de facturas y albaranes</a>.</p>
 """,
     },
     {
         "slug": "ocr-o-ia-para-leer-facturas",
         "fecha": "2026-11-23",
+        "modificado": "2026-11-27",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes"], "sectores": ["construccion-reformas"]},
         "title": "OCR o IA para leer facturas: diferencias",
         "meta": "Diferencias entre el OCR tradicional y la lectura de facturas con IA: plantillas, formatos distintos, errores y cuándo conviene cada uno.",
         "h1": "OCR o IA para leer facturas: qué diferencia hay",
@@ -259,12 +309,14 @@ ARTICULOS = [
 <p>Ningún sistema acierta el cien por cien. La diferencia está en qué hace cuando duda. Un buen sistema con IA indica su nivel de confianza en cada dato y manda a revisión humana solo lo dudoso, en lugar de dar por bueno un dato mal leído.</p>
 <h2>Cuál necesita tu empresa</h2>
 <p>Si recibís pocas facturas, siempre de los mismos proveedores y en PDF digital, un OCR con plantillas puede ser suficiente. Si tenéis muchos proveedores, formatos variados, albaranes en papel o fotos desde la obra, la IA os ahorrará el mantenimiento de plantillas y gran parte de la corrección manual.</p>
-<p>Y si el objetivo no es solo leer, sino cruzar facturas con albaranes y pedidos, la IA es casi imprescindible. Lo contamos en <a href="/blog/cruzar-albaranes-con-facturas/">cómo comprobar albaranes contra facturas</a>.</p>
+<p>Y si el objetivo no es solo leer, sino cruzar facturas con albaranes y pedidos, la IA es casi imprescindible. Lo contamos en <a href="/blog/cruzar-albaranes-con-facturas/">cómo cruzar albaranes con facturas</a>. Y si estáis eligiendo herramienta, <a href="/blog/software-albaranes-constructoras/">qué mirar antes de elegir un software de albaranes</a>.</p>
 """,
     },
     {
         "slug": "tareas-administrativas-automatizar-pyme",
         "fecha": "2026-11-23",
+        "modificado": "2026-11-27",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes", "presupuestos-facturas-automaticos"], "sectores": ["construccion-reformas"]},
         "title": "7 tareas administrativas que una pyme puede automatizar",
         "meta": "Las tareas de back office que más tiempo quitan en una pyme y que ya se pueden automatizar con IA: facturas, albaranes, presupuestos y pedidos.",
         "h1": "7 tareas administrativas que una pyme puede automatizar con IA",
@@ -274,9 +326,9 @@ ARTICULOS = [
 <h2>1. Registrar facturas de proveedor</h2>
 <p>Leer cada factura y pasar proveedor, fecha, importes e IVA al programa de contabilidad. Es la tarea más fácil de automatizar y la que antes se nota. <a href="/blog/ocr-o-ia-para-leer-facturas/">Aquí explicamos la diferencia entre OCR e IA</a> para hacerlo.</p>
 <h2>2. Cruzar albaranes con facturas</h2>
-<p>Comprobar que lo facturado coincide con lo entregado y con el precio pactado. Automatizado, solo revisáis las diferencias. <a href="/blog/cruzar-albaranes-con-facturas/">Guía completa</a>.</p>
+<p>Comprobar que lo facturado coincide con lo entregado y con el precio pactado. Automatizado, solo revisáis las diferencias. <a href="/blog/cruzar-albaranes-con-facturas/">Guía completa</a> y <a href="/blog/plantilla-excel-cruce-albaranes-facturas/">plantilla de Excel</a> para empezar.</p>
 <h2>3. Preparar presupuestos</h2>
-<p>Convertir las notas de una visita, una medición o la petición de un cliente en un presupuesto con vuestras partidas y tarifas. Un borrador en minutos que alguien revisa y envía.</p>
+<p>Convertir las notas de una visita, una medición o la petición de un cliente en un presupuesto con vuestras partidas y tarifas. Un borrador en minutos que alguien revisa y envía. En reformas, <a href="/blog/presupuesto-reforma-desde-visita/">cómo preparar el presupuesto a partir de la visita</a>.</p>
 <h2>4. Facturar trabajos y servicios</h2>
 <p>Pasar partes de trabajo, horas, kilómetros o materiales a factura sin volver a teclearlos, y detectar lo que se ha hecho y no se ha facturado.</p>
 <h2>5. Dar de alta pedidos que llegan por correo</h2>
@@ -284,9 +336,237 @@ ARTICULOS = [
 <h2>6. Clasificar correos y documentos</h2>
 <p>Enviar cada documento a su carpeta, su responsable o su flujo de trabajo: facturas a contabilidad, pedidos a almacén, consultas a quien corresponda.</p>
 <h2>7. Informes semanales</h2>
-<p>Compras del mes, coste por obra, trabajos pendientes de facturar o presupuestos sin respuesta, generados solos cada lunes en lugar de montarlos a mano.</p>
+<p>Compras del mes, coste por obra, trabajos pendientes de facturar o presupuestos sin respuesta, generados solos cada lunes en lugar de montarlos a mano. Para obras, mirad <a href="/blog/control-costes-por-obra/">control de costes por obra</a>.</p>
 <h2>Por dónde empezar</h2>
 <p>Elegid la tarea que más horas os quita y que siga siempre los mismos pasos. Automatizad solo esa, medid el resultado y después pasad a la siguiente. En el <a href="/automatizacion-back-office/">back office con IA</a> explicamos cómo lo planteamos, y el diagnóstico inicial es gratuito.</p>
+""",
+    },
+    {
+        "slug": "control-costes-por-obra",
+        "fecha": "2026-11-27",
+        "title": "Control de costes por obra: cómo saber lo que llevas gastado",
+        "meta": "Cómo controlar el coste real de cada obra: qué datos registrar, dónde se descuadra casi siempre y cómo tener el gasto al día sin esperar al cierre de mes.",
+        "h1": "Control de costes por obra: cómo saber lo que llevas gastado sin esperar al cierre",
+        "resumen": "El presupuesto de obra solo sirve si se compara con el gasto real a tiempo. Qué registrar, dónde se descuadra y cómo no depender del cierre de mes.",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes"], "sectores": ["construccion-reformas"]},
+        "cuerpo": """
+<p>En muchas constructoras y empresas de reformas, saber si una obra ha dado dinero es algo que se descubre al terminarla. Para entonces ya no hay nada que corregir. El control de costes consiste justo en lo contrario: comparar lo presupuestado con lo gastado mientras la obra sigue en marcha, a tiempo de actuar.</p>
+<h2>Qué hay que comparar</h2>
+<p>La comparación útil es entre el presupuesto y el gasto real, y cuanto más desglosada, mejor. Con un solo total por obra solo sabréis que os habéis pasado, no en qué. Lo habitual es separar por capítulos o partidas y, dentro de cada una, por tipo de gasto:</p>
+<ul>
+<li><strong>Materiales</strong>, que llegan con un albarán.</li>
+<li><strong>Subcontratas</strong>, que se certifican o facturan por trabajo hecho.</li>
+<li><strong>Maquinaria y medios auxiliares</strong>, normalmente alquilados.</li>
+<li><strong>Mano de obra propia</strong>, a partir de los partes de horas.</li>
+</ul>
+<h2>De dónde sale el gasto real</h2>
+<p>La fuente más temprana del gasto de materiales no es la factura, sino el albarán. El albarán llega el día que se entrega el material; la factura puede tardar semanas. Si esperáis a la factura para registrar el gasto, siempre iréis con retraso.</p>
+<p>Por eso conviene registrar los albaranes al recibirlos y usar las facturas para confirmar y cerrar, no para descubrir el gasto. Lo explicamos con más detalle en <a href="/blog/imputar-albaranes-a-obra/">cómo imputar los albaranes a cada obra</a>.</p>
+<h2>Dónde se descuadra casi siempre</h2>
+<ul>
+<li><strong>Gasto sin obra asignada.</strong> Albaranes que no dicen a qué obra van y acaban en un cajón o en «varios».</li>
+<li><strong>Registro a fin de mes.</strong> Los documentos se acumulan y se pasan todos juntos, cuando ya es tarde para reaccionar.</li>
+<li><strong>Facturas que llegan tarde.</strong> El gasto existe, pero no consta hasta que llega el papel.</li>
+<li><strong>Cambios del cliente sin presupuestar.</strong> Se hace el trabajo adicional, se gasta el material y no se refleja ni en el presupuesto ni en la facturación.</li>
+<li><strong>Precios distintos a los pactados.</strong> El coste real es mayor que el previsto sin que nadie lo note. Es el problema que tratamos en <a href="/blog/cruzar-albaranes-con-facturas/">cómo cruzar albaranes con facturas</a>.</li>
+</ul>
+<h2>Un método sencillo para empezar</h2>
+<ol>
+<li>Dad a cada obra un código corto y único, y pedid a los proveedores que lo incluyan en pedidos y albaranes.</li>
+<li>Registrad cada albarán el día que llega, con su obra y, si podéis, su partida.</li>
+<li>Una vez por semana, comparad el gasto acumulado de cada obra con su presupuesto, partida por partida.</li>
+<li>Fijad un umbral de desviación (por ejemplo, un 10 % sobre lo previsto en una partida) a partir del cual se revisa qué ha pasado.</li>
+<li>Cuando llegue la factura, cruzadla con sus albaranes antes de pagarla.</li>
+<li>Al cerrar la obra, anotad las desviaciones y su causa para ajustar los próximos presupuestos.</li>
+</ol>
+<h2>Dónde ayuda la automatización</h2>
+<p>El método funciona, pero depende de que alguien registre cada albarán y cada factura a tiempo, y es lo primero que se abandona cuando hay mucha obra en marcha. La parte que más se puede automatizar es justo esa: leer los albaranes al llegar (aunque sean una foto desde la obra), asignarlos a su obra, cruzarlos con la factura y mostrar el coste acumulado actualizado.</p>
+<p>Si queréis ver cómo se aplicaría en vuestra empresa, lo contamos en <a href="/sectores/construccion-reformas/">automatización de albaranes y facturas para constructoras y reformas</a>.</p>
+""",
+    },
+    {
+        "slug": "imputar-albaranes-a-obra",
+        "fecha": "2026-11-27",
+        "title": "Imputar albaranes a obra: método y errores habituales",
+        "meta": "Cómo asignar cada albarán de materiales a su obra y partida: referencia de obra, quién lo anota, errores habituales y cómo automatizarlo cuando hay mucho volumen.",
+        "h1": "Cómo imputar los albaranes a cada obra: método y errores habituales",
+        "resumen": "Un albarán sin obra es un gasto sin dueño. Cómo conseguir que cada albarán llegue con su obra asignada y qué hacer con los que no la traen.",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes"], "sectores": ["construccion-reformas"]},
+        "cuerpo": """
+<p>Imputar un albarán es asignar su coste a la obra (y, si se puede, a la partida) a la que corresponde. Parece un trámite menor, pero de él depende que el coste de cada obra sea fiable. Un albarán sin obra es un gasto sin dueño: se paga, pero no se sabe a quién cargarlo.</p>
+<h2>Por qué falla la imputación</h2>
+<ul>
+<li><strong>El albarán no dice la obra.</strong> El proveedor solo pone el nombre de la empresa, y quien recogió el material dijo de palabra para qué obra era.</li>
+<li><strong>Llega tarde a la oficina.</strong> Los albaranes viajan en la furgoneta, en la cartera del encargado o en una carpeta de la obra, y llegan juntos al final de la semana o del mes.</li>
+<li><strong>Está ilegible.</strong> Una foto torcida, un papel arrugado o una anotación a mano que nadie entiende pasadas unas semanas.</li>
+<li><strong>El material sirve para varias obras.</strong> Un pedido grande que se reparte entre dos o tres obras y que nadie divide.</li>
+<li><strong>La dirección de entrega no coincide.</strong> El material se entrega en el almacén, en casa del encargado o en una dirección que no es la de la obra.</li>
+</ul>
+<h2>Cómo imputar bien</h2>
+<ol>
+<li><strong>Un código de obra corto y único</strong> (por ejemplo, el año y un número correlativo). Comunicádselo a los proveedores y pedid que figure en el pedido y en el albarán.</li>
+<li><strong>Quien pide o recoge el material anota la obra</strong>, en el momento. Es mucho más fácil que averiguarlo semanas después.</li>
+<li><strong>Foto del albarán el mismo día</strong>, con el papel plano y bien iluminado, y enviada a un único sitio (un correo o una carpeta compartida).</li>
+<li><strong>La oficina registra el albarán al recibirlo</strong>, no a fin de mes, con su obra y su partida.</li>
+<li><strong>Los repartos se dividen</strong> por unidades o por porcentajes, y se anota el criterio.</li>
+<li><strong>Se revisa cada semana</strong> la lista de albaranes sin obra asignada, antes de que se acumulen.</li>
+</ol>
+<h2>Qué hacer con los albaranes sin obra</h2>
+<p>Lo peor es dejarlos en «varios» y esperar a que alguien se acuerde. Conviene tener una bandeja de «pendientes de asignar» con una persona responsable, y revisarla con una frecuencia fija. Una pista habitual para resolverlos es la dirección de entrega, la fecha o el número de pedido: casi siempre alguien sabe a qué obra correspondía.</p>
+<h2>Cómo ayuda la IA</h2>
+<p>La lectura automática del albarán extrae proveedor, líneas, cantidades y precios, y busca en el documento los datos que indican la obra: la referencia, la dirección de entrega o el número de pedido. Cuando los encuentra, propone la obra; cuando no está seguro, no inventa: lo deja marcado para que una persona lo asigne con el documento original delante.</p>
+<p>Así el coste de cada obra se mantiene al día sin que nadie tenga que teclear cada albarán. Y con el gasto asignado, el siguiente paso es <a href="/blog/control-costes-por-obra/">controlar los costes por obra</a> y <a href="/blog/cruzar-albaranes-con-facturas/">cruzar los albaranes con las facturas</a> antes de pagarlas. Si queréis verlo aplicado a vuestro caso, lo explicamos en <a href="/servicios/automatizacion-facturas-albaranes/">automatización de facturas y albaranes</a>.</p>
+""",
+    },
+    {
+        "slug": "presupuesto-reforma-desde-visita",
+        "fecha": "2026-11-27",
+        "title": "Presupuesto de reforma: cómo hacerlo rápido tras la visita",
+        "meta": "Cómo preparar presupuestos de reforma más rápido: qué anotar en la visita, cómo estructurar las partidas y cuándo ayuda la IA a convertir las notas en presupuesto.",
+        "h1": "Presupuesto de reforma: cómo prepararlo rápido a partir de la visita",
+        "resumen": "Qué anotar en la visita, cómo estructurar las partidas y dónde se pierde el tiempo al pasar las notas a presupuesto, y cómo acortarlo.",
+        "relacion": {"servicios": ["presupuestos-facturas-automaticos"], "sectores": ["construccion-reformas"]},
+        "cuerpo": """
+<p>En una reforma, el cliente suele pedir varios presupuestos y se queda, en buena medida, con el que le llega antes y con más claridad. Pero cada reforma es distinta y preparar el presupuesto lleva horas: hay que pasar las notas de la visita a partidas, ponerles precio y maquetarlo todo. Estas son algunas ideas para acortar ese camino.</p>
+<h2>Qué conviene anotar en la visita</h2>
+<p>Un presupuesto rápido empieza con unas buenas notas. Si faltan datos, hay que volver a llamar al cliente o volver a la obra.</p>
+<ul>
+<li><strong>Mediciones:</strong> metros cuadrados, metros lineales y unidades de cada espacio a reformar.</li>
+<li><strong>Fotos</strong> del estado actual y de cualquier detalle que condicione el trabajo.</li>
+<li><strong>Alcance:</strong> qué entra y qué no, dicho en voz alta con el cliente y anotado.</li>
+<li><strong>Calidades y materiales</strong> que ha elegido el cliente, o los que le habéis propuesto.</li>
+<li><strong>Condicionantes:</strong> acceso, escaleras, ascensor, horarios, permisos o normas de la comunidad.</li>
+<li><strong>Plazos</strong> que espera el cliente.</li>
+</ul>
+<h2>Estructurar el presupuesto por partidas</h2>
+<p>Un presupuesto claro se organiza por capítulos (demolición, albañilería, fontanería, electricidad, alicatados, carpintería, pintura…) y, dentro de cada uno, por partidas con unidad, cantidad, precio unitario e importe. Conviene incluir también lo que no está incluido, el plazo estimado y las condiciones de pago.</p>
+<p>Cuanto más desglosado, más fácil es defenderlo ante el cliente y, después, comparar lo presupuestado con lo gastado de verdad (<a href="/blog/control-costes-por-obra/">control de costes por obra</a>).</p>
+<h2>Dónde se pierde el tiempo</h2>
+<ul>
+<li><strong>Pasar las notas a partidas.</strong> Interpretar la libreta o el audio de la visita y convertirlo en conceptos presupuestables.</li>
+<li><strong>Buscar precios.</strong> Si no hay un tarifario propio actualizado, cada partida es una búsqueda.</li>
+<li><strong>Maquetar.</strong> Poner el presupuesto en la plantilla de la empresa, con su imagen y sus condiciones.</li>
+<li><strong>Revisar.</strong> Comprobar que no falta nada y que las sumas cuadran.</li>
+</ul>
+<h2>Mantened un tarifario propio</h2>
+<p>La base de un presupuesto rápido es un tarifario de partidas con vuestro precio unitario, revisado cada cierto tiempo con los precios reales de proveedores y subcontratas. Con él, presupuestar es medir y multiplicar; sin él, es empezar de cero cada vez.</p>
+<h2>Dónde ayuda la IA</h2>
+<p>La IA es especialmente útil en el primer paso: convertir las notas de la visita, una medición o incluso un audio en un borrador de partidas, usando vuestro tarifario y vuestra plantilla. Propone; no decide. Una persona del equipo revisa el borrador, ajusta lo que haga falta y lo envía.</p>
+<p>No sustituye vuestro criterio sobre qué hace falta en una reforma, pero sí el tiempo de tecleo y de maquetación. Lo contamos en <a href="/servicios/presupuestos-facturas-automaticos/">presupuestos y facturas automáticos</a>, y el contexto del sector en <a href="/sectores/construccion-reformas/">constructoras y reformas</a>.</p>
+""",
+    },
+    {
+        "slug": "software-albaranes-constructoras",
+        "fecha": "2026-11-27",
+        "title": "Software de albaranes para constructoras: qué mirar",
+        "meta": "Criterios para elegir un software de albaranes en una constructora o empresa de reformas: captura, imputación a obra, cruce con facturas e integración.",
+        "h1": "Software para gestionar albaranes en una constructora: qué mirar antes de elegir",
+        "resumen": "Hay muchas herramientas y no todas resuelven el mismo problema. Los criterios para comparar y las preguntas que conviene hacer antes de contratar.",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes"], "sectores": ["construccion-reformas"]},
+        "cuerpo": """
+<p>«Software de albaranes» puede significar cosas muy distintas: un módulo de compras dentro de un programa de gestión de obra, una aplicación que lee documentos, una hoja de cálculo bien montada o un sistema con IA. Antes de comparar productos conviene tener claro qué problema se quiere resolver.</p>
+<h2>Primero, qué problema queréis resolver</h2>
+<ul>
+<li><strong>Saber el coste real de cada obra</strong> mientras se hace.</li>
+<li><strong>Comprobar las facturas de proveedor</strong> contra lo que llegó y contra los precios pactados.</li>
+<li><strong>Dejar de teclear</strong> albaranes y facturas a mano.</li>
+</ul>
+<p>Muchas herramientas resuelven bien una de las tres y regular las otras. Saber cuál os duele más evita pagar por funciones que no vais a usar.</p>
+<h2>Criterios para comparar</h2>
+<ol>
+<li><strong>Captura.</strong> ¿Se puede hacer una foto desde la obra? ¿Acepta PDF por correo? ¿Y papel escaneado con anotaciones a mano?</li>
+<li><strong>Lectura.</strong> ¿Necesita una plantilla por proveedor o entiende formatos distintos? Si tenéis muchos proveedores, esto marca la diferencia: lo explicamos en <a href="/blog/ocr-o-ia-para-leer-facturas/">OCR o IA para leer facturas</a>.</li>
+<li><strong>Imputación a obra y partida.</strong> ¿Asigna el albarán a su obra, o solo lo archiva?</li>
+<li><strong>Cruce con la factura.</strong> ¿Compara cantidades y precios con los albaranes y con lo pactado, y avisa de las diferencias?</li>
+<li><strong>Integración.</strong> ¿Se conecta con vuestro programa de contabilidad o de gestión, o al menos exporta a Excel?</li>
+<li><strong>Revisión de excepciones.</strong> ¿Qué ocurre cuando duda? Lo ideal es que lo marque y os enseñe el documento original al lado, no que lo dé por bueno.</li>
+<li><strong>Datos.</strong> ¿Dónde se guardan, quién puede verlos y si se pueden exportar si algún día cambiáis de herramienta?</li>
+</ol>
+<h2>Opciones habituales y cuándo encajan</h2>
+<ul>
+<li><strong>Hoja de cálculo.</strong> Suficiente con pocos proveedores y poco volumen. Barata, pero depende de que alguien teclee todo. Tenéis una <a href="/blog/plantilla-excel-cruce-albaranes-facturas/">plantilla de Excel para cruzar albaranes con facturas</a> para empezar.</li>
+<li><strong>Programa de gestión de obra o ERP con módulo de compras.</strong> Buena opción si ya lo tenéis y lo usáis bien; el reto suele ser alimentarlo con los datos de los albaranes.</li>
+<li><strong>Herramientas de OCR con plantillas.</strong> Funcionan cuando los formatos son pocos y estables.</li>
+<li><strong>Lectura con IA a medida.</strong> Encaja cuando hay muchos proveedores, formatos variados o fotos desde la obra, y cuando se quiere el cruce con facturas y la imputación a obra. Requiere un proyecto, pero se adapta a vuestro caso.</li>
+</ul>
+<p>No siempre hace falta IA. Si recibís veinte albaranes al mes de tres proveedores, una buena hoja de cálculo os puede bastar.</p>
+<h2>Preguntas para hacer antes de contratar</h2>
+<ul>
+<li>¿Puedo probarlo con mis documentos reales, no con los de la demo?</li>
+<li>¿Qué pasa con un albarán mal escaneado o con un proveedor nuevo?</li>
+<li>¿Cuánto tarda en estar funcionando y qué tengo que preparar yo?</li>
+<li>¿Quién lo mantiene después y cuánto cuesta?</li>
+<li>¿Puedo llevarme mis datos si decido cambiar?</li>
+</ul>
+<p>Si queréis ver cómo lo planteamos nosotros para empresas del sector, está en <a href="/sectores/construccion-reformas/">automatización de albaranes y facturas para constructoras y reformas</a>.</p>
+""",
+    },
+    {
+        "slug": "plantilla-excel-cruce-albaranes-facturas",
+        "fecha": "2026-11-27",
+        "title": "Plantilla Excel para cruzar albaranes y facturas",
+        "meta": "Plantilla de Excel para comprobar facturas de proveedor contra albaranes: cantidades, precios pactados, diferencias y albaranes sin facturar. Descarga directa.",
+        "h1": "Plantilla de Excel para cruzar albaranes con facturas de proveedor",
+        "resumen": "Una hoja de cálculo lista para registrar albaranes, compararlos con las facturas y ver qué no cuadra. Cómo usarla y cuándo se queda corta.",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes"], "sectores": ["construccion-reformas", "distribucion-mayoristas"]},
+        "cuerpo": """
+<p>Si queréis empezar a comprobar las facturas de proveedor contra los albaranes sin cambiar de herramienta, una hoja de cálculo bien organizada ya recorre buena parte del camino. Hemos preparado una plantilla de Excel que hace las comparaciones por vosotros: solo hay que registrar los documentos.</p>
+<p><a class="btn btn-dark" href="/assets/plantilla-cruce-albaranes-facturas.xlsx" download data-umami-event="descarga-plantilla-cruce">Descargar la plantilla (Excel)</a></p>
+<h2>Qué incluye</h2>
+<ul>
+<li><strong>Albaranes:</strong> una línea por cada línea de albarán, con proveedor, obra, concepto, cantidad recibida y precio pactado. A su derecha, columnas calculadas que muestran cuánto se ha facturado, la diferencia y el estado.</li>
+<li><strong>Facturas:</strong> una línea por cada línea de factura, indicando a qué albarán corresponde.</li>
+<li><strong>Resumen:</strong> cuántas líneas cuadran, cuántas tienen diferencias, cuántas están sin facturar y el importe pendiente.</li>
+<li><strong>Instrucciones:</strong> los pasos y los estados posibles.</li>
+</ul>
+<p>El estado de cada línea puede ser: cuadra, sin facturar, precio distinto, facturado de menos o facturado de más (o duplicado). Se colorea solo, para localizar las diferencias de un vistazo. Los errores que detecta son los que describimos en <a href="/blog/cruzar-albaranes-con-facturas/">cómo cruzar albaranes con facturas sin hacerlo a mano</a>.</p>
+<h2>Cómo usarla</h2>
+<ol>
+<li>Descargad el archivo y borrad las filas de ejemplo (el proveedor «Ejemplo S.L.»), sin tocar las columnas en gris.</li>
+<li>Cuando llegue un albarán, anotad cada línea en la hoja «Albaranes» con el precio pactado con ese proveedor.</li>
+<li>Cuando llegue una factura, anotad cada línea en la hoja «Facturas», con el número del albarán al que corresponde y el concepto escrito igual que en el albarán.</li>
+<li>Revisad la columna «Estado» y la hoja «Resumen». Reclamad al proveedor lo que no cuadre.</li>
+<li>Al cerrar el mes, filtrad por «Sin facturar» para ver qué albaranes están pendientes.</li>
+</ol>
+<h2>Dónde se queda corta</h2>
+<p>La plantilla compara bien, pero no lee: alguien tiene que teclear cada albarán y cada factura. Con pocos proveedores y poco volumen es razonable. Cuando se acumulan muchos documentos, en formatos distintos y con fotos desde la obra, el tecleo es lo primero que se deja de hacer, y con él, el control.</p>
+<p>Ahí es donde compensa automatizar la lectura y el cruce. Lo explicamos en <a href="/servicios/automatizacion-facturas-albaranes/">automatización de facturas y albaranes</a>, y para elegir herramienta, en <a href="/blog/software-albaranes-constructoras/">software de albaranes para constructoras: qué mirar</a>.</p>
+""",
+    },
+    {
+        "slug": "comprobar-factura-proveedor-antes-de-pagar",
+        "fecha": "2026-11-27",
+        "title": "Qué comprobar en una factura de proveedor antes de pagar",
+        "meta": "Lista de verificación para revisar facturas de proveedor antes de pagarlas: datos formales, albarán, precio pactado, cantidades, IVA, duplicados y vencimiento.",
+        "h1": "Qué comprobar en una factura de proveedor antes de pagarla: lista de verificación",
+        "resumen": "Diez comprobaciones, de los datos formales al cruce con el albarán, para no pagar de más. Y cuáles se pueden automatizar.",
+        "relacion": {"servicios": ["automatizacion-facturas-albaranes"], "sectores": ["construccion-reformas", "distribucion-mayoristas"]},
+        "cuerpo": """
+<p>Pagar una factura sin revisarla es pagar lo que el proveedor diga. Revisarla a fondo lleva tiempo, así que casi siempre se hace por encima. Esta lista ayuda a ordenar la revisión: qué mirar, en qué orden y qué parte se puede automatizar.</p>
+<h2>Comprobaciones formales</h2>
+<ol>
+<li><strong>Datos del emisor y del destinatario.</strong> Razón social y NIF correctos, y a nombre de vuestra empresa actual. Una factura con datos erróneos puede dar problemas después.</li>
+<li><strong>Número y fecha.</strong> Que el número sea coherente con la serie del proveedor y que no lo hayáis recibido ya.</li>
+<li><strong>Descripción de lo facturado.</strong> Conceptos claros, que permitan saber qué se compra y para qué.</li>
+</ol>
+<p>Los requisitos formales de una factura los regula el Reglamento de facturación (Real Decreto 1619/2012). Ante cualquier duda sobre si una factura es válida a efectos fiscales, lo mejor es consultarlo con vuestra gestoría.</p>
+<h2>Comprobaciones contra lo recibido y lo pactado</h2>
+<ol start="4">
+<li><strong>Cantidades frente al albarán.</strong> Que no se facture más de lo entregado, ni un pedido completo cuando llegó una parte.</li>
+<li><strong>Precios frente a lo pactado.</strong> Que se apliquen la tarifa y el descuento acordados, no el precio general.</li>
+<li><strong>Descuentos.</strong> Que aparezcan los que corresponden por volumen o por pago anticipado.</li>
+<li><strong>Portes y recargos.</strong> Que solo figuren los acordados.</li>
+</ol>
+<h2>Comprobaciones de cálculo y de control</h2>
+<ol start="8">
+<li><strong>Importes.</strong> Que las líneas sumen la base imponible, que el tipo de IVA sea el que toca y que la cuota y el total estén bien calculados.</li>
+<li><strong>Duplicados.</strong> Que el mismo albarán no aparezca en otra factura y que no hayáis recibido la misma factura dos veces por correo.</li>
+<li><strong>Vencimiento y forma de pago.</strong> Que coincidan con lo acordado con el proveedor.</li>
+</ol>
+<h2>Qué se puede automatizar</h2>
+<p>Las comprobaciones 4 a 9 son mecánicas: comparar cantidades y precios con el albarán y con la tarifa, sumar líneas y detectar duplicados. Son justo las que más tiempo llevan y las que antes se dejan de hacer. Un sistema de lectura con IA extrae los datos de cada factura, los cruza con sus albaranes y solo os enseña las diferencias, con el documento original al lado.</p>
+<p>Las primeras (datos formales y vencimiento) siguen requiriendo criterio, pero se revisan mucho más rápido cuando lo demás ya viene comprobado.</p>
+<p>Si queréis empezar con una hoja de cálculo, tenéis la <a href="/blog/plantilla-excel-cruce-albaranes-facturas/">plantilla de Excel para cruzar albaranes con facturas</a>. Y para ver el método completo, <a href="/blog/cruzar-albaranes-con-facturas/">cómo cruzar albaranes con facturas sin hacerlo a mano</a>. Si lo queréis automatizado, está en <a href="/servicios/automatizacion-facturas-albaranes/">automatización de facturas y albaranes</a>.</p>
 """,
     },
 ]

@@ -19,9 +19,15 @@
 - [Distribución y mayoristas](https://suxtrai.es/sectores/distribucion-mayoristas/): Pedidos por correo al ERP y facturas de proveedor cruzadas con lo recibido.
 
 ## Guías
-- [Cómo comprobar albaranes contra facturas de proveedor sin hacerlo a mano](https://suxtrai.es/blog/cruzar-albaranes-con-facturas/): Por qué conviene cruzar albaranes con facturas, qué errores se detectan, cómo organizarlo en una hoja de cálculo y cuándo compensa automatizarlo.
+- [Cómo cruzar albaranes con facturas de proveedor sin hacerlo a mano](https://suxtrai.es/blog/cruzar-albaranes-con-facturas/): Por qué conviene cruzar albaranes con facturas, qué errores se detectan, cómo organizarlo en una hoja de cálculo y cuándo compensa automatizarlo.
 - [OCR o IA para leer facturas: qué diferencia hay](https://suxtrai.es/blog/ocr-o-ia-para-leer-facturas/): El OCR convierte la imagen en texto; la IA entiende qué es cada dato. Cuándo basta con uno y cuándo hace falta la otra.
 - [7 tareas administrativas que una pyme puede automatizar con IA](https://suxtrai.es/blog/tareas-administrativas-automatizar-pyme/): De la lectura de facturas a los informes semanales: dónde está el tiempo de la oficina y qué parte se puede automatizar ya.
+- [Control de costes por obra: cómo saber lo que llevas gastado sin esperar al cierre](https://suxtrai.es/blog/control-costes-por-obra/): El presupuesto de obra solo sirve si se compara con el gasto real a tiempo. Qué registrar, dónde se descuadra y cómo no depender del cierre de mes.
+- [Cómo imputar los albaranes a cada obra: método y errores habituales](https://suxtrai.es/blog/imputar-albaranes-a-obra/): Un albarán sin obra es un gasto sin dueño. Cómo conseguir que cada albarán llegue con su obra asignada y qué hacer con los que no la traen.
+- [Presupuesto de reforma: cómo prepararlo rápido a partir de la visita](https://suxtrai.es/blog/presupuesto-reforma-desde-visita/): Qué anotar en la visita, cómo estructurar las partidas y dónde se pierde el tiempo al pasar las notas a presupuesto, y cómo acortarlo.
+- [Software para gestionar albaranes en una constructora: qué mirar antes de elegir](https://suxtrai.es/blog/software-albaranes-constructoras/): Hay muchas herramientas y no todas resuelven el mismo problema. Los criterios para comparar y las preguntas que conviene hacer antes de contratar.
+- [Plantilla de Excel para cruzar albaranes con facturas de proveedor](https://suxtrai.es/blog/plantilla-excel-cruce-albaranes-facturas/): Una hoja de cálculo lista para registrar albaranes, compararlos con las facturas y ver qué no cuadra. Cómo usarla y cuándo se queda corta.
+- [Qué comprobar en una factura de proveedor antes de pagarla: lista de verificación](https://suxtrai.es/blog/comprobar-factura-proveedor-antes-de-pagar/): Diez comprobaciones, de los datos formales al cruce con el albarán, para no pagar de más. Y cuáles se pueden automatizar.
 
 ## Opcional
 - [Aviso legal](https://suxtrai.es/aviso-legal/)
