@@ -16,6 +16,7 @@ Uso (desde la raíz del repo):
 Vuelve a ejecutarlo cada vez que cambies textos de la portada o de este archivo.
 """
 import datetime
+import hashlib
 import html
 import json
 import re
@@ -382,6 +383,7 @@ def pagina_servicio(s):
 {faq}
 </div></section>
 {cta()}
+{bloque_guias(guias_de("servicios", s["slug"]))}
 <section><div class="inner">
 <p class="eyebrow">También os puede interesar</p>
 <div class="grid">{relacionados}</div>
@@ -511,6 +513,28 @@ def pagina_privacidad():
 
 
 ORG = {"@type": "Organization", "name": "SuxtrAI", "url": SITE + "/", "@id": SITE + "/#org"}
+# Autor de los artículos del blog (aparece en la firma y en los datos estructurados).
+AUTOR = {"@type": "Person", "name": "Jon Medina", "url": SITE + "/#equipo", "worksFor": {"@id": SITE + "/#org"}}
+POR_SLUG_SECTOR = {s["slug"]: s for s in SECTORES}
+
+
+def guias_de(tipo, slug):
+    """Artículos del blog relacionados con un servicio o un sector (según el campo 'relacion')."""
+    return [a for a in sorted(ARTICULOS, key=lambda x: x["fecha"], reverse=True)
+            if slug in a.get("relacion", {}).get(tipo, [])]
+
+
+def bloque_guias(arts, titulo="Guías relacionadas"):
+    if not arts:
+        return ""
+    cards = "".join(
+        f'<a class="card" href="/blog/{a["slug"]}/"><h3>{E(a["h1"])}</h3><p>{E(a["resumen"])}</p><span class="more">Leer →</span></a>'
+        for a in arts)
+    return f'''<section><div class="inner">
+<p class="eyebrow">Guías</p>
+<h2>{E(titulo)}</h2>
+<div class="grid">{cards}</div>
+</div></section>'''
 
 
 def hero(crumbs, h1, lead, acciones=True):
@@ -575,7 +599,8 @@ def pagina_sector(s):
         f'<a class="card" href="/sectores/{x["slug"]}/"><h3>{E(x["nav"])}</h3><p>{E(x["card"])}</p><span class="more">Ver sector →</span></a>'
         for x in SECTORES if x["slug"] != s["slug"])
     cuerpo = (hero([("Inicio", "/"), ("Sectores", "/sectores/"), (s["nav"], None)], s["h1"], s["lead"])
-              + s["cuerpo"] + bloque_faq(s["faq"]) + cta()
+              + s["cuerpo"] + bloque_guias(guias_de("sectores", s["slug"]), "Guías para " + s["nav"].lower())
+              + bloque_faq(s["faq"]) + cta()
               + f'<section><div class="inner"><p class="eyebrow">Otros sectores</p><div class="grid">{otros}</div></div></section>')
     schema = [
         {"@context": "https://schema.org", "@type": "Service", "name": s["title"], "description": s["meta"], "url": SITE + path,
@@ -608,25 +633,42 @@ def pagina_blog():
 
 def pagina_articulo(a):
     path = f"/blog/{a['slug']}/"
+    # "Sigue leyendo": los tres artículos más afines (comparten servicio o sector); a igualdad, los más recientes
+    def afinidad(x):
+        rx, ra = x.get("relacion", {}), a.get("relacion", {})
+        return -sum(len(set(rx.get(k, [])) & set(ra.get(k, []))) for k in ("servicios", "sectores"))
+    resto = sorted([x for x in ARTICULOS if x["slug"] != a["slug"]], key=lambda x: x["fecha"], reverse=True)
     otros = "".join(
         f'<a class="card" href="/blog/{x["slug"]}/"><h3>{E(x["h1"])}</h3><p>{E(x["resumen"])}</p><span class="more">Leer →</span></a>'
-        for x in ARTICULOS if x["slug"] != a["slug"])
+        for x in sorted(resto, key=afinidad)[:3])
+    modificado = a.get("modificado", a["fecha"])
+    actualizado = f" · Actualizado el {fecha_es(modificado)}" if modificado != a["fecha"] else ""
+    r = a.get("relacion", {})
+    rel_cards = "".join(
+        f'<a class="card" href="/servicios/{sl}/"><span class="num">Servicio</span><h3>{E(POR_SLUG[sl]["h1"])}</h3><p>{E(POR_SLUG[sl]["card"])}</p><span class="more">Ver servicio →</span></a>'
+        for sl in r.get("servicios", [])
+    ) + "".join(
+        f'<a class="card" href="/sectores/{sl}/"><span class="num">Sector</span><h3>{E(POR_SLUG_SECTOR[sl]["nav"])}</h3><p>{E(POR_SLUG_SECTOR[sl]["card"])}</p><span class="more">Ver sector →</span></a>'
+        for sl in r.get("sectores", []))
+    bloque_rel = (f'<section><div class="inner"><p class="eyebrow">Para aplicarlo</p><div class="grid">{rel_cards}</div></div></section>'
+                  if rel_cards else "")
     cuerpo = f"""<div class="page-hero"><div class="inner">
 <div class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></div>
 <h1>{E(a['h1'])}</h1>
 <p class="lead">{E(a['resumen'])}</p>
-<p class="updated" style="color:#9aa3ad;margin-top:18px">SuxtrAI · {fecha_es(a['fecha'])}</p>
+<p class="updated" style="color:#9aa3ad;margin-top:18px">Por {AUTOR["name"]} · Publicado el {fecha_es(a['fecha'])}{actualizado}</p>
 </div></div>
 <section class="article"><div class="inner">
 {a['cuerpo']}
 </div></section>
+{bloque_rel}
 {cta("¿Queréis automatizarlo?", "Os enseñamos cómo funcionaría con vuestros propios documentos. La primera sesión, de 30 minutos, no tiene coste.")}
 <section><div class="inner"><p class="eyebrow">Sigue leyendo</p><div class="grid">{otros}</div></div></section>"""
     schema = [
         {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["h1"], "description": a["meta"],
-         "datePublished": a["fecha"], "dateModified": a["fecha"], "inLanguage": "es",
+         "datePublished": a["fecha"], "dateModified": modificado, "inLanguage": "es",
          "mainEntityOfPage": SITE + path, "image": SITE + "/assets/og-suxtrai.jpg",
-         "author": ORG, "publisher": {**ORG, "logo": {"@type": "ImageObject", "url": SITE + "/assets/suxtrai-logo.jpg"}}},
+         "author": AUTOR, "publisher": {**ORG, "logo": {"@type": "ImageObject", "url": SITE + "/assets/suxtrai-logo.jpg"}}},
         breadcrumbs([("Inicio", "/"), ("Blog", "/blog/"), (a["h1"], path)]),
     ]
     return path, pagina(path, f"{a['title']} | SuxtrAI", a["meta"], cuerpo, schema, og_type="article")
@@ -650,7 +692,19 @@ def llms_txt():
     print("  ✓ llms.txt")
 
 
+LASTMOD = Path(__file__).resolve().parent / "lastmod.json"
+HUELLAS = {}
+
+
+def huella(texto):
+    """Resumen del contenido sin los datos que cambian solos (fecha de actualización, año del pie)."""
+    texto = re.sub(r"Última actualización: \d{4}-\d{2}-\d{2}", "", texto)
+    texto = re.sub(r"© \d{4}", "", texto)
+    return hashlib.sha1(texto.encode("utf-8")).hexdigest()[:16]
+
+
 def escribir(path, contenido):
+    HUELLAS[path] = huella(contenido)
     destino = ROOT / path.strip("/") / "index.html"
     destino.parent.mkdir(parents=True, exist_ok=True)
     destino.write_text(contenido, encoding="utf-8")
@@ -659,10 +713,21 @@ def escribir(path, contenido):
 
 def sitemap(paths):
     prio = {"/": "1.0", "/automatizacion-back-office/": "0.9", "/servicios/": "0.9", "/sectores/": "0.8", "/blog/": "0.7"}
+    # lastmod: solo se actualiza la fecha de las páginas cuyo contenido ha cambiado desde la última vez.
+    # La portada se compara sin el bloque pre-renderizado (que se regenera en cada ejecución).
+    previo = json.loads(LASTMOD.read_text(encoding="utf-8")) if LASTMOD.exists() else {}
+    home = (ROOT / "index.html").read_text(encoding="utf-8")
+    home = re.sub(re.escape(INICIO) + r".*?" + re.escape(FIN) + r"\n?", "", home, flags=re.S)
+    HUELLAS["/"] = huella(home)
+    estado = {}
     urls = []
     for p in paths:
+        ant = previo.get(p)
+        lm = ant["lastmod"] if ant and ant["huella"] == HUELLAS[p] else HOY
+        estado[p] = {"huella": HUELLAS[p], "lastmod": lm}
         pr = prio.get(p, "0.3" if p in ("/aviso-legal/", "/privacidad/") else "0.8")
-        urls.append(f"  <url>\n    <loc>{SITE}{p}</loc>\n    <lastmod>{HOY}</lastmod>\n    <priority>{pr}</priority>\n  </url>")
+        urls.append(f"  <url>\n    <loc>{SITE}{p}</loc>\n    <lastmod>{lm}</lastmod>\n    <priority>{pr}</priority>\n  </url>")
+    LASTMOD.write_text(json.dumps(estado, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "\n".join(urls) + "\n</urlset>\n", encoding="utf-8")
@@ -681,6 +746,10 @@ JS_EXTRAER = """() => {
   const root = document.getElementById('dc-root');
   const c = root.cloneNode(true);
   c.querySelectorAll('video, canvas, iframe, script').forEach(e => e.remove());
+  const escrito = c.querySelector('#suxtr-hero-type');
+  if (escrito) escrito.textContent = 'Inteligencia artificial a\\u00a0medida.';
+  const cursor = c.querySelector('#suxtr-hero-cursor');
+  if (cursor) cursor.remove();
   c.querySelectorAll('[id]').forEach(e => { if (!ANCLAS.includes(e.id)) e.removeAttribute('id'); });
   c.querySelectorAll('[aria-live]').forEach(e => e.removeAttribute('aria-live'));
   const estilos = [...document.head.querySelectorAll('style')]
@@ -749,9 +818,6 @@ def prerender():
     srv.shutdown()
 
     contenido = datos["html"]
-    # el texto animado del titular se deja completo
-    contenido = re.sub(r'(<span aria-hidden="true">)[^<]*(</span><span aria-hidden="true" style="display:inline-block;width:\.06em)',
-                       r"\1Inteligencia artificial a&nbsp;medida.\2", contenido, count=1)
     bloque = (
         f"{INICIO}\n"
         f'<style>x-dc{{display:none!important}}</style>\n'

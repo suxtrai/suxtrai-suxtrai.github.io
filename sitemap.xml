@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://suxtrai.es/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -17,32 +17,32 @@
   </url>
   <url>
     <loc>https://suxtrai.es/servicios/automatizacion-facturas-albaranes/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/servicios/presupuestos-facturas-automaticos/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/servicios/asistente-ia-documentacion/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/servicios/formacion-ia-empresas/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/servicios/asesoramiento-ia/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/servicios/desarrollo-ia-a-medida/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -52,7 +52,7 @@
   </url>
   <url>
     <loc>https://suxtrai.es/sectores/construccion-reformas/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -62,32 +62,62 @@
   </url>
   <url>
     <loc>https://suxtrai.es/sectores/talleres-mantenimiento/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/sectores/distribucion-mayoristas/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/blog/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/blog/cruzar-albaranes-con-facturas/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/blog/ocr-o-ia-para-leer-facturas/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://suxtrai.es/blog/tareas-administrativas-automatizar-pyme/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/control-costes-por-obra/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/imputar-albaranes-a-obra/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/presupuesto-reforma-desde-visita/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/software-albaranes-constructoras/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/plantilla-excel-cruce-albaranes-facturas/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suxtrai.es/blog/comprobar-factura-proveedor-antes-de-pagar/</loc>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
