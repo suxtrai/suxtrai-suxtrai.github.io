@@ -29,6 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from contenido import ARTICULOS, BACKOFFICE, SECTORES  # noqa: E402
+from visuales import resumen_html, cuerpo_con_figuras  # noqa: E402
 SITE = "https://suxtrai.es"
 HOY = datetime.date.today().isoformat()
 UMAMI_ID = "adb6b538-9ae7-48ce-9cd4-6067065a8fb9"
@@ -253,7 +254,7 @@ LOGO = ('<a class="logo" href="/" aria-label="SuxtrAI, inicio">'
         '<span>suxtr<span>AI</span></span></a>')
 
 
-def pagina(path, title, meta, cuerpo, schema=None, indexar=True, og_type="website"):
+def pagina(path, title, meta, cuerpo, schema=None, indexar=True, og_type="website", og_image=None):
     canonical = SITE + path
     if len(title) > 60 and title.endswith(" | SuxtrAI"):
         title = title[: -len(" | SuxtrAI")]
@@ -281,12 +282,12 @@ def pagina(path, title, meta, cuerpo, schema=None, indexar=True, og_type="websit
 <meta property="og:url" content="{canonical}">
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(meta)}">
-<meta property="og:image" content="{SITE}/assets/og-suxtrai.jpg">
+<meta property="og:image" content="{SITE}{og_image or '/assets/og-suxtrai.jpg'}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=3">
 {ld}<script defer src="https://cloud.umami.is/script.js" data-website-id="{UMAMI_ID}" data-domains="suxtrai.es,www.suxtrai.es"></script>
 </head>
 <body>
@@ -518,6 +519,22 @@ AUTOR = {"@type": "Person", "name": "Jon Medina", "url": SITE + "/#equipo", "wor
 POR_SLUG_SECTOR = {s["slug"]: s for s in SECTORES}
 
 
+def portada(slug):
+    """Ruta de la portada del artículo (assets/blog/<slug>.jpg); cadena vacía si todavía no se ha generado."""
+    return f"/assets/blog/{slug}.jpg" if (ROOT / "assets" / "blog" / f"{slug}.jpg").exists() else ""
+
+
+def miniatura(a):
+    p = portada(a["slug"])
+    return f'<img class="thumb" src="{p}" alt="" width="1200" height="630" loading="lazy" decoding="async">' if p else ""
+
+
+def tarjeta_articulo(a, num=""):
+    n = f'<span class="num">{num}</span>' if num else ""
+    return (f'<a class="card" href="/blog/{a["slug"]}/">{miniatura(a)}{n}<h3>{E(a["h1"])}</h3>'
+            f'<p>{E(a["resumen"])}</p><span class="more">Leer →</span></a>')
+
+
 def guias_de(tipo, slug):
     """Artículos del blog relacionados con un servicio o un sector (según el campo 'relacion')."""
     return [a for a in sorted(ARTICULOS, key=lambda x: x["fecha"], reverse=True)
@@ -528,8 +545,7 @@ def bloque_guias(arts, titulo="Guías relacionadas"):
     if not arts:
         return ""
     cards = "".join(
-        f'<a class="card" href="/blog/{a["slug"]}/"><h3>{E(a["h1"])}</h3><p>{E(a["resumen"])}</p><span class="more">Leer →</span></a>'
-        for a in arts)
+        tarjeta_articulo(a) for a in arts)
     return f'''<section><div class="inner">
 <p class="eyebrow">Guías</p>
 <h2>{E(titulo)}</h2>
@@ -621,8 +637,7 @@ def fecha_es(iso):
 def pagina_blog():
     path = "/blog/"
     items = "".join(
-        f'<a class="card" href="/blog/{a["slug"]}/"><span class="num">{fecha_es(a["fecha"])}</span><h3>{E(a["h1"])}</h3><p>{E(a["resumen"])}</p><span class="more">Leer →</span></a>'
-        for a in sorted(ARTICULOS, key=lambda x: x["fecha"], reverse=True))
+        tarjeta_articulo(a, fecha_es(a["fecha"])) for a in sorted(ARTICULOS, key=lambda x: x["fecha"], reverse=True))
     cuerpo = hero([("Inicio", "/"), ("Blog", None)], "Blog: automatización del back office",
                   "Guías prácticas para quitar papeleo en la oficina: facturas, albaranes, presupuestos y cómo aplicar la IA sin complicaciones.", acciones=False) + f"""
 <section><div class="inner"><div class="grid">{items}</div></div></section>""" + cta()
@@ -639,8 +654,7 @@ def pagina_articulo(a):
         return -sum(len(set(rx.get(k, [])) & set(ra.get(k, []))) for k in ("servicios", "sectores"))
     resto = sorted([x for x in ARTICULOS if x["slug"] != a["slug"]], key=lambda x: x["fecha"], reverse=True)
     otros = "".join(
-        f'<a class="card" href="/blog/{x["slug"]}/"><h3>{E(x["h1"])}</h3><p>{E(x["resumen"])}</p><span class="more">Leer →</span></a>'
-        for x in sorted(resto, key=afinidad)[:3])
+        tarjeta_articulo(x) for x in sorted(resto, key=afinidad)[:3])
     modificado = a.get("modificado", a["fecha"])
     actualizado = f" · Actualizado el {fecha_es(modificado)}" if modificado != a["fecha"] else ""
     r = a.get("relacion", {})
@@ -659,7 +673,8 @@ def pagina_articulo(a):
 <p class="updated" style="color:#9aa3ad;margin-top:18px">Por {AUTOR["name"]} · Publicado el {fecha_es(a['fecha'])}{actualizado}</p>
 </div></div>
 <section class="article"><div class="inner">
-{a['cuerpo']}
+{resumen_html(a['slug'])}
+{cuerpo_con_figuras(a['slug'], a['cuerpo'])}
 </div></section>
 {bloque_rel}
 {cta("¿Queréis automatizarlo?", "Os enseñamos cómo funcionaría con vuestros propios documentos. La primera sesión, de 30 minutos, no tiene coste.")}
@@ -667,11 +682,11 @@ def pagina_articulo(a):
     schema = [
         {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["h1"], "description": a["meta"],
          "datePublished": a["fecha"], "dateModified": modificado, "inLanguage": "es",
-         "mainEntityOfPage": SITE + path, "image": SITE + "/assets/og-suxtrai.jpg",
+         "mainEntityOfPage": SITE + path, "image": SITE + (portada(a["slug"]) or "/assets/og-suxtrai.jpg"),
          "author": AUTOR, "publisher": {**ORG, "logo": {"@type": "ImageObject", "url": SITE + "/assets/suxtrai-logo.jpg"}}},
         breadcrumbs([("Inicio", "/"), ("Blog", "/blog/"), (a["h1"], path)]),
     ]
-    return path, pagina(path, f"{a['title']} | SuxtrAI", a["meta"], cuerpo, schema, og_type="article")
+    return path, pagina(path, f"{a['title']} | SuxtrAI", a["meta"], cuerpo, schema, og_type="article", og_image=portada(a["slug"]) or None)
 
 
 def llms_txt():
@@ -700,6 +715,7 @@ def huella(texto):
     """Resumen del contenido sin los datos que cambian solos (fecha de actualización, año del pie)."""
     texto = re.sub(r"Última actualización: \d{4}-\d{2}-\d{2}", "", texto)
     texto = re.sub(r"© \d{4}", "", texto)
+    texto = re.sub(r"site\.css\?v=\d+", "site.css?v=2", texto)  # subir la versión del CSS no cuenta como cambio de contenido
     return hashlib.sha1(texto.encode("utf-8")).hexdigest()[:16]
 
 
